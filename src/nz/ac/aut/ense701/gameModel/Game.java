@@ -49,7 +49,7 @@ public class Game
         totalKiwis = 0;
         predatorsTrapped = 0;
         kiwiCount = 0;
-        initialiseIslandFromFile("IslandData.txt");
+        initialiseIslandFromFile("maps/BrendanMap1.txt");
         drawIsland();
         state = GameState.PLAYING;
         winMessage = "";
@@ -719,12 +719,12 @@ public class Game
             // make sure decimal numbers are read in the form "123.23"
             input.useLocale(Locale.US);
             input.useDelimiter("\\s*,\\s*");
-
+            
             // create the island
             int numRows    = input.nextInt();
             int numColumns = input.nextInt();
             island = new Island(numRows, numColumns);
-
+            
             // read and setup the terrain
             setUpTerrain(input);
 
