@@ -3,10 +3,12 @@ package nz.ac.aut.ense701.gameModel;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Scanner;
 import java.util.Set;
+import javax.swing.ImageIcon;
 
 /**
  * This is the class that knows the Kiwi Island game rules and state
@@ -34,7 +36,6 @@ public class Game
     public Game() 
     {   
         eventListeners = new HashSet<GameEventListener>();
-
         createNewGame();
     }
     
@@ -49,6 +50,9 @@ public class Game
         totalKiwis = 0;
         predatorsTrapped = 0;
         kiwiCount = 0;
+        DescImporter di = new DescImporter();                                   //description setup
+        descArray = di.readDesc();                                              //create String desc
+        descIcon = di.importImages();                                           //create ImageIcon desc
         initialiseIslandFromFile("IslandData.txt");
         drawIsland();
         state = GameState.PLAYING;
@@ -848,7 +852,8 @@ public class Game
     private int totalKiwis;
     private int predatorsTrapped;
     private Set<GameEventListener> eventListeners;
-    
+    private ArrayList<String> descArray;                                        //AL of description Strings
+    private ArrayList<ImageIcon> descIcon;
     private final double MIN_REQUIRED_CATCH = 0.8;
         
     private String winMessage = "";
