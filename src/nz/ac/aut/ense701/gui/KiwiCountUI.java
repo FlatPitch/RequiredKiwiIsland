@@ -32,6 +32,7 @@ public class KiwiCountUI
         initComponents();
         initIslandGrid();
         update();
+        GameInstructions.instructions();
     }
     
     /**
