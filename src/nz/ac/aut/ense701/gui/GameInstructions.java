@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Panda
+ * @author James Higgins
  */
 public class GameInstructions {
     
@@ -22,10 +22,7 @@ public class GameInstructions {
         
        String str = parseInstructionFile("instructions/gameinstructions.txt");
         
-        JOptionPane.showMessageDialog(null, str, "Game Instructions", JOptionPane.PLAIN_MESSAGE);
-
-        
-        
+        JOptionPane.showMessageDialog(null, str, "Game Instructions", JOptionPane.PLAIN_MESSAGE); 
         
     }
     
@@ -33,7 +30,7 @@ public class GameInstructions {
         String output = "";
         try
         {
-            output = "<html><body><ul><p align=\"center\" style=\"color:#FF0000\" ;>Game Instructions</p><br>";
+            output = "<html><body><ul><p style=\"color:#FF0000\" ;>Game Instructions</p><br>";
            // Open the file
             FileInputStream fileStream = new FileInputStream(file);
             BufferedReader reader = new BufferedReader(new InputStreamReader(fileStream));
@@ -41,9 +38,7 @@ public class GameInstructions {
             String line;
             //Read File Line By Line
             while ((line = reader.readLine()) != null)   {
-              // Print the content on the console
               output += "<li>"+line+"</li><br>";
-                         //   output += line+"<br>";
 
             }
             
