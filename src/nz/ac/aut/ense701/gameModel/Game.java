@@ -4,11 +4,13 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.security.SecureRandom;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * This is the class that knows the Kiwi Island game rules and state and
@@ -45,7 +47,7 @@ public class Game {
         totalKiwis = 0;
         predatorsTrapped = 0;
         kiwiCount = 0;
-        initialiseIslandFromFile("maps/BrendanMap1.txt");
+        initialiseIslandFromFile(selectMapFile());
         drawIsland();
         state = GameState.PLAYING;
         winMessage = "";
@@ -785,6 +787,22 @@ public class Game {
             }
         }
     }
+    
+    /**
+     * Randomly picks a map to be played on from the maps folder
+     * 
+     * @return path location of chosen map
+     */
+    private String selectMapFile() {
+        File folder = new File("maps");
+        File[] mapFiles = folder.listFiles();
+        int randIndex = ThreadLocalRandom.current().nextInt(0, mapFiles.length);
+        while (mapFiles[randIndex].getPath().equals(prevMap)){
+            randIndex = ThreadLocalRandom.current().nextInt(0, mapFiles.length);
+        }
+        prevMap = mapFiles[randIndex].getPath();
+        return(mapFiles[randIndex].getPath());
+    }
 
     private Island island;
     private Player player;
@@ -800,5 +818,6 @@ public class Game {
     private String winMessage = "";
     private String loseMessage = "";
     private String playerMessage = "";
+    private String prevMap = "";
 
 }
