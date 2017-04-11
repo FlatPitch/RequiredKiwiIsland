@@ -806,12 +806,12 @@ public class Game {
         File folder = new File("maps");
         File[] mapFiles = folder.listFiles();
         if (mapFiles.length == 2){
-            if (mapFiles[0].getPath().equals(prevMap)){
-                prevMap= mapFiles[1].getPath();
-                return(mapFiles[1].getPath());
-            } else{
-                prevMap = mapFiles[0].getPath();
+            if (mapFiles[1 ].getPath().equals(prevMap)){
+                prevMap= mapFiles[0].getPath();
                 return(mapFiles[0].getPath());
+            } else{
+                prevMap = mapFiles[1].getPath();
+                return(mapFiles[1].getPath());
             }
         } else{
             int randIndex = ThreadLocalRandom.current().nextInt(0, mapFiles.length);
