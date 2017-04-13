@@ -50,6 +50,9 @@ public class RewardTest extends junit.framework.TestCase {
     
     @Test
     public void testCatchAllPredatorsGetReward(){ 
+        while (!game.getPrevMap().equals("maps\\IslandData.txt")){
+        game = new Game();
+    }
         trapAllPredators();
         assertTrue("Coupon should be given",game.getWinMessage().contains("Your $2 tuck shop discount code:"));
     }    

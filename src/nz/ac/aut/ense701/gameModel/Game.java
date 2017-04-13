@@ -806,7 +806,7 @@ public class Game {
         File folder = new File("maps");
         File[] mapFiles = folder.listFiles();
         if (mapFiles.length == 2){
-            if (mapFiles[1 ].getPath().equals(prevMap)){
+            if (mapFiles[1].getPath().equals(prevMap)){
                 prevMap= mapFiles[0].getPath();
                 return(mapFiles[0].getPath());
             } else{
@@ -819,6 +819,7 @@ public class Game {
                 randIndex = ThreadLocalRandom.current().nextInt(0, mapFiles.length);
             }
             prevMap = mapFiles[randIndex].getPath();
+            System.out.println(prevMap);
             return(mapFiles[randIndex].getPath());
         }
     }
