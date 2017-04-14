@@ -819,7 +819,6 @@ public class Game {
                 randIndex = ThreadLocalRandom.current().nextInt(0, mapFiles.length);
             }
             prevMap = mapFiles[randIndex].getPath();
-            System.out.println(prevMap);
             return(mapFiles[randIndex].getPath());
         }
     }
