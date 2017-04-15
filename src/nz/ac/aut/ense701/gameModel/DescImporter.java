@@ -21,50 +21,18 @@ import javax.swing.ImageIcon;
  * @author Liandri
  */
 public class DescImporter {
-    
-   DescImporter(){
-       
-   }
-   
-   /**
-    * This method read the strings from a data file and returns 
-    * an ArrayList of descriptions to the game class
-    * @return ArrayList<String> description
-    */
-   public ArrayList<String> readDesc(){
-       ArrayList<String> description = new ArrayList<String>();
-       BufferedReader br = null;
-       try{
-    br = new BufferedReader(new FileReader("desc.txt"));
-    String line = "";
-    while((line=br.readLine())!= null){
-        description.add(line);
-    }
-    }catch(IOException io){
-            System.out.println(io);
-    }finally{
-           try{
-               if (br != null){
-                   br.close();
-               }
-               }catch(IOException ie){
-                  System.out.println("error closing file "+ ie);
-            }
-        }
-       return description;
-    }
+
    /**
     * This method imports the images and returns 
     * an ArrayList of ImageIcons to the game class
     * @return ArrayList<ImageIcons> descImages
     */
-   public ArrayList<ImageIcon> importImages(){
-       ArrayList<ImageIcon> descImages = new ArrayList<ImageIcon>();
-       for(int i =1;i<=8;i++){                                                  //total number of images
-           ImageIcon ii = new ImageIcon("/pics/"+i+".png");                     //make icons
-           descImages.add(ii);                                                  //add to arrayList
+   public ArrayList<String> importImages(){
+       ArrayList<String> descImages = new ArrayList<String>();
+       for(int i =0;i<=14;i++){                                                  //total number of images
+           String imgLoc = "/nz/ac/aut/ense701/gui/images//"+i+".jpg";                     //make icons
+           descImages.add(imgLoc);                                                  //add to arrayList
        }
        return descImages;
    }
-   
  }
