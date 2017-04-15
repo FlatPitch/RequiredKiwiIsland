@@ -16,7 +16,7 @@ import nz.ac.aut.ense701.gameModel.Game;
 import nz.ac.aut.ense701.gameModel.GameEventListener;
 import nz.ac.aut.ense701.gameModel.GameState;
 import nz.ac.aut.ense701.gameModel.MoveDirection;
-
+import nz.ac.aut.ense701.gui.GameInstructions;
 /*
  * User interface form for Kiwi Island.
  * 
@@ -160,33 +160,33 @@ public class KiwiCountUI
 
         javax.swing.JPanel pnlContent = new javax.swing.JPanel();
         pnlIsland = new javax.swing.JPanel();
-        javax.swing.JPanel pnlControls = new javax.swing.JPanel();
-        javax.swing.JPanel pnlPlayer = new javax.swing.JPanel();
-        javax.swing.JPanel pnlPlayerData = new javax.swing.JPanel();
-        javax.swing.JLabel lblPlayerName = new javax.swing.JLabel();
+        pnlControls = new javax.swing.JPanel();
+        pnlPlayer = new javax.swing.JPanel();
+        pnlPlayerData = new javax.swing.JPanel();
+        lblPlayerName = new javax.swing.JLabel();
         txtPlayerName = new javax.swing.JLabel();
-        javax.swing.JLabel lblPlayerStamina = new javax.swing.JLabel();
+        lblPlayerStamina = new javax.swing.JLabel();
         progPlayerStamina = new javax.swing.JProgressBar();
-        javax.swing.JLabel lblBackpackWeight = new javax.swing.JLabel();
+        lblBackpackWeight = new javax.swing.JLabel();
         progBackpackWeight = new javax.swing.JProgressBar();
-        javax.swing.JLabel lblBackpackSize = new javax.swing.JLabel();
+        lblBackpackSize = new javax.swing.JLabel();
         progBackpackSize = new javax.swing.JProgressBar();
         lblPredators = new javax.swing.JLabel();
         lblKiwisCounted = new javax.swing.JLabel();
         txtKiwisCounted = new javax.swing.JLabel();
         txtPredatorsLeft = new javax.swing.JLabel();
-        javax.swing.JPanel pnlMovement = new javax.swing.JPanel();
+        pnlMovement = new javax.swing.JPanel();
         btnMoveNorth = new javax.swing.JButton();
         btnMoveSouth = new javax.swing.JButton();
         btnMoveEast = new javax.swing.JButton();
         btnMoveWest = new javax.swing.JButton();
-        javax.swing.JPanel pnlInventory = new javax.swing.JPanel();
-        javax.swing.JScrollPane scrlInventory = new javax.swing.JScrollPane();
+        pnlInventory = new javax.swing.JPanel();
+        scrlInventory = new javax.swing.JScrollPane();
         listInventory = new javax.swing.JList();
         btnDrop = new javax.swing.JButton();
         btnUse = new javax.swing.JButton();
-        javax.swing.JPanel pnlObjects = new javax.swing.JPanel();
-        javax.swing.JScrollPane scrlObjects = new javax.swing.JScrollPane();
+        pnlObjects = new javax.swing.JPanel();
+        scrlObjects = new javax.swing.JScrollPane();
         listObjects = new javax.swing.JList();
         btnCollect = new javax.swing.JButton();
         btnCount = new javax.swing.JButton();
@@ -194,11 +194,13 @@ public class KiwiCountUI
         jScrollPane2 = new javax.swing.JScrollPane();
         descFeild = new javax.swing.JTextArea();
         jButton2 = new javax.swing.JButton();
+        gInstructionButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Kiwi Count");
 
         pnlContent.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        pnlContent.setPreferredSize(new java.awt.Dimension(1000, 885));
         pnlContent.setLayout(new java.awt.BorderLayout(10, 0));
 
         pnlIsland.setName("imgicon"); // NOI18N
@@ -207,16 +209,17 @@ public class KiwiCountUI
         pnlIsland.setLayout(pnlIslandLayout);
         pnlIslandLayout.setHorizontalGroup(
             pnlIslandLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 393, Short.MAX_VALUE)
+            .addGap(0, 644, Short.MAX_VALUE)
         );
         pnlIslandLayout.setVerticalGroup(
             pnlIslandLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 794, Short.MAX_VALUE)
+            .addGap(0, 865, Short.MAX_VALUE)
         );
 
         pnlContent.add(pnlIsland, java.awt.BorderLayout.CENTER);
         pnlIsland.getAccessibleContext().setAccessibleName("imgicon");
 
+        pnlControls.setPreferredSize(new java.awt.Dimension(326, 865));
         pnlControls.setLayout(new java.awt.GridBagLayout());
 
         pnlPlayer.setBorder(javax.swing.BorderFactory.createTitledBorder("Player"));
@@ -336,6 +339,8 @@ public class KiwiCountUI
         pnlControls.add(pnlPlayer, gridBagConstraints);
 
         pnlMovement.setBorder(javax.swing.BorderFactory.createTitledBorder("Movement"));
+        pnlMovement.setMinimumSize(new java.awt.Dimension(138, 92));
+        pnlMovement.setPreferredSize(new java.awt.Dimension(138, 92));
         pnlMovement.setLayout(new java.awt.GridBagLayout());
 
         btnMoveNorth.setText("N");
@@ -558,6 +563,8 @@ public class KiwiCountUI
         gridBagConstraints.insets = new java.awt.Insets(13, 20, 0, 0);
         pnlControls.add(pnlObjects, gridBagConstraints);
 
+        jPanel2.setMinimumSize(null);
+
         descFeild.setColumns(20);
         descFeild.setRows(5);
         jScrollPane2.setViewportView(descFeild);
@@ -589,17 +596,30 @@ public class KiwiCountUI
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.ipadx = -17;
-        gridBagConstraints.ipady = 22;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 20, 44, 0);
         pnlControls.add(jPanel2, gridBagConstraints);
+
+        gInstructionButton.setActionCommand("gameinstructions");
+        gInstructionButton.setLabel("Game Instructions");
+        gInstructionButton.setName("gInstructions"); // NOI18N
+        gInstructionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gInstructionButtonActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        pnlControls.add(gInstructionButton, gridBagConstraints);
+        gInstructionButton.getAccessibleContext().setAccessibleName("ginstructions");
 
         pnlContent.add(pnlControls, java.awt.BorderLayout.EAST);
 
@@ -608,30 +628,18 @@ public class KiwiCountUI
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnMoveEastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoveEastActionPerformed
-        game.playerMove(MoveDirection.EAST);
-    }//GEN-LAST:event_btnMoveEastActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void btnMoveNorthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoveNorthActionPerformed
-        game.playerMove(MoveDirection.NORTH);
-    }//GEN-LAST:event_btnMoveNorthActionPerformed
-
-    private void btnMoveSouthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoveSouthActionPerformed
-        game.playerMove(MoveDirection.SOUTH);
-    }//GEN-LAST:event_btnMoveSouthActionPerformed
-
-    private void btnMoveWestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoveWestActionPerformed
-        game.playerMove(MoveDirection.WEST);
-    }//GEN-LAST:event_btnMoveWestActionPerformed
+    private void btnCountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCountActionPerformed
+        game.countKiwi();
+    }//GEN-LAST:event_btnCountActionPerformed
 
     private void btnCollectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCollectActionPerformed
         Object obj = listObjects.getSelectedValue();
         game.collectItem(obj);
     }//GEN-LAST:event_btnCollectActionPerformed
-
-    private void btnDropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDropActionPerformed
-        game.dropItem(listInventory.getSelectedValue());
-    }//GEN-LAST:event_btnDropActionPerformed
 
     private void listObjectsValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listObjectsValueChanged
         Object occ = listObjects.getSelectedValue();
@@ -647,6 +655,10 @@ public class KiwiCountUI
         game.useItem( listInventory.getSelectedValue());
     }//GEN-LAST:event_btnUseActionPerformed
 
+    private void btnDropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDropActionPerformed
+        game.dropItem(listInventory.getSelectedValue());
+    }//GEN-LAST:event_btnDropActionPerformed
+
     private void listInventoryValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listInventoryValueChanged
         Object item =  listInventory.getSelectedValue();
         btnDrop.setEnabled(true);
@@ -657,13 +669,25 @@ public class KiwiCountUI
         }
     }//GEN-LAST:event_listInventoryValueChanged
 
-    private void btnCountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCountActionPerformed
-        game.countKiwi();
-    }//GEN-LAST:event_btnCountActionPerformed
+    private void btnMoveWestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoveWestActionPerformed
+        game.playerMove(MoveDirection.WEST);
+    }//GEN-LAST:event_btnMoveWestActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btnMoveEastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoveEastActionPerformed
+        game.playerMove(MoveDirection.EAST);
+    }//GEN-LAST:event_btnMoveEastActionPerformed
+
+    private void btnMoveSouthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoveSouthActionPerformed
+        game.playerMove(MoveDirection.SOUTH);
+    }//GEN-LAST:event_btnMoveSouthActionPerformed
+
+    private void btnMoveNorthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoveNorthActionPerformed
+        game.playerMove(MoveDirection.NORTH);
+    }//GEN-LAST:event_btnMoveNorthActionPerformed
+
+    private void gInstructionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gInstructionButtonActionPerformed
+        GameInstructions.instructions();
+    }//GEN-LAST:event_gInstructionButtonActionPerformed
     
     /**
      * Creates and initialises the island grid.
@@ -697,17 +721,30 @@ public class KiwiCountUI
     private javax.swing.JButton btnMoveWest;
     private javax.swing.JButton btnUse;
     private javax.swing.JTextArea descFeild;
+    private javax.swing.JButton gInstructionButton;
     private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblBackpackSize;
+    private javax.swing.JLabel lblBackpackWeight;
     private javax.swing.JLabel lblKiwisCounted;
+    private javax.swing.JLabel lblPlayerName;
+    private javax.swing.JLabel lblPlayerStamina;
     private javax.swing.JLabel lblPredators;
     private javax.swing.JList listInventory;
     private javax.swing.JList listObjects;
+    private javax.swing.JPanel pnlControls;
+    private javax.swing.JPanel pnlInventory;
     private javax.swing.JPanel pnlIsland;
+    private javax.swing.JPanel pnlMovement;
+    private javax.swing.JPanel pnlObjects;
+    private javax.swing.JPanel pnlPlayer;
+    private javax.swing.JPanel pnlPlayerData;
     private javax.swing.JProgressBar progBackpackSize;
     private javax.swing.JProgressBar progBackpackWeight;
     private javax.swing.JProgressBar progPlayerStamina;
+    private javax.swing.JScrollPane scrlInventory;
+    private javax.swing.JScrollPane scrlObjects;
     private javax.swing.JLabel txtKiwisCounted;
     private javax.swing.JLabel txtPlayerName;
     private javax.swing.JLabel txtPredatorsLeft;
