@@ -822,111 +822,122 @@ public class Game {
             return(mapFiles[randIndex].getPath());
         }
     }
-public String getDescIcon(){
-        String iconURL ="/nz/ac/aut/ense701/gui/images/doc.jpg";
-        Occupant[] occupants = getOccupantsPlayerPosition();
-        if(occupants.length>0){
-            if(occupants.length==1){
-                if(occupants[0] instanceof Kiwi){
-                    if(occupants[0].getStringRepresentation()=="K"){
-                        iconURL = "/nz/ac/aut/ense701/gui/images/0.jpg";    //kiwi
-                        return iconURL;
+    
+    /**
+     * get the occupants from the square with the player in and set the icon on 
+     * the button to match the occupant found
+     * @return 
+     */
+    public String getDescIcon(){
+            String iconURL ="/nz/ac/aut/ense701/gui/images/doc.jpg";
+            Occupant[] occupants = getOccupantsPlayerPosition();
+            if(occupants.length>0){
+                if(occupants.length==1){
+                    if(occupants[0] instanceof Kiwi){
+                        if(occupants[0].getStringRepresentation()=="K"){
+                            iconURL = "/nz/ac/aut/ense701/gui/images/0.jpg";    //kiwi
+                            return iconURL;
+                        }
+                    }else if(occupants[0] instanceof Fauna){
+                        Fauna fauna = (Fauna)occupants[0];
+                        if(fauna.getName().equals("Rat") ){
+                            iconURL = "/nz/ac/aut/ense701/gui/images/6.jpg";     //rat
+                            return iconURL;
+                        }
+                        if(fauna.getName().equals("Kiore") ){
+                            iconURL = "/nz/ac/aut/ense701/gui/images/6.jpg";     //rat
+                            return iconURL;
+                        }
+                        if(fauna.getName().equals("Cat") ){
+                            iconURL = "/nz/ac/aut/ense701/gui/images/4.jpg";     //cat
+                            return iconURL;
+                        }
+                        if(fauna.getName().equals("Possum") ){
+                            iconURL = "/nz/ac/aut/ense701/gui/images/5.jpg";     //rat
+                            return iconURL;
+                        }
+                        if(fauna.getName().equals("Stoat") ){
+                            iconURL = "/nz/ac/aut/ense701/gui/images/9.jpg";     //rat
+                            return iconURL;
+                        }
+                        if(fauna.getName().equals("Fernbird") ){
+                            iconURL = "/nz/ac/aut/ense701/gui/images/1.jpg";     //rat
+                            return iconURL;
+                        }
+                        if(fauna.getName().equals("Heron") ){
+                            iconURL = "/nz/ac/aut/ense701/gui/images/2.jpg";     //rat
+                            return iconURL;
+                        }
+                        if(fauna.getName().equals("Tui") ){
+                            iconURL = "/nz/ac/aut/ense701/gui/images/10.jpg";     //rat
+                            return iconURL;
+                        }
+                        if(fauna.getName().equals("Robin") ){
+                            iconURL = "/nz/ac/aut/ense701/gui/images/11.jpg";     //rat
+                            return iconURL;
+                        }
+                        if(fauna.getName().equals("Crab") ){
+                            iconURL = "/nz/ac/aut/ense701/gui/images/12.jpg";     //rat
+                            return iconURL;
+                        }
+                        if(fauna.getName().equals("Oystercatcher") ){
+                            iconURL = "/nz/ac/aut/ense701/gui/images/13.jpg";     //rat
+                            return iconURL;
+                        }
+                        if(fauna.getName().equals("Dolphin") ){
+                            iconURL = "/nz/ac/aut/ense701/gui/images/3.jpg";     //rat
+                            return iconURL;
+                        }
+                    }else if(occupants[0] instanceof Food){
+                            iconURL = "/nz/ac/aut/ense701/gui/images/8.jpg";     //food
+                            return iconURL;
+
+                    }else if(occupants[0] instanceof Predator){
+                            iconURL = "/nz/ac/aut/ense701/gui/images/4.jpg";       //predator
+                            return iconURL;
+
+                    }else if(occupants[0] instanceof Tool){
+                            iconURL = "/nz/ac/aut/ense701/gui/images/7.jpg";        //tool
+                            return iconURL;
                     }
-                }else if(occupants[0] instanceof Fauna){
-                    Fauna fauna = (Fauna)occupants[0];
-                    if(fauna.getName().equals("Rat") ){
-                        iconURL = "/nz/ac/aut/ense701/gui/images/6.jpg";     //rat
-                        return iconURL;
-                    }
-                    if(fauna.getName().equals("Kiore") ){
-                        iconURL = "/nz/ac/aut/ense701/gui/images/6.jpg";     //rat
-                        return iconURL;
-                    }
-                    if(fauna.getName().equals("Cat") ){
-                        iconURL = "/nz/ac/aut/ense701/gui/images/4.jpg";     //cat
-                        return iconURL;
-                    }
-                    if(fauna.getName().equals("Possum") ){
-                        iconURL = "/nz/ac/aut/ense701/gui/images/5.jpg";     //rat
-                        return iconURL;
-                    }
-                    if(fauna.getName().equals("Stoat") ){
-                        iconURL = "/nz/ac/aut/ense701/gui/images/9.jpg";     //rat
-                        return iconURL;
-                    }
-                    if(fauna.getName().equals("Fernbird") ){
-                        iconURL = "/nz/ac/aut/ense701/gui/images/1.jpg";     //rat
-                        return iconURL;
-                    }
-                    if(fauna.getName().equals("Heron") ){
-                        iconURL = "/nz/ac/aut/ense701/gui/images/2.jpg";     //rat
-                        return iconURL;
-                    }
-                    if(fauna.getName().equals("Tui") ){
-                        iconURL = "/nz/ac/aut/ense701/gui/images/10.jpg";     //rat
-                        return iconURL;
-                    }
-                    if(fauna.getName().equals("Robin") ){
-                        iconURL = "/nz/ac/aut/ense701/gui/images/11.jpg";     //rat
-                        return iconURL;
-                    }
-                    if(fauna.getName().equals("Crab") ){
-                        iconURL = "/nz/ac/aut/ense701/gui/images/12.jpg";     //rat
-                        return iconURL;
-                    }
-                    if(fauna.getName().equals("Oystercatcher") ){
-                        iconURL = "/nz/ac/aut/ense701/gui/images/13.jpg";     //rat
-                        return iconURL;
-                    }
-                    if(fauna.getName().equals("Dolphin") ){
-                        iconURL = "/nz/ac/aut/ense701/gui/images/3.jpg";     //rat
-                        return iconURL;
-                    }
-                }else if(occupants[0] instanceof Food){
-                        iconURL = "/nz/ac/aut/ense701/gui/images/8.jpg";     //food
-                        return iconURL;
-                            
-                }else if(occupants[0] instanceof Predator){
-                        iconURL = "/nz/ac/aut/ense701/gui/images/4.jpg";       //predator
-                        return iconURL;
-                                    
-                }else if(occupants[0] instanceof Tool){
-                        iconURL = "/nz/ac/aut/ense701/gui/images/7.jpg";        //tool
-                        return iconURL;
-                }
-            }else{
-                System.out.println("multipule things on square");
-            }    
-        }
-        return iconURL;
-    }
-    public String getDescription(){
-        String blank ="";
-        Occupant[] occupants = getOccupantsPlayerPosition();
-        if(occupants.length>0){
-            for(int i=0;i<occupants.length;i++){
-                blank += occupants[i].getName()+" "+occupants[i].getDescription()+"\n";
+                }else{
+                    System.out.println("multipule things on square");
+                }    
             }
+            return iconURL;
         }
-        return blank;
-    }
+    /**
+     * get the occupants description from the class and send the string to 
+     * be used in the text field
+     * @return 
+     */
+        public String getDescription(){
+            String blank ="";
+            Occupant[] occupants = getOccupantsPlayerPosition();
+            if(occupants.length>0){
+                for(int i=0;i<occupants.length;i++){
+                    blank += occupants[i].getName()+" "+occupants[i].getDescription()+"\n";
+                }
+            }
+            return blank;
+        }
 
-    private Island island;
-    private Player player;
-    private GameState state;
-    private int kiwiCount;
-    private int totalPredators;
-    private int totalKiwis;
-    private int predatorsTrapped;
-    private Set<GameEventListener> eventListeners;
+        private Island island;
+        private Player player;
+        private GameState state;
+        private int kiwiCount;
+        private int totalPredators;
+        private int totalKiwis;
+        private int predatorsTrapped;
+        private Set<GameEventListener> eventListeners;
 
-    private final double MIN_REQUIRED_CATCH = 0.8;
+        private final double MIN_REQUIRED_CATCH = 0.8;
 
-    private String winMessage = "";
-    private String loseMessage = "";
-    private String playerMessage = "";
-    private String prevMap = "";
-    //import the descriptions and images for description pannel
-    private DescImporter DI = new DescImporter();
-    private ArrayList<String> descriptionIconList = DI.importImages();
+        private String winMessage = "";
+        private String loseMessage = "";
+        private String playerMessage = "";
+        private String prevMap = "";
+        //import the descriptions and images for description pannel
+        private DescImporter DI = new DescImporter();
+        private ArrayList<String> descriptionIconList = DI.importImages();
 }
