@@ -17,7 +17,7 @@ public class GameInstructions {
      */
     public static void instructions(){
         
-        String str = parseInstructionFile("instructions/gameinstructions1.txt");   
+        String str = parseInstructionFile("instructions/gameinstructions.txt");   
         if(str != ""){
             JOptionPane.showMessageDialog(null, str, "Game Instructions", JOptionPane.PLAIN_MESSAGE); 
 
@@ -45,16 +45,16 @@ public class GameInstructions {
             BufferedReader reader = new BufferedReader(new InputStreamReader(fileStream));
             
             //Add html tags and the title for the popup box
-            output = "<html><body><ul><p style=\"color:#FF0000\" ;>Game Instructions</p><br>";
+            output = "<html><body><p style=\"color:#FF0000\" ;>Game Instructions</p><br>";
             
             String line;
             //Read File Line By Line, and add HTML formatting
             while ((line = reader.readLine()) != null)   {
-              output += "<li>"+line+"</li><br>";
+              output += "<p>"+line+"</p><br>";
 
             }
             
-            output+="</ul></html></body>";
+            output+="</html></body>";
             //Close the input stream
             reader.close();
         }
