@@ -5,10 +5,16 @@
  */
 package nz.ac.aut.ense701.gameModel;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Liandri
  */
 public class FaunaQuestions {
-    
+    public ArrayList<String> loadQuestions(){
+        ArrayList<String> questions = new ArrayList<String>();
+        
+        return questions;
+    }
 }
