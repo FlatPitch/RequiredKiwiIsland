@@ -16,6 +16,7 @@ import nz.ac.aut.ense701.gameModel.Game;
 import nz.ac.aut.ense701.gameModel.GameEventListener;
 import nz.ac.aut.ense701.gameModel.GameState;
 import nz.ac.aut.ense701.gameModel.MoveDirection;
+import nz.ac.aut.ense701.gameModel.Occupant;
 import nz.ac.aut.ense701.gui.GameInstructions;
 /*
  * User interface form for Kiwi Island.
@@ -136,15 +137,7 @@ public class KiwiCountUI
         /**
          * testing my method to get icon and description
          */
-        descFeild.setText(game.getDescription());
-        try {
-        Image img = ImageIO.read(getClass().getResource(game.getDescIcon()));
-        Image newimg = img.getScaledInstance( 70, 78,  java.awt.Image.SCALE_SMOOTH ) ;
-        jButton2.setIcon(new ImageIcon(newimg));
-        } catch (Exception ex) {
-        System.out.println(ex);
-        System.out.println("error making image icon");
-        }
+        
         
     }
     
@@ -645,9 +638,28 @@ public class KiwiCountUI
         Object occ = listObjects.getSelectedValue();
         if ( occ != null )
         {
+            descFeild.setText(game.getOccupantDescription((Occupant)occ));
+            try {
+                Image img = ImageIO.read(getClass().getResource(game.getDescIcon((Occupant)occ)));
+                Image newimg = img.getScaledInstance( 70, 78,  java.awt.Image.SCALE_SMOOTH ) ;
+                jButton2.setIcon(new ImageIcon(newimg));
+                } catch (Exception ex) {
+                    System.out.println(ex);
+                    System.out.println("error making image icon");
+                }
             btnCollect.setEnabled(game.canCollect(occ));
             btnCount.setEnabled(game.canCount(occ));
             listObjects.setToolTipText(game.getOccupantDescription(occ));
+        } else{
+            try {
+                descFeild.setText("");
+                Image img = ImageIO.read(getClass().getResource(game.getDescIcon((Occupant)occ)));
+                Image newimg = img.getScaledInstance( 70, 78,  java.awt.Image.SCALE_SMOOTH ) ;
+                jButton2.setIcon(new ImageIcon(newimg));
+                } catch (Exception ex) {
+                    System.out.println(ex);
+                    System.out.println("error making image icon");
+                }
         }
     }//GEN-LAST:event_listObjectsValueChanged
 
@@ -664,8 +676,27 @@ public class KiwiCountUI
         btnDrop.setEnabled(true);
         if ( item != null )
         {
+            descFeild.setText(game.getOccupantDescription((Occupant)item));
+            try {
+                Image img = ImageIO.read(getClass().getResource(game.getDescIcon((Occupant)item)));
+                Image newimg = img.getScaledInstance( 70, 78,  java.awt.Image.SCALE_SMOOTH ) ;
+                jButton2.setIcon(new ImageIcon(newimg));
+                } catch (Exception ex) {
+                    System.out.println(ex);
+                    System.out.println("error making image icon");
+                }
             btnUse.setEnabled(game.canUse(item));
             listInventory.setToolTipText(game.getOccupantDescription(item));
+        } else {
+            try {
+                descFeild.setText("");
+                Image img = ImageIO.read(getClass().getResource(game.getDescIcon((Occupant)item)));
+                Image newimg = img.getScaledInstance( 70, 78,  java.awt.Image.SCALE_SMOOTH ) ;
+                jButton2.setIcon(new ImageIcon(newimg));
+                } catch (Exception ex) {
+                    System.out.println(ex);
+                    System.out.println("error making image icon");
+                }
         }
     }//GEN-LAST:event_listInventoryValueChanged
 
