@@ -1,5 +1,6 @@
 package nz.ac.aut.ense701.gui;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -11,6 +12,8 @@ import java.awt.event.ActionListener;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JProgressBar;
+import javax.swing.UIManager;
 import nz.ac.aut.ense701.gameModel.Game;
 import nz.ac.aut.ense701.gameModel.GameEventListener;
 import nz.ac.aut.ense701.gameModel.GameState;
@@ -108,6 +111,16 @@ public class KiwiCountUI
         txtPlayerName.setText(game.getPlayerName());
         progPlayerStamina.setMaximum(playerValues[Game.MAXSTAMINA_INDEX]);
         progPlayerStamina.setValue(playerValues[Game.STAMINA_INDEX]);
+        if (playerValues[Game.STAMINA_INDEX] < playerValues[Game.MAXSTAMINA_INDEX]/4){
+            progPlayerStamina.setForeground(Color.red);
+            progPlayerStamina.setBackground(Color.pink);
+        } else if (playerValues[Game.STAMINA_INDEX] < playerValues[Game.MAXSTAMINA_INDEX]/2){
+            progPlayerStamina.setForeground(Color.orange);
+            progPlayerStamina.setBackground(Color.yellow);
+        } else{
+            progPlayerStamina.setForeground(new JProgressBar().getForeground());
+            progPlayerStamina.setBackground(new JProgressBar().getBackground());
+        }
         progBackpackWeight.setMaximum(playerValues[Game.MAXWEIGHT_INDEX]);
         progBackpackWeight.setValue(playerValues[Game.WEIGHT_INDEX]);
         progBackpackSize.setMaximum(playerValues[Game.MAXSIZE_INDEX]);
