@@ -3,21 +3,19 @@ package nz.ac.aut.ense701.gui;
 import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.Image;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.awt.KeyEventDispatcher;
+import java.awt.KeyboardFocusManager;
+import java.awt.event.KeyEvent;
+import static java.awt.event.KeyEvent.*;
+import java.awt.event.ActionListener;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import nz.ac.aut.ense701.gameModel.Game;
 import nz.ac.aut.ense701.gameModel.GameEventListener;
 import nz.ac.aut.ense701.gameModel.GameState;
 import nz.ac.aut.ense701.gameModel.MoveDirection;
 import nz.ac.aut.ense701.gameModel.Occupant;
-import nz.ac.aut.ense701.gui.GameInstructions;
 /*
  * User interface form for Kiwi Island.
  * 
@@ -43,6 +41,11 @@ public class KiwiCountUI
         initIslandGrid();
         update();
         GameInstructions.instructions();
+        
+        //Keyboard manager for global hotkeys
+        KeyboardFocusManager keyManager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
+        keyManager.addKeyEventDispatcher(new KeyHandler());
+            
     }
     
     /**
@@ -129,11 +132,11 @@ public class KiwiCountUI
         btnCount.setEnabled(false);
         
         // update movement buttons
-        btnMoveNorth.setEnabled(game.isPlayerMovePossible(MoveDirection.NORTH));
+       /* btnMoveNorth.setEnabled(game.isPlayerMovePossible(MoveDirection.NORTH));
         btnMoveEast.setEnabled( game.isPlayerMovePossible(MoveDirection.EAST));
         btnMoveSouth.setEnabled(game.isPlayerMovePossible(MoveDirection.SOUTH));
         btnMoveWest.setEnabled( game.isPlayerMovePossible(MoveDirection.WEST));
-        
+        */
         /**
          * testing my method to get icon and description
          */
@@ -153,33 +156,28 @@ public class KiwiCountUI
 
         javax.swing.JPanel pnlContent = new javax.swing.JPanel();
         pnlIsland = new javax.swing.JPanel();
-        pnlControls = new javax.swing.JPanel();
-        pnlPlayer = new javax.swing.JPanel();
-        pnlPlayerData = new javax.swing.JPanel();
-        lblPlayerName = new javax.swing.JLabel();
+        javax.swing.JPanel pnlControls = new javax.swing.JPanel();
+        javax.swing.JPanel pnlPlayer = new javax.swing.JPanel();
+        javax.swing.JPanel pnlPlayerData = new javax.swing.JPanel();
+        javax.swing.JLabel lblPlayerName = new javax.swing.JLabel();
         txtPlayerName = new javax.swing.JLabel();
-        lblPlayerStamina = new javax.swing.JLabel();
+        javax.swing.JLabel lblPlayerStamina = new javax.swing.JLabel();
         progPlayerStamina = new javax.swing.JProgressBar();
-        lblBackpackWeight = new javax.swing.JLabel();
+        javax.swing.JLabel lblBackpackWeight = new javax.swing.JLabel();
         progBackpackWeight = new javax.swing.JProgressBar();
-        lblBackpackSize = new javax.swing.JLabel();
+        javax.swing.JLabel lblBackpackSize = new javax.swing.JLabel();
         progBackpackSize = new javax.swing.JProgressBar();
         lblPredators = new javax.swing.JLabel();
         lblKiwisCounted = new javax.swing.JLabel();
         txtKiwisCounted = new javax.swing.JLabel();
         txtPredatorsLeft = new javax.swing.JLabel();
-        pnlMovement = new javax.swing.JPanel();
-        btnMoveNorth = new javax.swing.JButton();
-        btnMoveSouth = new javax.swing.JButton();
-        btnMoveEast = new javax.swing.JButton();
-        btnMoveWest = new javax.swing.JButton();
-        pnlInventory = new javax.swing.JPanel();
-        scrlInventory = new javax.swing.JScrollPane();
+        javax.swing.JPanel pnlInventory = new javax.swing.JPanel();
+        javax.swing.JScrollPane scrlInventory = new javax.swing.JScrollPane();
         listInventory = new javax.swing.JList();
         btnDrop = new javax.swing.JButton();
         btnUse = new javax.swing.JButton();
-        pnlObjects = new javax.swing.JPanel();
-        scrlObjects = new javax.swing.JScrollPane();
+        javax.swing.JPanel pnlObjects = new javax.swing.JPanel();
+        javax.swing.JScrollPane scrlObjects = new javax.swing.JScrollPane();
         listObjects = new javax.swing.JList();
         btnCollect = new javax.swing.JButton();
         btnCount = new javax.swing.JButton();
@@ -193,7 +191,9 @@ public class KiwiCountUI
         setTitle("Kiwi Count");
 
         pnlContent.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        pnlContent.setPreferredSize(new java.awt.Dimension(1000, 885));
+        pnlContent.setMaximumSize(new java.awt.Dimension(1000, 690));
+        pnlContent.setMinimumSize(new java.awt.Dimension(1000, 690));
+        pnlContent.setPreferredSize(new java.awt.Dimension(1000, 690));
         pnlContent.setLayout(new java.awt.BorderLayout(10, 0));
 
         pnlIsland.setName("imgicon"); // NOI18N
@@ -325,92 +325,14 @@ public class KiwiCountUI
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.ipadx = 123;
-        gridBagConstraints.ipady = 22;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 125;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
         pnlControls.add(pnlPlayer, gridBagConstraints);
 
-        pnlMovement.setBorder(javax.swing.BorderFactory.createTitledBorder("Movement"));
-        pnlMovement.setMinimumSize(new java.awt.Dimension(138, 92));
-        pnlMovement.setPreferredSize(new java.awt.Dimension(138, 92));
-        pnlMovement.setLayout(new java.awt.GridBagLayout());
-
-        btnMoveNorth.setText("N");
-        btnMoveNorth.setFocusable(false);
-        btnMoveNorth.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMoveNorthActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        pnlMovement.add(btnMoveNorth, gridBagConstraints);
-
-        btnMoveSouth.setText("S");
-        btnMoveSouth.setFocusable(false);
-        btnMoveSouth.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMoveSouthActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        pnlMovement.add(btnMoveSouth, gridBagConstraints);
-
-        btnMoveEast.setText("E");
-        btnMoveEast.setFocusable(false);
-        btnMoveEast.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMoveEastActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        pnlMovement.add(btnMoveEast, gridBagConstraints);
-
-        btnMoveWest.setText("W");
-        btnMoveWest.setFocusable(false);
-        btnMoveWest.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMoveWestActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        pnlMovement.add(btnMoveWest, gridBagConstraints);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = 130;
-        gridBagConstraints.ipady = 18;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(2, 20, 0, 0);
-        pnlControls.add(pnlMovement, gridBagConstraints);
-
         pnlInventory.setBorder(javax.swing.BorderFactory.createTitledBorder("Inventory"));
+        pnlInventory.setMinimumSize(new java.awt.Dimension(177, 89));
+        pnlInventory.setPreferredSize(new java.awt.Dimension(263, 156));
         pnlInventory.setLayout(new java.awt.GridBagLayout());
 
         listInventory.setModel(new javax.swing.AbstractListModel() {
@@ -471,15 +393,17 @@ public class KiwiCountUI
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 125;
         gridBagConstraints.ipady = 58;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 20, 0, 0);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
         pnlControls.add(pnlInventory, gridBagConstraints);
 
         pnlObjects.setBorder(javax.swing.BorderFactory.createTitledBorder("Objects"));
+        pnlObjects.setMinimumSize(new java.awt.Dimension(177, 89));
+        pnlObjects.setPreferredSize(new java.awt.Dimension(263, 116));
         java.awt.GridBagLayout pnlObjectsLayout = new java.awt.GridBagLayout();
         pnlObjectsLayout.columnWidths = new int[] {0, 5, 0};
         pnlObjectsLayout.rowHeights = new int[] {0, 5, 0};
@@ -548,15 +472,16 @@ public class KiwiCountUI
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = 104;
+        gridBagConstraints.ipadx = 125;
         gridBagConstraints.ipady = 36;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(13, 20, 0, 0);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
         pnlControls.add(pnlObjects, gridBagConstraints);
 
-        jPanel2.setMinimumSize(null);
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Information"));
+        jPanel2.setMinimumSize(new java.awt.Dimension(177, 89));
 
         descFeild.setColumns(20);
         descFeild.setRows(5);
@@ -576,29 +501,32 @@ public class KiwiCountUI
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.ipadx = -17;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 20, 44, 0);
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 125;
+        gridBagConstraints.ipady = 36;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
         pnlControls.add(jPanel2, gridBagConstraints);
+        jPanel2.getAccessibleContext().setAccessibleName("Information");
 
         gInstructionButton.setActionCommand("gameinstructions");
         gInstructionButton.setLabel("Game Instructions");
@@ -611,6 +539,8 @@ public class KiwiCountUI
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.insets = new java.awt.Insets(20, 0, 0, 0);
         pnlControls.add(gInstructionButton, gridBagConstraints);
         gInstructionButton.getAccessibleContext().setAccessibleName("ginstructions");
 
@@ -700,22 +630,6 @@ public class KiwiCountUI
         }
     }//GEN-LAST:event_listInventoryValueChanged
 
-    private void btnMoveWestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoveWestActionPerformed
-        game.playerMove(MoveDirection.WEST);
-    }//GEN-LAST:event_btnMoveWestActionPerformed
-
-    private void btnMoveEastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoveEastActionPerformed
-        game.playerMove(MoveDirection.EAST);
-    }//GEN-LAST:event_btnMoveEastActionPerformed
-
-    private void btnMoveSouthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoveSouthActionPerformed
-        game.playerMove(MoveDirection.SOUTH);
-    }//GEN-LAST:event_btnMoveSouthActionPerformed
-
-    private void btnMoveNorthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoveNorthActionPerformed
-        game.playerMove(MoveDirection.NORTH);
-    }//GEN-LAST:event_btnMoveNorthActionPerformed
-
     private void gInstructionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gInstructionButtonActionPerformed
         GameInstructions.instructions();
     }//GEN-LAST:event_gInstructionButtonActionPerformed
@@ -746,36 +660,20 @@ public class KiwiCountUI
     private javax.swing.JButton btnCollect;
     private javax.swing.JButton btnCount;
     private javax.swing.JButton btnDrop;
-    private javax.swing.JButton btnMoveEast;
-    private javax.swing.JButton btnMoveNorth;
-    private javax.swing.JButton btnMoveSouth;
-    private javax.swing.JButton btnMoveWest;
     private javax.swing.JButton btnUse;
     private javax.swing.JTextArea descFeild;
     private javax.swing.JButton gInstructionButton;
     private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel lblBackpackSize;
-    private javax.swing.JLabel lblBackpackWeight;
     private javax.swing.JLabel lblKiwisCounted;
-    private javax.swing.JLabel lblPlayerName;
-    private javax.swing.JLabel lblPlayerStamina;
     private javax.swing.JLabel lblPredators;
     private javax.swing.JList listInventory;
     private javax.swing.JList listObjects;
-    private javax.swing.JPanel pnlControls;
-    private javax.swing.JPanel pnlInventory;
     private javax.swing.JPanel pnlIsland;
-    private javax.swing.JPanel pnlMovement;
-    private javax.swing.JPanel pnlObjects;
-    private javax.swing.JPanel pnlPlayer;
-    private javax.swing.JPanel pnlPlayerData;
     private javax.swing.JProgressBar progBackpackSize;
     private javax.swing.JProgressBar progBackpackWeight;
     private javax.swing.JProgressBar progPlayerStamina;
-    private javax.swing.JScrollPane scrlInventory;
-    private javax.swing.JScrollPane scrlObjects;
     private javax.swing.JLabel txtKiwisCounted;
     private javax.swing.JLabel txtPlayerName;
     private javax.swing.JLabel txtPredatorsLeft;
@@ -783,4 +681,39 @@ public class KiwiCountUI
 
     //description set up here
     private Game game;
+
+    
+      
+    private class KeyHandler implements KeyEventDispatcher {
+        @Override
+        public boolean dispatchKeyEvent(KeyEvent e) {
+            if (e.getID() == KeyEvent.KEY_PRESSED) {
+                switch (e.getKeyCode()){
+                    case VK_DOWN:
+                    case VK_S:
+                        game.playerMove(MoveDirection.SOUTH);
+                        break;
+                        
+                    case VK_UP:
+                    case VK_W:
+                        game.playerMove(MoveDirection.NORTH);
+                        break;
+                        
+                    case VK_RIGHT:
+                    case VK_D:
+                        game.playerMove(MoveDirection.EAST);
+                        break;
+                        
+                    case VK_LEFT:
+                    case VK_A:
+                        game.playerMove(MoveDirection.WEST);
+                        break;
+                               
+                }
+               
+            }
+            return false;
+        }
+    }
+  
 }
