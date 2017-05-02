@@ -19,6 +19,7 @@ import nz.ac.aut.ense701.gameModel.GameEventListener;
 import nz.ac.aut.ense701.gameModel.GameState;
 import nz.ac.aut.ense701.gameModel.MoveDirection;
 import nz.ac.aut.ense701.gameModel.Occupant;
+import nz.ac.aut.ense701.gameModel.Sounds;
 /*
  * User interface form for Kiwi Island.
  * 
@@ -39,6 +40,7 @@ public class KiwiCountUI
     {
         assert game != null : "Make sure game object is created before UI";
         this.game = game;
+        this.sound = new Sounds();
         setAsGameListener();
         initComponents();
         initIslandGrid();
@@ -63,6 +65,7 @@ public class KiwiCountUI
         // check for "game over" or "game won"
         if ( game.getState() == GameState.LOST )
         {
+            sound.playDeath();
             JOptionPane.showMessageDialog(
                     this, 
                     game.getLoseMessage(), "Game over!",
@@ -71,6 +74,7 @@ public class KiwiCountUI
         }
         else if ( game.getState() == GameState.WON )
         {
+            sound.playwin();
             JOptionPane.showMessageDialog(
                     this, 
                     game.getWinMessage(), "Well Done!",
@@ -143,17 +147,6 @@ public class KiwiCountUI
         listObjects.setToolTipText(null);
         btnCollect.setEnabled(false);
         btnCount.setEnabled(false);
-        
-        // update movement buttons
-       /* btnMoveNorth.setEnabled(game.isPlayerMovePossible(MoveDirection.NORTH));
-        btnMoveEast.setEnabled( game.isPlayerMovePossible(MoveDirection.EAST));
-        btnMoveSouth.setEnabled(game.isPlayerMovePossible(MoveDirection.SOUTH));
-        btnMoveWest.setEnabled( game.isPlayerMovePossible(MoveDirection.WEST));
-        */
-        /**
-         * testing my method to get icon and description
-         */
-        
         
     }
     
@@ -694,6 +687,7 @@ public class KiwiCountUI
 
     //description set up here
     private Game game;
+    private Sounds sound;
 
     
       
@@ -721,12 +715,10 @@ public class KiwiCountUI
                     case VK_A:
                         game.playerMove(MoveDirection.WEST);
                         break;
-                               
+                        
                 }
-               
             }
             return false;
         }
     }
-  
 }
