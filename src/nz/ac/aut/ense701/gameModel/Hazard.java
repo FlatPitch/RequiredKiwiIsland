@@ -29,6 +29,11 @@ public class Hazard extends Occupant {
         
     }
     
+    public Hazard(Position position, String name, String description, double impact){
+        super(position, name, description, null);
+        this.impact = impact;
+    }
+    
     /**
      * What is impact of hazard
      * @return impact

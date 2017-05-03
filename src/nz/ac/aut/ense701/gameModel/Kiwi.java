@@ -27,6 +27,12 @@ public class Kiwi  extends Fauna
         counted = false;
     } 
     
+    public Kiwi(Position pos, String name, String description) 
+    {
+        super(pos, name, description, null);
+        counted = false;
+    } 
+    
     /**
     * Count this kiwi
     */

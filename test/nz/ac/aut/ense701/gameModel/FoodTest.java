@@ -1,5 +1,8 @@
 package nz.ac.aut.ense701.gameModel;
 
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import org.junit.Test;
 
 /**
@@ -26,11 +29,12 @@ public class FoodTest extends junit.framework.TestCase
      * Called before every test case method.
      */
     @Override
-    protected void setUp()
+    protected void setUp() throws IOException
     {
         island = new Island(5,5);
         position = new Position(island, 4,4);
-        apple = new Food(position, "apple", "A juicy red apple", 1.0, 2.0, 1.5);
+        apple = new Food(position, "apple", "A juicy red apple", 1.0, 2.0, 1.5, 
+                null);
     }
 
     /**
@@ -78,7 +82,7 @@ public class FoodTest extends junit.framework.TestCase
     
     @Test
     public void testIsOkToCarryCannotCarry(){
-        Food tooBig = new Food(position, "Roast pig", "A roasted giant pig", 1.0, 0.0, 1.0);
+        Food tooBig = new Food(position, "Roast pig", "A roasted giant pig", 1.0, 0.0, 1.0, null);
         assertFalse("Shouldn't be carrable.", tooBig.isOkToCarry());
     }        
     

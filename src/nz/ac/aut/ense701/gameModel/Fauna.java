@@ -26,6 +26,9 @@ public class Fauna extends Occupant
         super(pos, name, description, faunaImage);
     } 
     
+    public Fauna(Position pos, String name, String description){
+        super(pos, name, description, null);
+    }
  
 
 

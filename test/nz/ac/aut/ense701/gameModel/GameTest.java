@@ -139,21 +139,21 @@ public class GameTest extends junit.framework.TestCase
     @Test
     public void testCanCollectCollectable(){
         //Items that are collectable and fit in backpack
-        Item valid = new Food(playerPosition,"Sandwich", "Yummy",1.0, 1.0,1.0);
+        Item valid = new Food(playerPosition,"Sandwich", "Yummy",1.0, 1.0,1.0,null);
         assertTrue("Should be able to collect", game.canCollect(valid));
     }
     
     @Test    
     public void testCanCollectNotCollectable(){
         //Items with size of '0' cannot be carried
-        Item notCollectable = new Food(playerPosition,"Sandwich", "Very Heavy Sandwich",10.0, 0.0,1.0);
+        Item notCollectable = new Food(playerPosition,"Sandwich", "Very Heavy Sandwich",10.0, 0.0,1.0,null);
         assertFalse("Should not be able to collect", game.canCollect(notCollectable));
     }
     
     @Test
     public void testCanUseFoodValid(){
         //Food can always be used
-        Item valid = new Food(playerPosition,"Sandwich", "Yummy",1.0, 1.0,1.0);
+        Item valid = new Food(playerPosition,"Sandwich", "Yummy",1.0, 1.0,1.0,null);
         assertTrue("Should be able to use", game.canUse(valid));
     }
     
@@ -217,7 +217,7 @@ public class GameTest extends junit.framework.TestCase
     
     @Test
     public void testCollectValid(){
-        Item food = new Food(playerPosition,"Sandwich", "Yummy",1.0, 1.0,1.0);
+        Item food = new Food(playerPosition,"Sandwich", "Yummy",1.0, 1.0,1.0,null);
         island.addOccupant(playerPosition, food);
         assertTrue("Food now on island", island.hasOccupant(playerPosition, food));
         game.collectItem(food);
@@ -228,7 +228,7 @@ public class GameTest extends junit.framework.TestCase
     
     @Test
     public void testCollectNotCollectable(){
-        Item notCollectable = new Food(playerPosition,"House", "Can't collect",1.0, 0.0,1.0);
+        Item notCollectable = new Food(playerPosition,"House", "Can't collect",1.0, 0.0,1.0,null);
         island.addOccupant(playerPosition, notCollectable);
         assertTrue("House now on island", island.hasOccupant(playerPosition, notCollectable));
         game.collectItem(notCollectable);
@@ -239,7 +239,7 @@ public class GameTest extends junit.framework.TestCase
     
     @Test    
     public void testDropValid(){
-        Item food = new Food(playerPosition,"Sandwich", "Yummy",1.0, 1.0,1.0);
+        Item food = new Food(playerPosition,"Sandwich", "Yummy",1.0, 1.0,1.0,null);
         island.addOccupant(playerPosition, food);
         game.collectItem(food);
         assertTrue("Player should have food",player.hasItem(food));
@@ -251,15 +251,15 @@ public class GameTest extends junit.framework.TestCase
     
     @Test
     public void testDropNotValidPositionFull(){
-        Item food = new Food(playerPosition,"Sandwich", "Yummy",1.0, 1.0,1.0);
+        Item food = new Food(playerPosition,"Sandwich", "Yummy",1.0, 1.0,1.0,null);
         island.addOccupant(playerPosition, food);
         game.collectItem(food);
         assertTrue("Player should have food",player.hasItem(food));
         
         //Positions can have at most three occupants
-        Item dummy = new Tool(playerPosition,"Trap", "An extra occupant", 1.0, 1.0);
-        Item dummy2 = new Tool(playerPosition,"Trap", "An extra occupant", 1.0, 1.0);
-        Item dummy3 = new Tool(playerPosition,"Trap", "An extra occupant", 1.0, 1.0);
+        Item dummy = new Tool(playerPosition,"Trap", "An extra occupant", 1.0, 1.0,null);
+        Item dummy2 = new Tool(playerPosition,"Trap", "An extra occupant", 1.0, 1.0,null);
+        Item dummy3 = new Tool(playerPosition,"Trap", "An extra occupant", 1.0, 1.0,null);
         island.addOccupant(playerPosition, dummy);
         island.addOccupant(playerPosition, dummy2);
         island.addOccupant(playerPosition, dummy3);
@@ -271,7 +271,7 @@ public class GameTest extends junit.framework.TestCase
     
     @Test
     public void testUseItemFoodCausesIncrease(){
-        Item food = new Food(playerPosition,"Sandwich", "Yummy",1.0, 1.0,1.3);
+        Item food = new Food(playerPosition,"Sandwich", "Yummy",1.0, 1.0,1.3,null);
         player.collect(food);
         assertTrue("Player should have food",player.hasItem(food));
         
@@ -283,7 +283,7 @@ public class GameTest extends junit.framework.TestCase
     }
  
     public void testUseItemFoodNoIncrease(){
-        Item food = new Food(playerPosition,"Sandwich", "Yummy",1.0, 1.0,1.3);
+        Item food = new Food(playerPosition,"Sandwich", "Yummy",1.0, 1.0,1.3,null);
         player.collect(food);
         assertTrue("Player should have food",player.hasItem(food));
         

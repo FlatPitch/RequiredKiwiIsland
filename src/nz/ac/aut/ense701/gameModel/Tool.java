@@ -28,6 +28,11 @@ public class Tool extends Item
         this.broken = false;
     }
     
+    public Tool(Position pos, String name, String description, double weight, double size) 
+    {
+        super(pos, name, description, weight, size, null);
+        this.broken = false;
+    }
     /**
      * Break the tool
      */

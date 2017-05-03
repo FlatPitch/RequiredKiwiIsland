@@ -23,7 +23,10 @@ public class Predator extends Fauna
         super(pos, name, description, predImage);
     } 
  
-    
+    public Predator(Position pos, String name, String description) 
+    {
+        super(pos, name, description, null);
+    } 
 
 
     @Override
