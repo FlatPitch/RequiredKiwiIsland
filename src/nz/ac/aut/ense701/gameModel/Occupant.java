@@ -1,5 +1,7 @@
 package nz.ac.aut.ense701.gameModel;
 
+import java.awt.Image;
+
 /**
  * Abstract base class for occupants that inhabit Kiwi Island.
  * 
@@ -11,7 +13,8 @@ public abstract class Occupant
 {
     private Position position;
     private final String   name;
-    private final String   description;    
+    private final String   description;   
+    private Image occImage;
 
     /**
      * Construct an occupant for a known position & name.
@@ -19,11 +22,12 @@ public abstract class Occupant
      * @param name the name of the occupant
      * @param description a longer description
      */
-    public Occupant(Position position, String name, String description) 
+    public Occupant(Position position, String name, String description, Image occImage) 
     {
         this.position    = position;
         this.name        = name;
-        this.description = description;        
+        this.description = description;   
+        this.occImage = occImage;
     }
     
     /**
@@ -66,6 +70,15 @@ public abstract class Occupant
     }
     
     /**
+     * Gets the image for the item
+     * 
+     * @return the image
+     */
+    public Image getOccImage(){
+        return this.occImage;
+    }
+    
+    /**
      * Returns the occupant's name for display.
      * 
      * @return the occupant's name
@@ -85,5 +98,6 @@ public abstract class Occupant
      */
     public abstract String getStringRepresentation();
 
+    
 
 }

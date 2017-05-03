@@ -1,5 +1,7 @@
 package nz.ac.aut.ense701.gameModel;
 
+import java.awt.Image;
+
 
 /**
  * This class represents an item that can be found on the island.
@@ -18,9 +20,9 @@ public  abstract class Item extends Occupant
      * @param name the name of the item
      * @param description a longer description of the item
      */
-    public Item(Position pos, String name, String description, double weight, double size) 
+    public Item(Position pos, String name, String description, double weight, double size, Image itemImage) 
     {
-        super(pos, name, description);
+        super(pos, name, description, itemImage);
         this.weight = weight;
         this.size = size;
     }
@@ -52,5 +54,4 @@ public  abstract class Item extends Occupant
     {
         return size > 0;
     }
-    
 }

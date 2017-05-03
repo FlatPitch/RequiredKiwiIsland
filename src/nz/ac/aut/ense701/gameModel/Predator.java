@@ -1,5 +1,7 @@
 package nz.ac.aut.ense701.gameModel;
 
+import java.awt.Image;
+
 /**
  * Predator represents a predator on the island.
  * If more specific behaviour is required for particular predators, descendants 
@@ -16,9 +18,9 @@ public class Predator extends Fauna
      * @param name the name of the predator object
      * @param description a longer description of the predator object
      */
-    public Predator(Position pos, String name, String description) 
+    public Predator(Position pos, String name, String description, Image predImage) 
     {
-        super(pos, name, description);
+        super(pos, name, description, predImage);
     } 
  
     

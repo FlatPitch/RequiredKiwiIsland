@@ -1,5 +1,6 @@
 package nz.ac.aut.ense701.gameModel;
 
+import java.awt.Image;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -11,6 +12,9 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 
 /**
  * This is the class that knows the Kiwi Island game rules and state and
@@ -773,23 +777,50 @@ public class Game {
             if (occType.equals("T")) {
                 double weight = input.nextDouble();
                 double size = input.nextDouble();
-                occupant = new Tool(occPos, occName, occDesc, weight, size);
+                try {
+                    occupant = new Tool(occPos, occName, occDesc, weight, size, getOccupantImageFile("T",occName));
+                } catch (IOException ex) {
+                    System.err.println("Error reading File");
+                    occupant = new Tool(occPos, occName, occDesc, weight, size, null);               }
             } else if (occType.equals("E")) {
                 double weight = input.nextDouble();
                 double size = input.nextDouble();
                 double energy = input.nextDouble();
-                occupant = new Food(occPos, occName, occDesc, weight, size, energy);
+                try {
+                    occupant = new Food(occPos, occName, occDesc, weight, size, energy, getOccupantImageFile("E",occName));
+                } catch (IOException ex) {
+                    occupant = new Food(occPos, occName, occDesc, weight, size, energy, null);
+                }
             } else if (occType.equals("H")) {
                 double impact = input.nextDouble();
-                occupant = new Hazard(occPos, occName, occDesc, impact);
+                try {
+                    occupant = new Hazard(occPos, occName, occDesc, impact, getOccupantImageFile("H",occName));
+                } catch (IOException ex) {
+                    occupant = new Hazard(occPos, occName, occDesc, impact, null);
+                }
             } else if (occType.equals("K")) {
-                occupant = new Kiwi(occPos, occName, occDesc);
+                try {
+                    occupant = new Kiwi(occPos, occName, occDesc, getOccupantImageFile("K",occName));
+                } catch (IOException ex) {
+                    System.err.println("Error reading File");
+                    occupant = new Kiwi(occPos, occName, occDesc, null);
+                }
                 totalKiwis++;
             } else if (occType.equals("P")) {
-                occupant = new Predator(occPos, occName, occDesc);
+                try {
+                    occupant = new Predator(occPos, occName, occDesc, getOccupantImageFile("P",occName));
+                } catch (IOException ex) {
+                    System.err.println("Error reading File");
+                    occupant = new Predator(occPos, occName, occDesc, null);
+                }
                 totalPredators++;
             } else if (occType.equals("F")) {
-                occupant = new Fauna(occPos, occName, occDesc);
+                try {
+                    occupant = new Fauna(occPos, occName, occDesc, getOccupantImageFile("F",occName));
+                } catch (IOException ex) {
+                    System.err.println("Error reading File");  
+                    occupant = new Fauna(occPos, occName, occDesc, null);
+                }
             }
             if (occupant != null) {
                 island.addOccupant(occPos, occupant);
@@ -904,6 +935,70 @@ public class Game {
             return (occ.getDescription());
         }
         
+        private Image getOccupantImageFile(String occType, String occName) throws IOException {
+            File file = new File("images/doc.jpg");
+            try{
+                if (occType.equals("K")) {
+                    file = new File("images/Kiwi.jpg");
+                    return (ImageIO.read(file));
+                } 
+                else if (occType.equals("E")){
+                    file = new File("images/Food.jpg");
+                    return (ImageIO.read(file));
+                }
+                else if (occType.equals("T")){
+                    if (occName.equals("Trap")){
+                        file = new File("images/Trap.jpg");
+                        return (ImageIO.read(file));
+                    } else{
+                        file = new File("images/Screwdriver.jpg");
+                        return (ImageIO.read(file));
+                    }
+                }
+                else if (occType.equals("F")) { 
+                    if (occName.equals("Crab")){
+                        file = new File("images/Crab.jpg");
+                        return (ImageIO.read(file));
+                    } else if (occName.equals("Dolphin")){
+                        file = new File("images/Dolphin.jpg");
+                        return (ImageIO.read(file));
+                    }else if (occName.equals("Tui")){
+                        file = new File("images/Tui.jpg");
+                        return (ImageIO.read(file));
+                    }else if (occName.equals("Oystercatcher")){
+                        file = new File("images/Oystercatcher.jpg");
+                        return (ImageIO.read(file));
+                    }else if (occName.equals("Fenbird")){
+                        file = new File("images/Fenbird.jpg");
+                        return (ImageIO.read(file));
+                    }else if (occName.equals("Heron")){
+                        file = new File("images/Heron.jpg");
+                        return (ImageIO.read(file));
+                    }else{
+                        file = new File("images/Robin.jpg");
+                        return (ImageIO.read(file));
+                    }
+                } else if (occType.equals("P")){
+                    if (occName.equals("Rat")){
+                        file = new File("images/Rat.jpg");
+                        return (ImageIO.read(file));
+                    }else if (occName.equals("Cat")){
+                        file = new File("images/Cat.jpg");
+                        return (ImageIO.read(file));
+                    }else if (occName.equals("Stoat")){
+                        file = new File("images/Stoat.jpg");
+                        return (ImageIO.read(file));
+                    } else{
+                        file = new File("images/Possum.jpg");
+                        return(ImageIO.read(file));
+                    }
+                }
+            } catch(Exception e){
+                System.err.println("Error reading image");
+            }
+        return (ImageIO.read(file));
+    }
+        
 
         private Island island;
         private Player player;
@@ -923,4 +1018,6 @@ public class Game {
         //import the descriptions and images for description pannel
         private DescImporter DI = new DescImporter();
         private ArrayList<String> descriptionIconList = DI.importImages();
+
+    
 }

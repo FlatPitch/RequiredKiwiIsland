@@ -9,6 +9,7 @@ import java.awt.KeyboardFocusManager;
 import java.awt.event.KeyEvent;
 import static java.awt.event.KeyEvent.*;
 import java.awt.event.ActionListener;
+import java.io.File;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -571,13 +572,13 @@ public class KiwiCountUI
     }//GEN-LAST:event_btnCollectActionPerformed
 
     private void listObjectsValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listObjectsValueChanged
-        Object occ = listObjects.getSelectedValue();
+        Occupant occ = (Occupant) listObjects.getSelectedValue();
         if ( occ != null )
         {
             descFeild.setText(game.getOccupantDescription((Occupant)occ));
             try {
-                Image img = ImageIO.read(getClass().getResource(game.getDescIcon((Occupant)occ)));
-                Image newimg = img.getScaledInstance( 70, 78,  java.awt.Image.SCALE_SMOOTH ) ;
+                Image img = occ.getOccImage();
+                Image newimg = img.getScaledInstance( 70, 78,  java.awt.Image.SCALE_SMOOTH) ;
                 jButton2.setIcon(new ImageIcon(newimg));
                 } catch (Exception ex) {
                     System.out.println(ex);
@@ -589,7 +590,7 @@ public class KiwiCountUI
         } else{
             try {
                 descFeild.setText("");
-                Image img = ImageIO.read(getClass().getResource(game.getDescIcon((Occupant)occ)));
+                Image img = ImageIO.read(new File("images/doc.jpg"));
                 Image newimg = img.getScaledInstance( 70, 78,  java.awt.Image.SCALE_SMOOTH ) ;
                 jButton2.setIcon(new ImageIcon(newimg));
                 } catch (Exception ex) {

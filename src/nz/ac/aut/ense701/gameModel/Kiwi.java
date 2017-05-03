@@ -1,6 +1,11 @@
 
 package nz.ac.aut.ense701.gameModel;
 
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+
 /**
  * Kiwi represents a kiwi living on the island
  * @author AS
@@ -9,15 +14,16 @@ package nz.ac.aut.ense701.gameModel;
 public class Kiwi  extends Fauna
 {
     private boolean counted;
+    private Image kiwiImage;
     /**
      * Constructor for objects of class Kiwi
      * @param pos the position of the kiwi object
      * @param name the name of the kiwi object
      * @param description a longer description of the kiwi
      */
-    public Kiwi(Position pos, String name, String description) 
+    public Kiwi(Position pos, String name, String description, Image faunaImage) 
     {
-        super(pos, name, description);
+        super(pos, name, description, faunaImage);
         counted = false;
     } 
     

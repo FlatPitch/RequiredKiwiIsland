@@ -1,5 +1,7 @@
 package nz.ac.aut.ense701.gameModel;
 
+import java.awt.Image;
+
 /**
  * This class represents a tool that can be found on the island
  * and gives the player any sort of advantage. 
@@ -20,9 +22,9 @@ public class Tool extends Item
      * @param weight the weight of the tool
      * @param size the size of the tool
      */
-    public Tool(Position pos, String name, String description, double weight, double size) 
+    public Tool(Position pos, String name, String description, double weight, double size, Image toolImage) 
     {
-        super(pos, name, description, weight, size);
+        super(pos, name, description, weight, size, toolImage);
         this.broken = false;
     }
     

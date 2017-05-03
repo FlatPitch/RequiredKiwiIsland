@@ -1,6 +1,8 @@
 
 package nz.ac.aut.ense701.gameModel;
 
+import java.awt.Image;
+
 
 /**
  * Fauna at this point represents any species that is not a kiwi or a predator on the island.
@@ -11,7 +13,7 @@ package nz.ac.aut.ense701.gameModel;
  */
 public class Fauna extends Occupant
 {
-    
+    private Image faunaImage;
 
     /**
      * Constructor for objects of class Endangered
@@ -19,9 +21,9 @@ public class Fauna extends Occupant
      * @param name the name of the kiwi
      * @param description a longer description of the kiwi
      */
-    public Fauna(Position pos, String name, String description) 
+    public Fauna(Position pos, String name, String description, Image faunaImage) 
     {
-        super(pos, name, description);
+        super(pos, name, description, faunaImage);
     } 
     
  
@@ -32,4 +34,8 @@ public class Fauna extends Occupant
     {
           return "F";
     }    
+    
+    public Image getImageRepresentation(){
+        return this.faunaImage;
+    }
 }
