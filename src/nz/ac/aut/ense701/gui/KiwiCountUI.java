@@ -19,6 +19,7 @@ import nz.ac.aut.ense701.gameModel.Game;
 import nz.ac.aut.ense701.gameModel.GameEventListener;
 import nz.ac.aut.ense701.gameModel.GameState;
 import nz.ac.aut.ense701.gameModel.MoveDirection;
+import nz.ac.aut.ense701.gameModel.Music;
 import nz.ac.aut.ense701.gameModel.Occupant;
 import nz.ac.aut.ense701.gameModel.Sounds;
 /*
@@ -42,6 +43,8 @@ public class KiwiCountUI
         assert game != null : "Make sure game object is created before UI";
         this.game = game;
         this.sound = new Sounds();
+        this.music = new Music();
+        music.startMusic();
         setAsGameListener();
         initComponents();
         initIslandGrid();
@@ -689,6 +692,7 @@ public class KiwiCountUI
     //description set up here
     private Game game;
     private Sounds sound;
+    private Music music;
 
     
       
