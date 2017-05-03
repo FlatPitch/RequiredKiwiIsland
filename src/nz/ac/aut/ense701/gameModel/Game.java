@@ -856,7 +856,7 @@ public class Game {
     
     /**
      * Sets picture for button for corresponding Occupant
-     */
+     *
     public String getDescIcon(Occupant occ){
             String iconURL ="/nz/ac/aut/ense701/gui/images/doc.jpg";
             if(occ instanceof Kiwi){

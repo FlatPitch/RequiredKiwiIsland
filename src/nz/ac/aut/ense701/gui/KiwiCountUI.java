@@ -119,16 +119,18 @@ public class KiwiCountUI
         txtPlayerName.setText(game.getPlayerName());
         progPlayerStamina.setMaximum(playerValues[Game.MAXSTAMINA_INDEX]);
         progPlayerStamina.setValue(playerValues[Game.STAMINA_INDEX]);
-        if (playerValues[Game.STAMINA_INDEX] < playerValues[Game.MAXSTAMINA_INDEX]/4){
+        
+        if (playerValues[Game.STAMINA_INDEX] <= playerValues[Game.MAXSTAMINA_INDEX]/4){
             progPlayerStamina.setForeground(Color.red);
             progPlayerStamina.setBackground(Color.pink);
-        } else if (playerValues[Game.STAMINA_INDEX] < playerValues[Game.MAXSTAMINA_INDEX]/2){
+        } else if (playerValues[Game.STAMINA_INDEX] <= playerValues[Game.MAXSTAMINA_INDEX]/2){
             progPlayerStamina.setForeground(Color.orange);
             progPlayerStamina.setBackground(Color.yellow);
         } else{
             progPlayerStamina.setForeground(new JProgressBar().getForeground());
             progPlayerStamina.setBackground(new JProgressBar().getBackground());
         }
+        
         progBackpackWeight.setMaximum(playerValues[Game.MAXWEIGHT_INDEX]);
         progBackpackWeight.setValue(playerValues[Game.WEIGHT_INDEX]);
         progBackpackSize.setMaximum(playerValues[Game.MAXSIZE_INDEX]);
@@ -612,13 +614,13 @@ public class KiwiCountUI
     }//GEN-LAST:event_btnDropActionPerformed
 
     private void listInventoryValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listInventoryValueChanged
-        Object item =  listInventory.getSelectedValue();
+        Occupant item =  (Occupant)listInventory.getSelectedValue();
         btnDrop.setEnabled(true);
         if ( item != null )
         {
             descFeild.setText(game.getOccupantDescription((Occupant)item));
             try {
-                Image img = ImageIO.read(getClass().getResource(game.getDescIcon((Occupant)item)));
+                Image img = item.getOccImage();
                 Image newimg = img.getScaledInstance( 70, 78,  java.awt.Image.SCALE_SMOOTH ) ;
                 jButton2.setIcon(new ImageIcon(newimg));
                 } catch (Exception ex) {
@@ -630,7 +632,7 @@ public class KiwiCountUI
         } else {
             try {
                 descFeild.setText("");
-                Image img = ImageIO.read(getClass().getResource(game.getDescIcon((Occupant)item)));
+                Image img = ImageIO.read(new File("Images/doc.jpg"));
                 Image newimg = img.getScaledInstance( 70, 78,  java.awt.Image.SCALE_SMOOTH ) ;
                 jButton2.setIcon(new ImageIcon(newimg));
                 } catch (Exception ex) {
