@@ -197,7 +197,9 @@ public class KiwiCountUI
         jScrollPane2 = new javax.swing.JScrollPane();
         descFeild = new javax.swing.JTextArea();
         jButton2 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
         gInstructionButton = new javax.swing.JButton();
+        jToggleButton1 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Kiwi Count");
@@ -514,7 +516,7 @@ public class KiwiCountUI
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -538,7 +540,8 @@ public class KiwiCountUI
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
         pnlControls.add(jPanel2, gridBagConstraints);
-        jPanel2.getAccessibleContext().setAccessibleName("Information");
+
+        jPanel3.setMinimumSize(new java.awt.Dimension(177, 100));
 
         gInstructionButton.setActionCommand("gameinstructions");
         gInstructionButton.setLabel("Game Instructions");
@@ -548,13 +551,38 @@ public class KiwiCountUI
                 gInstructionButtonActionPerformed(evt);
             }
         });
+
+        jToggleButton1.setText("under constuction");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jToggleButton1)
+                    .addComponent(gInstructionButton))
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(gInstructionButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jToggleButton1)
+                .addContainerGap(21, Short.MAX_VALUE))
+        );
+
+        gInstructionButton.getAccessibleContext().setAccessibleName("ginstructions");
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.insets = new java.awt.Insets(20, 0, 0, 0);
-        pnlControls.add(gInstructionButton, gridBagConstraints);
-        gInstructionButton.getAccessibleContext().setAccessibleName("ginstructions");
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
+        pnlControls.add(jPanel3, gridBagConstraints);
 
         pnlContent.add(pnlControls, java.awt.BorderLayout.EAST);
 
@@ -677,7 +705,9 @@ public class KiwiCountUI
     private javax.swing.JButton gInstructionButton;
     private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel lblKiwisCounted;
     private javax.swing.JLabel lblPredators;
     private javax.swing.JList listInventory;
