@@ -193,6 +193,16 @@ public class Game {
     }
 
     /**
+     * Get image for occupant on this position
+     * @param row
+     * @param column
+     * @return 
+     */
+    public Occupant[] getGridOccupants(int row, int column) {
+        return(island.getGridOccupants(new Position(island, row,column)));
+    }
+    
+    /**
      * Get values from player for GUI display
      *
      * @return player values related to stamina and backpack.
@@ -469,6 +479,7 @@ public class Game {
                 if (!kiwi.counted()) {
                     kiwi.count();
                     kiwiCount++;
+                    island.removeOccupant(player.getPosition(), occupant);
                 }
             }
         }
@@ -999,6 +1010,7 @@ public class Game {
         return (ImageIO.read(file));
     }
         
+    
 
         private Island island;
         private Player player;
@@ -1018,6 +1030,8 @@ public class Game {
         //import the descriptions and images for description pannel
         private DescImporter DI = new DescImporter();
         private ArrayList<String> descriptionIconList = DI.importImages();
+
+
 
     
 }

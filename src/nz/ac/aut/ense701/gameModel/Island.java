@@ -1,5 +1,7 @@
 package nz.ac.aut.ense701.gameModel;
 
+import java.awt.Image;
+
 /**
  * A class to represent an island in the world on which the game is played.
  * @author AS
@@ -135,6 +137,16 @@ public class Island
     {
         GridSquare square = getGridSquare(position);
         return square.getOccupantStringRepresentation();
+    }
+    
+    /**
+     * Get image for occupant of this position
+     * @param position
+     * @return 
+     */
+    public Occupant[] getGridOccupants(Position position) {
+        GridSquare square = getGridSquare(position);
+        return (square.getOccupants());
     }
     
     /**
@@ -368,5 +380,7 @@ public class Island
         }
         return result;
     }
+
+    
 
 }

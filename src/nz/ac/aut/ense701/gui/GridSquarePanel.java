@@ -1,9 +1,12 @@
 package nz.ac.aut.ense701.gui;
 
 import java.awt.Color;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import nz.ac.aut.ense701.gameModel.Game;
+import nz.ac.aut.ense701.gameModel.Occupant;
 import nz.ac.aut.ense701.gameModel.Terrain;
 
 /*
@@ -55,6 +58,14 @@ public class GridSquarePanel extends javax.swing.JPanel
         {
             // Set the text of the JLabel according to the occupant
             lblText.setText(game.getOccupantStringRepresentation(row,column));
+            Occupant [] occupants = game.getGridOccupants(row,column);
+            
+            if (occupants.length > 0){
+                lblText.setIcon(new ImageIcon(occupants[0].getOccImage().getScaledInstance( 70, 78,  java.awt.Image.SCALE_SMOOTH)));
+            }
+            else{
+                lblText.setIcon(null);
+            }
             // Set the colour. 
             if ( squareVisible && !squareExplored ) 
             {
@@ -71,6 +82,7 @@ public class GridSquarePanel extends javax.swing.JPanel
         else
         {
             lblText.setText("");
+            lblText.setIcon(null);
             lblText.setBackground(null);
             setBorder(normalBorder);
         }
