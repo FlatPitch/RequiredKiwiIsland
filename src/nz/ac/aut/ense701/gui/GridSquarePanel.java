@@ -56,16 +56,38 @@ public class GridSquarePanel extends javax.swing.JPanel
         
         if ( squareExplored || squareVisible )
         {
-            // Set the text of the JLabel according to the occupant
-            lblText.setText(game.getOccupantStringRepresentation(row,column));
+            // Set the image of the JLabel according to the occupant
             Occupant [] occupants = game.getGridOccupants(row,column);
             
-            if (occupants.length > 0){
-                lblText.setIcon(new ImageIcon(occupants[0].getOccImage().getScaledInstance( 70, 78,  java.awt.Image.SCALE_SMOOTH)));
+            switch (occupants.length){
+                case 1:
+                    centreLabel.setIcon(new ImageIcon(occupants[0].getOccImage().getScaledInstance(21,51, 
+                            java.awt.Image.SCALE_SMOOTH)));
+                    leftLabel.setIcon(null);
+                    rightLabel.setIcon(null);                    
+                    break;
+                case 2:
+                    centreLabel.setIcon(new ImageIcon(occupants[0].getOccImage().getScaledInstance(21, 51,
+                            java.awt.Image.SCALE_SMOOTH)));
+                    leftLabel.setIcon(new ImageIcon(occupants[1].getOccImage().getScaledInstance(21, 51,
+                            java.awt.Image.SCALE_SMOOTH)));
+                    rightLabel.setIcon(null);
+                    break;
+                case 3:
+                    centreLabel.setIcon(new ImageIcon(occupants[0].getOccImage().getScaledInstance(21, 51,
+                            java.awt.Image.SCALE_SMOOTH)));
+                    leftLabel.setIcon(new ImageIcon(occupants[1].getOccImage().getScaledInstance(21, 51,
+                            java.awt.Image.SCALE_SMOOTH)));
+                    rightLabel.setIcon(new ImageIcon(occupants[2].getOccImage().getScaledInstance(21, 51,
+                            java.awt.Image.SCALE_SMOOTH)));
+                    break;
+                default:
+                    centreLabel.setIcon(null);
+                    leftLabel.setIcon(null);
+                    rightLabel.setIcon(null);
+                    break;
             }
-            else{
-                lblText.setIcon(null);
-            }
+            
             // Set the colour. 
             if ( squareVisible && !squareExplored ) 
             {
@@ -74,16 +96,17 @@ public class GridSquarePanel extends javax.swing.JPanel
                                   Math.min(255, color.getGreen() + 128), 
                                   Math.min(255, color.getBlue()  + 128));
             }
-            lblText.setBackground(color);
+            this.setBackground(color);
             // set border colour according to 
             // whether the player is in the grid square or not
             setBorder(game.hasPlayer(row,column) ? activeBorder : normalBorder);
         }
         else
         {
-            lblText.setText("");
-            lblText.setIcon(null);
-            lblText.setBackground(null);
+            this.setBackground(null);
+            centreLabel.setIcon(null);
+            leftLabel.setIcon(null);
+            rightLabel.setIcon(null);
             setBorder(normalBorder);
         }
     }
@@ -97,19 +120,20 @@ public class GridSquarePanel extends javax.swing.JPanel
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblText = new javax.swing.JLabel();
+        leftLabel = new javax.swing.JLabel();
+        rightLabel = new javax.swing.JLabel();
+        centreLabel = new javax.swing.JLabel();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setLayout(new java.awt.BorderLayout());
-
-        lblText.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblText.setText("content");
-        lblText.setOpaque(true);
-        add(lblText, java.awt.BorderLayout.CENTER);
+        add(leftLabel, java.awt.BorderLayout.LINE_START);
+        add(rightLabel, java.awt.BorderLayout.LINE_END);
+        add(centreLabel, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel lblText;
+    private javax.swing.JLabel centreLabel;
+    private javax.swing.JLabel leftLabel;
+    private javax.swing.JLabel rightLabel;
     // End of variables declaration//GEN-END:variables
     
     private Game game;
