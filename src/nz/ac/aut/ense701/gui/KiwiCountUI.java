@@ -19,8 +19,11 @@ import nz.ac.aut.ense701.gameModel.GameState;
 import nz.ac.aut.ense701.gameModel.MoveDirection;
 import nz.ac.aut.ense701.gameModel.Music;
 import nz.ac.aut.ense701.gameModel.Occupant;
-import nz.ac.aut.ense701.gameModel.Sounds;
+import nz.ac.aut.ense701.gameModel.SoundsSingleton;
 /*
+ * User interface form for Kiwi Island.
+ * 
+ * @author AS/*
  * User interface form for Kiwi Island.
  * 
  * @author AS
@@ -40,7 +43,7 @@ public class KiwiCountUI
     {
         assert game != null : "Make sure game object is created before UI";
         this.game = game;
-        this.sound = new Sounds();
+        this.sound = SoundsSingleton.getSoundsSingletonReference();
         this.music = new Music();
         music.startMusic();
         setAsGameListener();
@@ -721,7 +724,7 @@ public class KiwiCountUI
 
     //description set up here
     private Game game;
-    private Sounds sound;
+    private SoundsSingleton sound;
     private Music music;
 
     
