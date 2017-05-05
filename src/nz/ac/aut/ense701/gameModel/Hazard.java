@@ -1,6 +1,6 @@
 
 package nz.ac.aut.ense701.gameModel;
-
+import nz.ac.aut.ense701.gameModel.SoundsSingleton;
 import java.awt.Image;
 
 /**
@@ -14,6 +14,7 @@ public class Hazard extends Occupant {
     
     private final double impact;
     private final double FATAL_IMPACT = 1.0;
+    private SoundsSingleton sound = SoundsSingleton.getSoundsSingletonReference();
 
     /**
      * Create a hazard on the island
@@ -57,6 +58,7 @@ public class Hazard extends Occupant {
      */
     public boolean isBreakTrap() 
     {
+        sound.playBreakTrap();
         String name = this.getName();
         return name.equalsIgnoreCase("Broken trap");
     }
