@@ -18,7 +18,7 @@ import javax.swing.ImageIcon;
  * of the animals and fauna inside the game. It is used to enhance the game
  * experience and to share conservation messages with pictures to create
  * a positive association for the player
- * @author Liandri
+ * @author Glen Osborne
  */
 public class DescImporter {
 

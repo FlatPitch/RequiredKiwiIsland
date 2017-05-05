@@ -7,7 +7,7 @@ import javafx.scene.media.AudioClip;
 import java.net.URL;
 /**
  *
- * @author Liandri
+ * @author Glen Osborne
  * returns a reference to a single SoundsSingleton object
  */
 public class SoundsSingleton {
