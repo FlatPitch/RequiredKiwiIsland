@@ -1,18 +1,36 @@
-pest question 1
-option 1
-option 2
-option 3
-option 4
+What pest does D.O.C consider to be the greatest threat to our natural environment?
+Possums
+Rats
+Stoats
+Cats
 1
-pest question 2
-option 1
-option 2
-option 3
-option 4
-2
-pest question 3
-option 1
-option 2
-option 3
-option 4
+Possums were introduced into New Zealand for which purpose?
+As a food supply
+As pets
+For their fur
+By Accident
 3
+Kiore is the Maori word for what sort of animal?
+Possum
+Ferret
+Stoat
+Rat
+4
+The Latin name Rattus rattus describes which rat?
+The Ship Rat
+The Norway Rat
+Kiore 
+Pet Rats
+1
+The ferret prefers what animal for food?
+Birds
+Eggs
+Rabbits
+Berries
+3
+Dogs are responsible for what percentage of Kiwi deaths?
+10-20%
+20-30%
+30-40%
+40-50%
+4
