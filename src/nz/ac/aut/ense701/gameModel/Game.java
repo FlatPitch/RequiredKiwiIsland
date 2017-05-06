@@ -862,7 +862,7 @@ public class Game {
             return(mapFiles[randIndex].getPath());
         }
     }
-    
+    //written by glen deleted by brendon
     /**
      * Sets picture for button for corresponding Occupant
      *
