@@ -1,18 +1,49 @@
-kiwi question 1
-option 1
-option 2
-option 3
-option 4
-1
-kiwi question 2
-option 1
-option 2
-option 3
-option 4
+What percentage of Kiwi chicks need to survive for a population increase?
+10%
+20%
+30%
+40%
 2
-kiwi question 3
-option 1
-option 2
-option 3
-option 4
+Apteryx is the Latin name for Kiwi, what is the English meaning?
+Small Bird
+Brown Bird
+Flightless Bird
+Long Break
 3
+Which Bird lays the largest egg in comparison to its body size?
+Ostrich
+Kiwi
+Heron
+Pelican
+2
+How many Kiwi are killed each week on average?
+7
+17
+27
+37
+3
+Which option is not a species of brown Kiwi?
+Brown Kiwi
+Rowi
+Tokoeka
+Tinui
+4
+The Latin name for the little spotted Kiwi is?
+Apteryx owenii
+Apteryx haastii
+Apteryx mantelli
+Apteryx rowi
+1
+How many Kinds of Kiwi are there?
+4-6
+7-8
+8-10
+10-12
+3
+The male parent of a little spotted Kiwi looks after the chick for how long on average?
+not at all
+10-20
+20-60
+60-100
+3
+
