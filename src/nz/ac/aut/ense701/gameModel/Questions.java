@@ -17,12 +17,12 @@ import java.util.ArrayList;
  * @author Glen Osborne
  */
 public class Questions {
-
+    //questions ready for display
     private ArrayList<IndividualQuestion> kiwi = new ArrayList<IndividualQuestion>();
     private ArrayList<IndividualQuestion> pests = new ArrayList<IndividualQuestion>();
-
+    //build the questions and options for the kiwi questions
     public void buildKiwiQuestions() {
-        IndividualQuestion iq;// = new IndividualQuestion();
+        IndividualQuestion iq;
         BufferedReader br = null;
         int count = 0;
         int answer = 0;
@@ -52,7 +52,6 @@ public class Questions {
                     answer = Integer.parseInt(line);
                     iq.setAnswer(answer);
                     kiwi.add(iq);
-                    System.out.println("kiwi array size "+kiwi.size());
                     count = 0;
                 }
             }
@@ -69,7 +68,7 @@ public class Questions {
         }
     }
         public void buildPestQuestions() {
-        IndividualQuestion iq;// = new IndividualQuestion();
+        IndividualQuestion iq;
         BufferedReader br = null;
         int count = 0;
         int answer = 0;
@@ -99,9 +98,7 @@ public class Questions {
                     answer = Integer.parseInt(line);
                     iq.setAnswer(answer);
                     pests.add(iq);
-                    System.out.println("pests array size "+pests.size());
                     count = 0;
-                    
                 }
             }
         } catch (IOException e) {
@@ -116,22 +113,12 @@ public class Questions {
             }
         }
     }
-    public void printOut(){
-        for(int i=0;i<kiwi.size();i++){
-            System.out.println(kiwi.get(i).getQuestion());
-            System.out.println(kiwi.get(i).getOption1());
-            System.out.println(kiwi.get(i).getOption2());
-            System.out.println(kiwi.get(i).getOption3());
-            System.out.println(kiwi.get(i).getOption4());
-            System.out.println(kiwi.get(i).getAnswer());
-        }
-        for(int i=0;i<pests.size();i++){
-            System.out.println(pests.get(i).getQuestion());
-            System.out.println(pests.get(i).getOption1());
-            System.out.println(pests.get(i).getOption2());
-            System.out.println(pests.get(i).getOption3());
-            System.out.println(pests.get(i).getOption4());
-            System.out.println(pests.get(i).getAnswer());
-        }
+        
+    public ArrayList<IndividualQuestion> getKiwiQuestionsArray() {
+        return kiwi;
+    }
+
+    public ArrayList<IndividualQuestion> getPestsQuestionsArray() {
+        return pests;
     }
 }
