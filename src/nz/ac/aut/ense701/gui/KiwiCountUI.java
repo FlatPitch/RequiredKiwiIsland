@@ -50,7 +50,6 @@ public class KiwiCountUI
         initComponents();
         initIslandGrid();
         update();
-        GameInstructions.instructions();
         
         //Keyboard manager for global hotkeys
         KeyboardFocusManager keyManager = KeyboardFocusManager.getCurrentKeyboardFocusManager();

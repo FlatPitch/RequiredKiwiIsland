@@ -761,9 +761,17 @@ public class Game {
         double playerMaxBackpackSize = input.nextDouble();
 
         Position pos = new Position(island, playerPosRow, playerPosCol);
-        player = new Player(pos, playerName,
+        try{
+            player = new Player(pos, playerName,
                 playerMaxStamina,
-                playerMaxBackpackWeight, playerMaxBackpackSize);
+                playerMaxBackpackWeight, playerMaxBackpackSize, getImageFromLocation("Player.png"));
+        } catch (IOException ex) {
+                    System.err.println("Error reading File");
+            player = new Player(pos, playerName,
+                playerMaxStamina,
+                playerMaxBackpackWeight, playerMaxBackpackSize, null);        
+        }
+        
         island.updatePlayerPosition(player);
     }
 
@@ -873,7 +881,8 @@ public class Game {
         }
         
         private Image getImageFromLocation(String imgName) throws IOException {
-            return (ImageIO.read(new File("Images/"+imgName)));
+            return (ImageIO.read(new File("Images/"+imgName)).getScaledInstance(21, 51,
+                            java.awt.Image.SCALE_SMOOTH));
         }
         
     

@@ -2,6 +2,8 @@ package nz.ac.aut.ense701.gui;
 
 import java.awt.Color;
 import java.awt.Image;
+import java.io.File;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
@@ -29,6 +31,13 @@ public class GridSquarePanel extends javax.swing.JPanel
         this.game   = game;
         this.row    = row;
         this.column = column;
+        try{
+            File file = new File("images/blank.png");
+            this.blank = ImageIO.read(file);
+        }catch(Exception e){
+                System.err.println("Error reading image");
+        }
+        
         initComponents();
     }
 
@@ -61,30 +70,26 @@ public class GridSquarePanel extends javax.swing.JPanel
             
             switch (occupants.length){
                 case 1:
-                    centreLabel.setIcon(new ImageIcon(occupants[0].getOccImage().getScaledInstance(21,51, 
-                            java.awt.Image.SCALE_SMOOTH)));
-                    leftLabel.setIcon(null);
-                    rightLabel.setIcon(null);                    
+                    centreLabel.setIcon(new ImageIcon(blank)); 
+                    leftLabel.setIcon(new ImageIcon(occupants[0].getOccImage()));
+                    rightLabel.setIcon(new ImageIcon(blank));           
                     break;
                 case 2:
-                    centreLabel.setIcon(new ImageIcon(occupants[0].getOccImage().getScaledInstance(21, 51,
-                            java.awt.Image.SCALE_SMOOTH)));
-                    leftLabel.setIcon(new ImageIcon(occupants[1].getOccImage().getScaledInstance(21, 51,
-                            java.awt.Image.SCALE_SMOOTH)));
-                    rightLabel.setIcon(null);
+                    centreLabel.setIcon(new ImageIcon(blank)); 
+                    leftLabel.setIcon(new ImageIcon(occupants[0].getOccImage()));
+                    rightLabel.setIcon(new ImageIcon(occupants[1].getOccImage())); 
+
                     break;
                 case 3:
-                    centreLabel.setIcon(new ImageIcon(occupants[0].getOccImage().getScaledInstance(21, 51,
-                            java.awt.Image.SCALE_SMOOTH)));
-                    leftLabel.setIcon(new ImageIcon(occupants[1].getOccImage().getScaledInstance(21, 51,
-                            java.awt.Image.SCALE_SMOOTH)));
-                    rightLabel.setIcon(new ImageIcon(occupants[2].getOccImage().getScaledInstance(21, 51,
-                            java.awt.Image.SCALE_SMOOTH)));
+                    centreLabel.setIcon(new ImageIcon(blank)); 
+                    leftLabel.setIcon(new ImageIcon(occupants[0].getOccImage()));
+                    rightLabel.setIcon(new ImageIcon(occupants[1].getOccImage())); 
+
                     break;
                 default:
-                    centreLabel.setIcon(null);
-                    leftLabel.setIcon(null);
-                    rightLabel.setIcon(null);
+                    centreLabel.setIcon(new ImageIcon(blank)); 
+                    leftLabel.setIcon(new ImageIcon(blank)); 
+                    rightLabel.setIcon(new ImageIcon(blank)); 
                     break;
             }
             
@@ -99,7 +104,13 @@ public class GridSquarePanel extends javax.swing.JPanel
             this.setBackground(color);
             // set border colour according to 
             // whether the player is in the grid square or not
+            // and do the players icon
             setBorder(game.hasPlayer(row,column) ? activeBorder : normalBorder);
+            if(game.hasPlayer(row,column)){
+                centreLabel.setIcon(new ImageIcon(game.getPlayer().gPlayerImage().getScaledInstance(21, 51,
+                            java.awt.Image.SCALE_SMOOTH)));
+            }
+            
         }
         else
         {
@@ -110,6 +121,9 @@ public class GridSquarePanel extends javax.swing.JPanel
             setBorder(normalBorder);
         }
     }
+    
+
+
     
     /** This method is called from within the constructor to
      * initialize the form.
@@ -138,6 +152,7 @@ public class GridSquarePanel extends javax.swing.JPanel
     
     private Game game;
     private int row, column;
+    private Image blank;
     
     private static final Border normalBorder = new LineBorder(Color.BLACK, 1);
     private static final Border activeBorder = new LineBorder(Color.RED, 3);
