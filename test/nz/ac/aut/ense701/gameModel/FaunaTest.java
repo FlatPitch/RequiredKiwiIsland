@@ -24,7 +24,7 @@ public class FaunaTest {
         Island island = new Island(5,5);
         Position position = new Position(island, 4,4);
         Fauna instance = new Fauna(position, "Oystercatcher", " A nesting oystercatcher", 
-                        ImageIO.read(new File("images/Oystercatcher.jpg")));
+                        ImageIO.read(new File("Images/Oystercatcher.jpg")),ImageIO.read(new File("Images/Icons/Oystercatcher_icon.png")));
         String expResult = "F";
         String result = instance.getStringRepresentation();
         assertEquals(expResult, result);
