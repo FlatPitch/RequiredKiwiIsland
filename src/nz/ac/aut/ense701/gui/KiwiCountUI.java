@@ -501,8 +501,6 @@ public class KiwiCountUI
         descFeild.setRows(5);
         jScrollPane2.setViewportView(descFeild);
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nz/ac/aut/ense701/gui/images/9.jpg"))); // NOI18N
-        jButton2.setText("jButton2");
         jButton2.setBorder(null);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
