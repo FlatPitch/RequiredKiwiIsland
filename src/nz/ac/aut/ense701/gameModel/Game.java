@@ -764,7 +764,7 @@ public class Game {
         try{
             player = new Player(pos, playerName,
                 playerMaxStamina,
-                playerMaxBackpackWeight, playerMaxBackpackSize, getImageFromLocation("Player.png"));
+                playerMaxBackpackWeight, playerMaxBackpackSize, getIconImageFromLocation("Player.png"));
         } catch (IOException ex) {
                     System.err.println("Error reading File");
             player = new Player(pos, playerName,
@@ -797,48 +797,48 @@ public class Game {
                 double weight = input.nextDouble();
                 double size = input.nextDouble();
                 try {
-                    occupant = new Tool(occPos, occName, occDesc, weight, size, getImageFromLocation(imageName));
+                    occupant = new Tool(occPos, occName, occDesc, weight, size, getImageFromLocation(imageName),getIconImageFromLocation(imageName));
                 } catch (IOException ex) {
                     System.err.println("Error finding image");
-                    occupant = new Tool(occPos, occName, occDesc, weight, size, null);               }
+                    occupant = new Tool(occPos, occName, occDesc, weight, size, null, null);               }
             } else if (occType.equals("E")) {
                 double weight = input.nextDouble();
                 double size = input.nextDouble();
                 double energy = input.nextDouble();
                 try {
-                    occupant = new Food(occPos, occName, occDesc, weight, size, energy, getImageFromLocation(imageName));
+                    occupant = new Food(occPos, occName, occDesc, weight, size, energy, getImageFromLocation(imageName),getIconImageFromLocation(imageName));
                 } catch (IOException ex) {
-                    occupant = new Food(occPos, occName, occDesc, weight, size, energy, null);
+                    occupant = new Food(occPos, occName, occDesc, weight, size, energy, null, null);
                 }
             } else if (occType.equals("H")) {
                 double impact = input.nextDouble();
                 try {
-                    occupant = new Hazard(occPos, occName, occDesc, impact, getImageFromLocation(imageName));
+                    occupant = new Hazard(occPos, occName, occDesc, impact, getImageFromLocation(imageName),getIconImageFromLocation(imageName));
                 } catch (IOException ex) {
-                    occupant = new Hazard(occPos, occName, occDesc, impact, null);
+                    occupant = new Hazard(occPos, occName, occDesc, impact, null, null);
                 }
             } else if (occType.equals("K")) {
                 try {
-                    occupant = new Kiwi(occPos, occName, occDesc, getImageFromLocation(imageName));
+                    occupant = new Kiwi(occPos, occName, occDesc, getImageFromLocation(imageName),getIconImageFromLocation(imageName));
                 } catch (IOException ex) {
                     System.err.println("Error reading Image");
-                    occupant = new Kiwi(occPos, occName, occDesc, null);
+                    occupant = new Kiwi(occPos, occName, occDesc, null, null);
                 }
                 totalKiwis++;
             } else if (occType.equals("P")) {
                 try {
-                    occupant = new Predator(occPos, occName, occDesc, getImageFromLocation(imageName));
+                    occupant = new Predator(occPos, occName, occDesc, getImageFromLocation(imageName),getIconImageFromLocation(imageName));
                 } catch (IOException ex) {
                     System.err.println("Error reading Image");
-                    occupant = new Predator(occPos, occName, occDesc, null);
+                    occupant = new Predator(occPos, occName, occDesc, null, null);
                 }
                 totalPredators++;
             } else if (occType.equals("F")) {
                 try {
-                    occupant = new Fauna(occPos, occName, occDesc, getImageFromLocation(imageName));
+                    occupant = new Fauna(occPos, occName, occDesc, getImageFromLocation(imageName),getIconImageFromLocation(imageName));
                 } catch (IOException ex) {
                     System.err.println("Error reading Image");  
-                    occupant = new Fauna(occPos, occName, occDesc, null);
+                    occupant = new Fauna(occPos, occName, occDesc, null, null);
                 }
             }
             if (occupant != null) {
@@ -881,11 +881,16 @@ public class Game {
         }
         
         private Image getImageFromLocation(String imgName) throws IOException {
-            return (ImageIO.read(new File("Images/"+imgName)).getScaledInstance(21, 51,
+            return (ImageIO.read(new File("Images/"+imgName)));
+        }
+       
+        private Image getIconImageFromLocation(String imgName) throws IOException {
+            imgName = imgName.substring(0,imgName.length()-4);
+
+            return (ImageIO.read(new File("Images/Icons/"+imgName+"_icon.png")).getScaledInstance(21, 51,
                             java.awt.Image.SCALE_SMOOTH));
         }
-        
-    
+       
 
         private Island island;
         private Player player;

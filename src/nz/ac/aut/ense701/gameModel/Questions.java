@@ -33,26 +33,41 @@ public class Questions {
             br = new BufferedReader(new FileReader("questions/kiwiQuestions.txt"));
             String line;
             while ((line = br.readLine()) != null) {
-                if (count == 0) {             //first line
-                    iq.setQuestion(line);
-                    count++;
-                } else if (count == 1) {         //second line
-                    iq.setOption1(line);
-                    count++;
-                } else if (count == 2) {          //third line
-                    iq.setOption2(line);
-                    count++;
-                } else if (count == 3) {         //fourthline
-                    iq.setOption3(line);
-                    count++;
-                } else if (count == 4) {        //fithline
-                    iq.setOption4(line);
-                    count++;
-                } else if (count == 5) {        //sixth line
-                    answer = Integer.parseInt(line);
-                    iq.setAnswer(answer);
-                    kiwi.add(iq);
-                    count = 0;
+                switch (count) {
+                    case 0:
+                        //first line
+                        iq.setQuestion(line);
+                        count++;
+                        break;
+                    case 1:
+                        //second line
+                        iq.setOption1(line);
+                        count++;
+                        break;
+                    case 2:
+                        //third line
+                        iq.setOption2(line);
+                        count++;
+                        break;
+                    case 3:
+                        //fourthline
+                        iq.setOption3(line);
+                        count++;
+                        break;
+                    case 4:
+                        //fithline
+                        iq.setOption4(line);
+                        count++;
+                        break;
+                    case 5:
+                        //sixth line
+                        answer = Integer.parseInt(line);
+                        iq.setAnswer(answer);
+                        kiwi.add(iq);
+                        count = 0;
+                        break;
+                    default:
+                        break;
                 }
             }
         } catch (IOException e) {

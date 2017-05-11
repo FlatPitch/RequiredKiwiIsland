@@ -14,22 +14,22 @@ import javax.imageio.ImageIO;
 public class Kiwi  extends Fauna
 {
     private boolean counted;
-    private Image kiwiImage;
+
     /**
      * Constructor for objects of class Kiwi
      * @param pos the position of the kiwi object
      * @param name the name of the kiwi object
      * @param description a longer description of the kiwi
      */
-    public Kiwi(Position pos, String name, String description, Image faunaImage) 
+    public Kiwi(Position pos, String name, String description, Image faunaImage, Image iconImage) 
     {
-        super(pos, name, description, faunaImage);
+        super(pos, name, description, faunaImage, iconImage);
         counted = false;
     } 
     
     public Kiwi(Position pos, String name, String description) 
     {
-        super(pos, name, description, null);
+        super(pos, name, description, null, null);
         counted = false;
     } 
     

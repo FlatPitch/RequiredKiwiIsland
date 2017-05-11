@@ -20,15 +20,15 @@ public  abstract class Item extends Occupant
      * @param name the name of the item
      * @param description a longer description of the item
      */
-    public Item(Position pos, String name, String description, double weight, double size, Image itemImage) 
+    public Item(Position pos, String name, String description, double weight, double size, Image itemImage,Image iconImage) 
     {
-        super(pos, name, description, itemImage);
+        super(pos, name, description, itemImage, iconImage);
         this.weight = weight;
         this.size = size;
     }
     
     public Item(Position pos, String name, String description, double weight, double size){
-        super(pos, name, description, null);
+        super(pos, name, description, null,null);
         this.weight = weight;
         this.size = size;
     }

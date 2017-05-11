@@ -18,14 +18,14 @@ public class Predator extends Fauna
      * @param name the name of the predator object
      * @param description a longer description of the predator object
      */
-    public Predator(Position pos, String name, String description, Image predImage) 
+    public Predator(Position pos, String name, String description, Image predImage, Image iconImage) 
     {
-        super(pos, name, description, predImage);
+        super(pos, name, description, predImage, iconImage);
     } 
  
     public Predator(Position pos, String name, String description) 
     {
-        super(pos, name, description, null);
+        super(pos, name, description, null, null);
     } 
 
 

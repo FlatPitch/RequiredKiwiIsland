@@ -21,13 +21,13 @@ public class Fauna extends Occupant
      * @param name the name of the kiwi
      * @param description a longer description of the kiwi
      */
-    public Fauna(Position pos, String name, String description, Image faunaImage) 
+    public Fauna(Position pos, String name, String description, Image faunaImage, Image iconImage) 
     {
-        super(pos, name, description, faunaImage);
+        super(pos, name, description, faunaImage, iconImage);
     } 
     
     public Fauna(Position pos, String name, String description){
-        super(pos, name, description, null);
+        super(pos, name, description, null, null);
     }
  
 

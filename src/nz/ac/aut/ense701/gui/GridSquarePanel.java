@@ -1,9 +1,6 @@
 package nz.ac.aut.ense701.gui;
 
 import java.awt.Color;
-import java.awt.Image;
-import java.io.File;
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
@@ -31,12 +28,7 @@ public class GridSquarePanel extends javax.swing.JPanel
         this.game   = game;
         this.row    = row;
         this.column = column;
-        try{
-            File file = new File("images/blank.png");
-            this.blank = ImageIO.read(file);
-        }catch(Exception e){
-                System.err.println("Error reading image");
-        }
+        
         
         initComponents();
     }
@@ -70,26 +62,26 @@ public class GridSquarePanel extends javax.swing.JPanel
             
             switch (occupants.length){
                 case 1:
-                    centreLabel.setIcon(new ImageIcon(blank)); 
-                    leftLabel.setIcon(new ImageIcon(occupants[0].getOccImage()));
-                    rightLabel.setIcon(new ImageIcon(blank));           
+                    centreLabel.setIcon(null); 
+                    leftLabel.setIcon(new ImageIcon(occupants[0].getOccImageIcon()));
+                    rightLabel.setIcon(null);            
                     break;
                 case 2:
-                    centreLabel.setIcon(new ImageIcon(blank)); 
-                    leftLabel.setIcon(new ImageIcon(occupants[0].getOccImage()));
-                    rightLabel.setIcon(new ImageIcon(occupants[1].getOccImage())); 
+                    centreLabel.setIcon(null);  
+                    leftLabel.setIcon(new ImageIcon(occupants[0].getOccImageIcon()));
+                    rightLabel.setIcon(new ImageIcon(occupants[1].getOccImageIcon())); 
 
                     break;
                 case 3:
-                    centreLabel.setIcon(new ImageIcon(blank)); 
-                    leftLabel.setIcon(new ImageIcon(occupants[0].getOccImage()));
-                    rightLabel.setIcon(new ImageIcon(occupants[1].getOccImage())); 
+                    centreLabel.setIcon(null); 
+                    leftLabel.setIcon(new ImageIcon(occupants[0].getOccImageIcon()));
+                    rightLabel.setIcon(new ImageIcon(occupants[1].getOccImageIcon())); 
 
                     break;
                 default:
-                    centreLabel.setIcon(new ImageIcon(blank)); 
-                    leftLabel.setIcon(new ImageIcon(blank)); 
-                    rightLabel.setIcon(new ImageIcon(blank)); 
+                    centreLabel.setIcon(null); 
+                    leftLabel.setIcon(null); 
+                    rightLabel.setIcon(null); 
                     break;
             }
             
@@ -140,8 +132,14 @@ public class GridSquarePanel extends javax.swing.JPanel
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setLayout(new java.awt.BorderLayout());
+
+        leftLabel.setPreferredSize(new java.awt.Dimension(20, 50));
         add(leftLabel, java.awt.BorderLayout.LINE_START);
+
+        rightLabel.setPreferredSize(new java.awt.Dimension(20, 50));
         add(rightLabel, java.awt.BorderLayout.LINE_END);
+
+        centreLabel.setPreferredSize(new java.awt.Dimension(20, 50));
         add(centreLabel, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -152,7 +150,6 @@ public class GridSquarePanel extends javax.swing.JPanel
     
     private Game game;
     private int row, column;
-    private Image blank;
     
     private static final Border normalBorder = new LineBorder(Color.BLACK, 1);
     private static final Border activeBorder = new LineBorder(Color.RED, 3);

@@ -15,6 +15,7 @@ public abstract class Occupant
     private final String   name;
     private final String   description;   
     private Image occImage;
+    private Image occImageIcon;
 
     /**
      * Construct an occupant for a known position & name.
@@ -22,12 +23,13 @@ public abstract class Occupant
      * @param name the name of the occupant
      * @param description a longer description
      */
-    public Occupant(Position position, String name, String description, Image occImage) 
+    public Occupant(Position position, String name, String description, Image occImage, Image occImageIcon) 
     {
         this.position    = position;
         this.name        = name;
         this.description = description;   
         this.occImage = occImage;
+        this.occImageIcon = occImageIcon;
     }
     
     /**
@@ -76,6 +78,14 @@ public abstract class Occupant
      */
     public Image getOccImage(){
         return this.occImage;
+    }
+      /**
+     * Gets the image for the items icon
+     * 
+     * @return the image
+     */
+    public Image getOccImageIcon(){
+        return this.occImageIcon;
     }
     
     /**

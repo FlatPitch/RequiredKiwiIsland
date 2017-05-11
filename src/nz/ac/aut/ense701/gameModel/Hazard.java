@@ -23,15 +23,15 @@ public class Hazard extends Occupant {
      * @param description a more detailed description of hazard
      * @param impact on player
      */
-    public Hazard(Position position, String name, String description, double impact, Image hazardImage) {
+    public Hazard(Position position, String name, String description, double impact, Image hazardImage, Image iconImage) {
         
-        super(position, name, description, hazardImage);
+        super(position, name, description, hazardImage, iconImage);
         this.impact = impact;
         
     }
     
     public Hazard(Position position, String name, String description, double impact){
-        super(position, name, description, null);
+        super(position, name, description, null,null);
         this.impact = impact;
     }
     
