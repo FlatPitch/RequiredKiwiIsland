@@ -57,7 +57,21 @@ public class Game {
         playerMessage = "";
         notifyGameEventListeners();
     }
-
+    
+    public void createNewGame(String map){
+        totalPredators = 0;
+        totalKiwis = 0;
+        predatorsTrapped = 0;
+        kiwiCount = 0;
+        initialiseIslandFromFile(map);
+        drawIsland();
+        state = GameState.PLAYING;
+        winMessage = "";
+        loseMessage = "";
+        playerMessage = "";
+        notifyGameEventListeners();
+    }
+    
     /**
      * *********************************************************************************************************************
      * Accessor methods for game data
@@ -783,7 +797,6 @@ public class Game {
     private void setUpOccupants(Scanner input) {
         int numItems = input.nextInt();
         for (int i = 0; i < numItems; i++) {
-            System.out.println(i+1);
             String occType = input.next();
             String occName = input.next();
             String occDesc = input.next();
