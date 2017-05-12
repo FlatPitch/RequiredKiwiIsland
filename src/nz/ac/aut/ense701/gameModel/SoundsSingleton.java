@@ -39,7 +39,12 @@ public class SoundsSingleton {
     //you have won the round sound effect
     final  URL URL5 = getClass().getResource("/nz/ac/aut/ense701/effects/win.wav");
     final AudioClip clip5 = new AudioClip(URL5.toString());
-    
+    //correct question answer
+    final  URL URL6 = getClass().getResource("/nz/ac/aut/ense701/effects/chime.wav");
+    final AudioClip clip6 = new AudioClip(URL6.toString());
+    //correct question answer
+    final  URL URL7 = getClass().getResource("/nz/ac/aut/ense701/effects/wrong.wav");
+    final AudioClip clip7 = new AudioClip(URL7.toString());
     
 public void playStaminaIncrease(){
     clip1.play();
@@ -56,5 +61,10 @@ public void playDeath(){
 public void playwin(){
     clip4.play();
 }
-    
+public void playCorrect(){
+    clip6.play();
+} 
+public void playWrong(){
+    clip7.play();
+} 
 }
