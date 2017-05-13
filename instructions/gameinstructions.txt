@@ -1,17 +1,14 @@
 Game Objectives:
 	- Count all the Kiwis
 	- Trap all Predators
-Use the buttons to move around the map.
+Use the A_D (left-right), W_S (up-down) buttons to move around the map.
 Use the object viewer to interact with certain objects
+Use the inventory viewer to use traps or food
 Keep on eye on your stamina, food items will replenish your energy
 Watch out for hazards, they will reduce your stamina but some can be fatal!
 Broken traps can be repaired with the screwdriver
 Win the game to get a voucher!
 
-Key:
-K - Kiwi
-P - Predator
-H - Hazard
-T - Tool
-E - Food
-F - Fauna
+Select a Kiwi or Predator in the Objects field to see description,
+Click on the Image to get a chance to answer a question for extra,
+stamina.
