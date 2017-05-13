@@ -210,7 +210,7 @@ public class KiwiCountUI
         jButton2 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         gInstructionButton = new javax.swing.JButton();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        musicToggleButton = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Kiwi Count");
@@ -561,7 +561,12 @@ public class KiwiCountUI
             }
         });
 
-        jToggleButton1.setText("under constuction");
+        musicToggleButton.setText("Turn Music off");
+        musicToggleButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                musicToggleButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -569,19 +574,21 @@ public class KiwiCountUI
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jToggleButton1)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(musicToggleButton))
                     .addComponent(gInstructionButton))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addContainerGap()
                 .addComponent(gInstructionButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToggleButton1)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addComponent(musicToggleButton)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         gInstructionButton.getAccessibleContext().setAccessibleName("ginstructions");
@@ -702,6 +709,16 @@ public class KiwiCountUI
     private void gInstructionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gInstructionButtonActionPerformed
         GameInstructions.instructions();
     }//GEN-LAST:event_gInstructionButtonActionPerformed
+
+    private void musicToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_musicToggleButtonActionPerformed
+        if (musicToggleButton.isSelected()){
+            musicToggleButton.setText("Turn Music on");
+            music.stopMusic();
+        }else{                 
+            musicToggleButton.setText("Turn Music off");
+            music.startMusic();
+        }
+    }//GEN-LAST:event_musicToggleButtonActionPerformed
     
     /**
      * Creates and initialises the island grid.
@@ -736,11 +753,11 @@ public class KiwiCountUI
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel lblKiwisCounted;
     private javax.swing.JLabel lblPredators;
     private javax.swing.JList listInventory;
     private javax.swing.JList listObjects;
+    private javax.swing.JToggleButton musicToggleButton;
     private javax.swing.JPanel pnlIsland;
     private javax.swing.JProgressBar progBackpackSize;
     private javax.swing.JProgressBar progBackpackWeight;
