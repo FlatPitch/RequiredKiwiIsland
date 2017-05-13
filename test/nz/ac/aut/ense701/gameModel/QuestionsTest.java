@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Author Glen Osborne 14852903 
  */
 package nz.ac.aut.ense701.gameModel;
 
@@ -12,7 +10,9 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 /**
  *
- * @author Liandri
+ * @author Glen Osborne test that the questions are being loaded correctly
+ * ready for use with the stamina increase game to increase knowledge
+ * for the player around conservation facts
  */
 public class QuestionsTest {
     private Questions quest;
@@ -29,6 +29,7 @@ public class QuestionsTest {
         kiwi = quest.getKiwiQuestionsArray();
         pests = quest.getPestsQuestionsArray();
     }
+    //tear down tests
     @After
     public void tearDown(){
         quest = null;
