@@ -509,7 +509,9 @@ public class KiwiCountUI
         jPanel2.setMinimumSize(new java.awt.Dimension(177, 89));
 
         descFeild.setColumns(20);
+        descFeild.setLineWrap(true);
         descFeild.setRows(5);
+        descFeild.setWrapStyleWord(true);
         jScrollPane2.setViewportView(descFeild);
 
         jButton2.setBorder(null);
