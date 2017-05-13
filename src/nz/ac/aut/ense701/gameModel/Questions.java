@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *Author Glen Osborne 14852903
+ *This code is for educational puposes only 
  */
 package nz.ac.aut.ense701.gameModel;
 
@@ -17,16 +16,23 @@ import java.util.ArrayList;
  * @author Glen Osborne
  */
 public class Questions {
+
     //questions ready for display
     private ArrayList<IndividualQuestion> kiwi = new ArrayList<IndividualQuestion>();
     private ArrayList<IndividualQuestion> pests = new ArrayList<IndividualQuestion>();
+
     //build the questions and options for the kiwi questions
-    
-    public Questions(){
+    public Questions() {
         buildKiwiQuestions();
         buildPestQuestions();
     }
-    public void buildKiwiQuestions() {
+
+    /**
+     * generate the questions for the Kiwi conservation question and make array
+     * list so that a random question can be asked for a chance to increase
+     * stamina
+     */
+    private void buildKiwiQuestions() {
         IndividualQuestion iq;
         BufferedReader br = null;
         int count = 0;
@@ -69,13 +75,13 @@ public class Questions {
                         answer = Integer.parseInt(line);
                         iq.setAnswer(answer);
                         kiwi.add(iq);
-                        iq = new IndividualQuestion(); 
+                        iq = new IndividualQuestion();
                         count = 0;
                         break;
                     default:
                         break;
                 }
-                
+
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -89,7 +95,13 @@ public class Questions {
             }
         }
     }
-        public void buildPestQuestions() {
+
+    /**
+     * generate the questions for the pest conservation question and make array
+     * list so that a random question can be asked for a chance to increase
+     * stamina
+     */
+    private void buildPestQuestions() {
         IndividualQuestion iq;
         BufferedReader br = null;
         int count = 0;
@@ -132,7 +144,7 @@ public class Questions {
                         answer = Integer.parseInt(line);
                         iq.setAnswer(answer);
                         pests.add(iq);
-                        iq = new IndividualQuestion(); 
+                        iq = new IndividualQuestion();
                         count = 0;
                         break;
                     default:
@@ -151,7 +163,7 @@ public class Questions {
             }
         }
     }
-        
+
     public ArrayList<IndividualQuestion> getKiwiQuestionsArray() {
         return kiwi;
     }
@@ -159,9 +171,10 @@ public class Questions {
     public ArrayList<IndividualQuestion> getPestsQuestionsArray() {
         return pests;
     }
-    public void printAll(ArrayList<IndividualQuestion> q){
-        for(int i =0;i<q.size();i++){
-           System.out.println("question "+(i+1)+" value "+q.get(i).getQuestion());
+
+    public void printAll(ArrayList<IndividualQuestion> q) {
+        for (int i = 0; i < q.size(); i++) {
+            System.out.println("question " + (i + 1) + " value " + q.get(i).getQuestion());
         }
     }
 }

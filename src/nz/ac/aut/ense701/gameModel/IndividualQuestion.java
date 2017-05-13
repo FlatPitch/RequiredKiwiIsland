@@ -1,16 +1,14 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * This class holds the values for each question the options and answers
  */
 package nz.ac.aut.ense701.gameModel;
 
 /**
  *
- * @author Liandri
+ * @author Glen Osborne 14852903
  */
 public class IndividualQuestion {
-    
+
     private String question = "";
     private String option1 = "";
     private String option2 = "";
@@ -65,6 +63,4 @@ public class IndividualQuestion {
     public void setAnswer(int answer) {
         this.answer = answer;
     }
-
-
 }
