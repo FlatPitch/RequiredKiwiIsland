@@ -165,6 +165,9 @@ public class KiwiCountUI
         btnCollect.setEnabled(false);
         btnCount.setEnabled(false);
         
+        //update description field for terrain
+        descFeild.setText(game.getTerrain(game.getPlayer().getPosition().getRow(),game.getPlayer().getPosition().getColumn()).getTerrainDescription());
+
     }
     
     /** This method is called from within the constructor to

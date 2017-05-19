@@ -19,6 +19,7 @@ public enum Terrain
     
     private final double difficulty;
     private final String stringRep;
+    private final String terrainDescription;
     
     /**
      * Creates a new terrain with a given difficulty 
@@ -30,8 +31,40 @@ public enum Terrain
     {
         this.stringRep  = stringRep;
         this.difficulty = difficulty;
+        
+        
+        //description of different terrains
+        if(stringRep.equals("*")){
+            this.terrainDescription = "You walk through a thick forest";
+            
+        }else if(stringRep.equals(".")){
+            this.terrainDescription = "You walk through the sand which slows your pace";
+
+            
+        }else if(stringRep.equals("#")){
+            this.terrainDescription = "You walk through the wetlands";
+
+            
+        }else if(stringRep.equals("^")){
+            this.terrainDescription = "You walk through the scrub";
+
+            
+        }else if(stringRep.equals("~")){
+            this.terrainDescription = "You walk through water";
+
+            
+        }else{     
+            this.terrainDescription = "";
+        }
     }
-    
+       /**
+     * Gets a description of the terrain
+     * @return a description of the terrain
+     */
+    public String getTerrainDescription()
+    {
+        return this.terrainDescription;
+    }
     /**
      * Gets the difficulty of the terrain
      * @return the difficulty of the terrain
