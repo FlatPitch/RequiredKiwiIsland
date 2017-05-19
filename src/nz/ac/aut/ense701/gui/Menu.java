@@ -5,6 +5,8 @@
  */
 package nz.ac.aut.ense701.gui;
 
+import nz.ac.aut.ense701.gameModel.Game;
+
 /**
  *
  * @author Liandri
@@ -81,7 +83,24 @@ public class Menu extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        this.dispose();
+        
+          // create the game object
+        final Game game = new Game();
+        // create the GUI for the game
+        final KiwiCountUI  gui  = new KiwiCountUI(game);
+
+        this.setVisible(false);
+
+        // make the GUI visible
+        java.awt.EventQueue.invokeLater(new Runnable() 
+        {
+            @Override
+            public void run() 
+            {
+                gui.setVisible(true);
+
+            }
+        });
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

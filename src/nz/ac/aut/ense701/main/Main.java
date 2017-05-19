@@ -19,10 +19,7 @@ public class Main
      */
     public static void main(String[] args) 
     {
-        // create the game object
-        final Game game = new Game();
-        // create the GUI for the game
-        final KiwiCountUI  gui  = new KiwiCountUI(game);
+      
         //make spalsh screen
         final Menu menu = new Menu();
         // make the GUI visible
@@ -31,7 +28,6 @@ public class Main
             @Override
             public void run() 
             {
-                gui.setVisible(true);
                 menu.setVisible(true);
             }
         });
