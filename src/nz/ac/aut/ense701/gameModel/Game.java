@@ -56,6 +56,7 @@ public class Game {
         loseMessage = "";
         playerMessage = "";
         notifyGameEventListeners();
+        score = new Score();
     }
     
     public void createNewGame(String map){
@@ -491,6 +492,7 @@ public class Game {
                 if (!kiwi.counted()) {
                     kiwi.count();
                     kiwiCount++;
+                    score.scoreKiwicount();
                     island.removeOccupant(player.getPosition(), occupant);
                 }
             }
@@ -573,21 +575,21 @@ public class Game {
         String message = "";
         if (!player.isAlive()) {
             state = GameState.LOST;
-            message = "Sorry, you have lost the game. " + this.getLoseMessage();
+            message = "Sorry, you have lost the game. "  + this.getLoseMessage() + "\n Your score: " +score.getSCore();
             this.setLoseMessage(message);
         } else if (!playerCanMove()) {
             state = GameState.LOST;
-            message = "Sorry, you have lost the game. You do not have sufficient stamina to move.";
+            message = "Sorry, you have lost the game. You do not have sufficient stamina to move." + "\n Your score: " +score.getSCore();
             this.setLoseMessage(message);
         } else if (predatorsTrapped == totalPredators) {
             state = GameState.WON;
-            message = "You win! You have done an excellent job and trapped all the predators."
+            message = "You win! You have done an excellent job and trapped all the predators." + "\n Your score: " +score.getSCore()
                     + "\n Your $2 tuck shop discount code: " + generateCoupon();
             this.setWinMessage(message);
         } else if (kiwiCount == totalKiwis) {
             if (predatorsTrapped >= totalPredators * MIN_REQUIRED_CATCH) {
                 state = GameState.WON;
-                message = "You win! You have counted all the kiwi and trapped at least 80% of the predators."
+                message = "You win! You have counted all the kiwi and trapped at least 80% of the predators." + "\n Your score: " +score.getSCore()
                         + "\n Your $2 tuck shop discount code: " + generateCoupon();
                 this.setWinMessage(message);
             }
@@ -649,6 +651,7 @@ public class Game {
             //Predator has been trapped so remove
             island.removeOccupant(current, occupant);
             predatorsTrapped++;
+            score.scoreTrappredator();
         }
 
         return hadPredator;
@@ -663,6 +666,7 @@ public class Game {
         for (Occupant occupant : island.getOccupants(player.getPosition())) {
             if (occupant instanceof Hazard) {
                 handleHazard((Hazard) occupant);
+                score.scoreHazard();
             }
         }
     }
@@ -913,6 +917,7 @@ public class Game {
         private int totalKiwis;
         private int predatorsTrapped;
         private Set<GameEventListener> eventListeners;
+        private Score score;
 
         private final double MIN_REQUIRED_CATCH = 0.8;
 
