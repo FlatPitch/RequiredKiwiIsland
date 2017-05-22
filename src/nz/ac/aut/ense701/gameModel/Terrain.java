@@ -1,5 +1,12 @@
 package nz.ac.aut.ense701.gameModel;
 
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+
 /**
  * Enumeration class Terrain - represents terrain types on Kiwi Island.
  * 
@@ -11,15 +18,16 @@ package nz.ac.aut.ense701.gameModel;
  */
 public enum Terrain
 {
-    SAND(".", 1.0),
-    FOREST("*", 2.0),
-    WETLAND ("#", 2.5),
-    SCRUB("^", 3.0),
-    WATER("~", 4.0);
+    SAND(".", 1.0, "Images/Terrain/Sand.jpeg"),
+    FOREST("*", 2.0, "Images/Terrain/Tree.jpeg"),
+    WETLAND ("#", 2.5, "Images/Terrain/Dirt.png"),
+    SCRUB("^", 3.0, "Images/Terrain/Grass.png"),
+    WATER("~", 4.0, "Images/Terrain/Water.jpeg");
     
     private final double difficulty;
     private final String stringRep;
     private final String terrainDescription;
+    private Image terrainImg;
     
     /**
      * Creates a new terrain with a given difficulty 
@@ -27,11 +35,15 @@ public enum Terrain
      * @param stringRep the string representation of the terrain.
      * @param difficulty the difficulty of the terrain
      */
-    private Terrain(String stringRep, double difficulty)
+    private Terrain(String stringRep, double difficulty, String imageLocation)
     {
         this.stringRep  = stringRep;
         this.difficulty = difficulty;
-        
+        try {
+            this.terrainImg = ImageIO.read(new File(imageLocation)).getScaledInstance(62, 52, java.awt.Image.SCALE_SMOOTH);
+        } catch (IOException ex) {
+            this.terrainImg = null;
+        }
         
         //description of different terrains
         if(stringRep.equals("*")){
@@ -72,6 +84,10 @@ public enum Terrain
     public double getDifficulty()
     {
         return difficulty;
+    }
+    
+    public Image getTerrainImage(){
+        return this.terrainImg;
     }
     
     /**
