@@ -40,7 +40,7 @@ public enum Terrain
         this.stringRep  = stringRep;
         this.difficulty = difficulty;
         try {
-            this.terrainImg = ImageIO.read(new File(imageLocation)).getScaledInstance(62, 52, java.awt.Image.SCALE_SMOOTH);
+            this.terrainImg = ImageIO.read(new File(imageLocation)).getScaledInstance(62, 65, java.awt.Image.SCALE_SMOOTH);
         } catch (IOException ex) {
             this.terrainImg = null;
         }
