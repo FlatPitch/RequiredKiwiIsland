@@ -13,6 +13,7 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 import javax.imageio.ImageIO;
+import nz.ac.aut.ense701.gameModel.SoundsSingleton;
 
 /**
  * This is the class that knows the Kiwi Island game rules and state and
@@ -31,13 +32,21 @@ public class Game {
     public static final int WEIGHT_INDEX = 3;
     public static final int MAXSIZE_INDEX = 4;
     public static final int SIZE_INDEX = 5;
+    private ArrayList<Question> pestQuestions;
+    private ArrayList<Question> kiwiQuestions;
+    private Questions questions;
+    private Random rand = new Random();
+    private SoundsSingleton sound = new SoundsSingleton();
 
     /**
      * A new instance of Kiwi island that reads data from "IslandData.txt".
      */
     public Game() {
         eventListeners = new HashSet<GameEventListener>();
-
+        this.questions = new Questions();
+        this.pestQuestions = questions.getPestsQuestionsArray();
+        this.kiwiQuestions = questions.getKiwiQuestionsArray();
+        
         createNewGame();
     }
 
@@ -85,6 +94,19 @@ public class Game {
      */
     public int getNumRows() {
         return island.getNumRows();
+    }
+    /**
+     * get random kiwiQuestion
+     */
+    public Question getKiwiQuestion(){
+        return kiwiQuestions.get(rand.nextInt(kiwiQuestions.size()-1));
+    }
+    /**
+     * 
+     * @return random pest question
+     */
+    public Question getPestQuestion(){
+        return pestQuestions.get(rand.nextInt(pestQuestions.size()-1));
     }
 
     /**

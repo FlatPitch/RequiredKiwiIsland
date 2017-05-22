@@ -16,8 +16,8 @@ import static org.junit.Assert.*;
  */
 public class QuestionsTest {
     private Questions quest;
-    private ArrayList<IndividualQuestion> kiwi;
-    private ArrayList<IndividualQuestion> pests;
+    private ArrayList<Question> kiwi;
+    private ArrayList<Question> pests;
     
     public QuestionsTest(){
         //defult constructor

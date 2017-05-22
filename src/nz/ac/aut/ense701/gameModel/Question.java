@@ -7,13 +7,14 @@ package nz.ac.aut.ense701.gameModel;
  *
  * @author Glen Osborne 14852903
  */
-public class IndividualQuestion {
+public class Question {
 
     private String question = "";
     private String option1 = "";
     private String option2 = "";
     private String option3 = "";
     private String option4 = "";
+    
     private int answer = 0;
 
     public String getQuestion() {
@@ -62,5 +63,14 @@ public class IndividualQuestion {
 
     public void setAnswer(int answer) {
         this.answer = answer;
+    }
+    
+    public boolean checkAnswer(int answer){
+        if (answer == this.answer){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }

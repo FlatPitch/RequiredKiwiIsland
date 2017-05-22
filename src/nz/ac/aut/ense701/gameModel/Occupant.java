@@ -16,6 +16,7 @@ public abstract class Occupant
     private final String   description;   
     private Image occImage;
     private Image occImageIcon;
+    private boolean questionAsked;
 
     /**
      * Construct an occupant for a known position & name.
@@ -30,8 +31,14 @@ public abstract class Occupant
         this.description = description;   
         this.occImage = occImage;
         this.occImageIcon = occImageIcon;
+        this.questionAsked = false;
     }
-    
+    public boolean isQuestionAsked(){
+        return questionAsked;
+    }
+    public void setQuestionIsAsked(){
+        this.questionAsked = true;
+    }
     /**
      * Returns the position of the occupant.
      * 
@@ -70,6 +77,7 @@ public abstract class Occupant
     public String getDescription() {
         return this.description;
     }
+    
     
     /**
      * Gets the image for the item

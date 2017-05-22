@@ -15,11 +15,10 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
-import nz.ac.aut.ense701.gameModel.Fauna;
 import nz.ac.aut.ense701.gameModel.Game;
 import nz.ac.aut.ense701.gameModel.GameEventListener;
 import nz.ac.aut.ense701.gameModel.GameState;
-import nz.ac.aut.ense701.gameModel.IndividualQuestion;
+import nz.ac.aut.ense701.gameModel.Question;
 import nz.ac.aut.ense701.gameModel.MoveDirection;
 import nz.ac.aut.ense701.gameModel.Music;
 import nz.ac.aut.ense701.gameModel.Occupant;
@@ -54,9 +53,6 @@ public class KiwiCountUI
         this.sound = SoundsSingleton.getSoundsSingletonReference();
         this.music = new Music();
         music.startMusic();
-        this.questions = new Questions();
-        this.pestQuestions = questions.getPestsQuestionsArray();
-        this.kiwiQuestions = questions.getKiwiQuestionsArray();
         setAsGameListener();
         initComponents();
         initIslandGrid();
@@ -614,25 +610,21 @@ public class KiwiCountUI
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        int staminaQuestion = rand.nextInt(8);
-        boolean testAnswer = false;
         Occupant occ = (Occupant) listObjects.getSelectedValue();
-        if ( occ != null ){
+        if ( occ != null && occ.isQuestionAsked() == false){
             if(occ instanceof Kiwi){
-                //create popup off kiwi questions
-                testAnswer = popup.makePopup(kiwiQuestions.get(staminaQuestion));
-                    
+                if(popup.makePopup(this.game.getKiwiQuestion())){
+                    game.getPlayer().increaseStamina(10);
+                    occ.setQuestionIsAsked();
+                    update();
+                }
             }else if(occ instanceof Predator){
-                //create popup off pests questions
-                testAnswer = popup.makePopup(pestQuestions.get(staminaQuestion));
+                if(popup.makePopup(this.game.getPestQuestion())){
+                    game.getPlayer().increaseStamina(10);
+                    occ.setQuestionIsAsked();
+                    update();
+                }
             }
-        }
-        if(testAnswer){
-            game.getPlayer().increaseStamina(10);
-            update();
-            sound.playCorrect();
-        }else{
-            sound.playWrong();
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -776,11 +768,8 @@ public class KiwiCountUI
     private Game game;
     private SoundsSingleton sound;
     private Music music;
-    private ArrayList<IndividualQuestion> pestQuestions;
-    private ArrayList<IndividualQuestion> kiwiQuestions;
-    private Questions questions;
-    private Random rand = new Random();
     private PopupQuestion popup = new PopupQuestion();
+
     
     
 

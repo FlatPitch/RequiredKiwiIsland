@@ -18,8 +18,8 @@ import java.util.ArrayList;
 public class Questions {
 
     //questions ready for display
-    private ArrayList<IndividualQuestion> kiwi = new ArrayList<IndividualQuestion>();
-    private ArrayList<IndividualQuestion> pests = new ArrayList<IndividualQuestion>();
+    private ArrayList<Question> kiwi = new ArrayList<Question>();
+    private ArrayList<Question> pests = new ArrayList<Question>();
 
     //build the questions and options for the kiwi questions
     public Questions() {
@@ -33,12 +33,21 @@ public class Questions {
      * stamina
      */
     private void buildKiwiQuestions() {
-        IndividualQuestion iq;
+        Question iq;
         BufferedReader br = null;
         int count = 0;
         int answer = 0;
         //generate kiwi questions
-        iq = new IndividualQuestion();
+        
+        /**TO FIX
+         * MOVE THIS METHOD TO THE GAME CLASS
+         * top line of kiwi / peast questions txt file add a number telling how many lines of questions are below
+         * read and store that number and then for loop that many times
+         * each loop should create a new Question object and pass through its required variables
+         * store taht Question object into a kiwi or pest questions array list
+        */
+        
+        iq = new Question();
         count = 0;
         try {
             br = new BufferedReader(new FileReader("questions/kiwiQuestions.txt"));
@@ -75,7 +84,7 @@ public class Questions {
                         answer = Integer.parseInt(line);
                         iq.setAnswer(answer);
                         kiwi.add(iq);
-                        iq = new IndividualQuestion();
+                        iq = new Question();
                         count = 0;
                         break;
                     default:
@@ -102,12 +111,12 @@ public class Questions {
      * stamina
      */
     private void buildPestQuestions() {
-        IndividualQuestion iq;
+        Question iq;
         BufferedReader br = null;
         int count = 0;
         int answer = 0;
         //generate kiwi questions
-        iq = new IndividualQuestion();
+        iq = new Question();
         count = 0;
         try {
             br = new BufferedReader(new FileReader("questions/pestQuestions.txt"));
@@ -144,7 +153,7 @@ public class Questions {
                         answer = Integer.parseInt(line);
                         iq.setAnswer(answer);
                         pests.add(iq);
-                        iq = new IndividualQuestion();
+                        iq = new Question();
                         count = 0;
                         break;
                     default:
@@ -164,15 +173,15 @@ public class Questions {
         }
     }
 
-    public ArrayList<IndividualQuestion> getKiwiQuestionsArray() {
+    public ArrayList<Question> getKiwiQuestionsArray() {
         return kiwi;
     }
 
-    public ArrayList<IndividualQuestion> getPestsQuestionsArray() {
+    public ArrayList<Question> getPestsQuestionsArray() {
         return pests;
     }
 
-    public void printAll(ArrayList<IndividualQuestion> q) {
+    public void printAll(ArrayList<Question> q) {
         for (int i = 0; i < q.size(); i++) {
             System.out.println("question " + (i + 1) + " value " + q.get(i).getQuestion());
         }
