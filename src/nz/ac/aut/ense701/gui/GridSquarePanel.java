@@ -38,7 +38,6 @@ public class GridSquarePanel extends javax.swing.JPanel
      */
     public void update()
     {
-        System.out.println(bgLabel.getWidth() + " + " + bgLabel.getHeight());
         // get the GridSquare object from the world
         Terrain terrain   = game.getTerrain(row, column);
         boolean squareVisible = game.isVisible(row, column);
@@ -96,7 +95,6 @@ public class GridSquarePanel extends javax.swing.JPanel
                                   Math.min(255, color.getBlue()  + 128));*/
             }
             bgLabel.setIcon(terrianImg);
-          //  bgLabel.setBackground(color);
             // set border colour according to 
             // whether the player is in the grid square or not
             // and do the players icon
@@ -109,8 +107,7 @@ public class GridSquarePanel extends javax.swing.JPanel
         }
         else
         {
-            bgLabel.setIcon(terrianImg);
-          //  bgLabel.setBackground(null);
+            bgLabel.setIcon(null);
             centreLabel.setIcon(null);
             leftLabel.setIcon(null);
             rightLabel.setIcon(null);
