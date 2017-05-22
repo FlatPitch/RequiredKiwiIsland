@@ -25,7 +25,7 @@ import nz.ac.aut.ense701.gameModel.Occupant;
 import nz.ac.aut.ense701.gameModel.Questions;
 import nz.ac.aut.ense701.gameModel.SoundsSingleton;
 import nz.ac.aut.ense701.gameModel.Kiwi;
-import nz.ac.aut.ense701.gameModel.PopupQuestion;
+import nz.ac.aut.ense701.gui.PopupQuestion;
 import nz.ac.aut.ense701.gameModel.Predator;
 /*
  * User interface form for Kiwi Island.
