@@ -615,16 +615,15 @@ public class KiwiCountUI
             if(occ instanceof Kiwi){
                 if(popup.makePopup(this.game.getKiwiQuestion())){
                     game.getPlayer().increaseStamina(10);
-                    occ.setQuestionIsAsked();
                     update();
                 }
             }else if(occ instanceof Predator){
                 if(popup.makePopup(this.game.getPestQuestion())){
                     game.getPlayer().increaseStamina(10);
-                    occ.setQuestionIsAsked();
                     update();
                 }
             }
+            occ.setQuestionIsAsked();
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
