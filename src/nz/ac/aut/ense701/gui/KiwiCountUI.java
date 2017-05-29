@@ -240,9 +240,13 @@ public class KiwiCountUI
         pnlControls.setLayout(new java.awt.GridBagLayout());
 
         pnlPlayer.setBorder(javax.swing.BorderFactory.createTitledBorder("Player"));
+        pnlPlayer.setMinimumSize(new java.awt.Dimension(177, 220));
+        pnlPlayer.setPreferredSize(new java.awt.Dimension(263, 220));
         pnlPlayer.setLayout(new java.awt.GridBagLayout());
 
         pnlPlayerData.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        pnlPlayerData.setMinimumSize(new java.awt.Dimension(230, 173));
+        pnlPlayerData.setPreferredSize(new java.awt.Dimension(270, 153));
         pnlPlayerData.setLayout(new java.awt.GridBagLayout());
 
         lblPlayerName.setText("Name:");
@@ -356,7 +360,7 @@ public class KiwiCountUI
 
         pnlInventory.setBorder(javax.swing.BorderFactory.createTitledBorder("Inventory"));
         pnlInventory.setMinimumSize(new java.awt.Dimension(177, 89));
-        pnlInventory.setPreferredSize(new java.awt.Dimension(263, 156));
+        pnlInventory.setPreferredSize(new java.awt.Dimension(263, 116));
         pnlInventory.setLayout(new java.awt.GridBagLayout());
 
         listInventory.setModel(new javax.swing.AbstractListModel() {
@@ -365,6 +369,10 @@ public class KiwiCountUI
             public Object getElementAt(int i) { return strings[i]; }
         });
         listInventory.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        listInventory.setFixedCellHeight(16);
+        listInventory.setMaximumSize(new java.awt.Dimension(177, 150));
+        listInventory.setMinimumSize(new java.awt.Dimension(177, 150));
+        listInventory.setPreferredSize(new java.awt.Dimension(177, 150));
         listInventory.setVisibleRowCount(3);
         listInventory.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
@@ -420,7 +428,7 @@ public class KiwiCountUI
         gridBagConstraints.gridy = 1;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 125;
-        gridBagConstraints.ipady = 58;
+        gridBagConstraints.ipady = 36;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
         pnlControls.add(pnlInventory, gridBagConstraints);
@@ -439,6 +447,10 @@ public class KiwiCountUI
             public Object getElementAt(int i) { return strings[i]; }
         });
         listObjects.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        listObjects.setFixedCellHeight(16);
+        listObjects.setMaximumSize(new java.awt.Dimension(177, 150));
+        listObjects.setMinimumSize(new java.awt.Dimension(177, 150));
+        listObjects.setPreferredSize(new java.awt.Dimension(177, 150));
         listObjects.setVisibleRowCount(3);
         listObjects.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
@@ -526,7 +538,7 @@ public class KiwiCountUI
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -551,7 +563,7 @@ public class KiwiCountUI
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
         pnlControls.add(jPanel2, gridBagConstraints);
 
-        jPanel3.setMinimumSize(new java.awt.Dimension(177, 100));
+        jPanel3.setMinimumSize(new java.awt.Dimension(270, 100));
 
         gInstructionButton.setActionCommand("gameinstructions");
         gInstructionButton.setLabel("Game Instructions");
@@ -574,22 +586,19 @@ public class KiwiCountUI
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(musicToggleButton))
-                    .addComponent(gInstructionButton))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addGap(0, 0, 0)
+                .addComponent(gInstructionButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(musicToggleButton))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(gInstructionButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(musicToggleButton)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(gInstructionButton)
+                    .addComponent(musicToggleButton))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         gInstructionButton.getAccessibleContext().setAccessibleName("ginstructions");
@@ -702,19 +711,19 @@ public class KiwiCountUI
         }
     }//GEN-LAST:event_listInventoryValueChanged
 
-    private void gInstructionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gInstructionButtonActionPerformed
-        GameInstructions.instructions();
-    }//GEN-LAST:event_gInstructionButtonActionPerformed
-
     private void musicToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_musicToggleButtonActionPerformed
         if (musicToggleButton.isSelected()){
             musicToggleButton.setText("Turn Music on");
             music.stopMusic();
-        }else{                 
+        }else{
             musicToggleButton.setText("Turn Music off");
             music.startMusic();
         }
     }//GEN-LAST:event_musicToggleButtonActionPerformed
+
+    private void gInstructionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gInstructionButtonActionPerformed
+        GameInstructions.instructions();
+    }//GEN-LAST:event_gInstructionButtonActionPerformed
     
     /**
      * Creates and initialises the island grid.
