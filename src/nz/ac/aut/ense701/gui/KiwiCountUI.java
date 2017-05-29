@@ -164,6 +164,9 @@ public class KiwiCountUI
         //update description field for terrain
         descFeild.setText(game.getTerrain(game.getPlayer().getPosition().getRow(),game.getPlayer().getPosition().getColumn()).getTerrainDescription());
 
+        //update the player coordinates text label
+        this.coordinates.setText(game.getPlayer().getPosition().getRow()+", "+game.getPlayer().getPosition().getColumn());
+        
     }
     
     /** This method is called from within the constructor to
@@ -210,6 +213,8 @@ public class KiwiCountUI
         jPanel3 = new javax.swing.JPanel();
         gInstructionButton = new javax.swing.JButton();
         musicToggleButton = new javax.swing.JToggleButton();
+        jLabel1 = new javax.swing.JLabel();
+        coordinates = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Kiwi Count");
@@ -581,15 +586,21 @@ public class KiwiCountUI
             }
         });
 
+        jLabel1.setText("Coordinates :");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
                 .addComponent(gInstructionButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addComponent(musicToggleButton))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(coordinates)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -598,7 +609,11 @@ public class KiwiCountUI
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(gInstructionButton)
                     .addComponent(musicToggleButton))
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(coordinates))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         gInstructionButton.getAccessibleContext().setAccessibleName("ginstructions");
@@ -752,9 +767,11 @@ public class KiwiCountUI
     private javax.swing.JButton btnCount;
     private javax.swing.JButton btnDrop;
     private javax.swing.JButton btnUse;
+    private javax.swing.JLabel coordinates;
     private javax.swing.JTextArea descFeild;
     private javax.swing.JButton gInstructionButton;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
