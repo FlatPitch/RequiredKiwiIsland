@@ -44,17 +44,6 @@ public class GridSquarePanel extends javax.swing.JPanel
         boolean squareExplored = game.isExplored(row, column);
         
         ImageIcon terrianImg = new ImageIcon(terrain.getTerrainImage());
-   /*     Color      color;
-        
-        switch ( terrain )
-        {
-            case SAND     : color = Color.YELLOW; break;
-            case FOREST   : color = Color.GREEN;  break;
-            case WETLAND : color = Color.BLUE; break;
-            case SCRUB : color = Color.DARK_GRAY;   break;
-            case WATER    : color = Color.CYAN;   break;
-            default  : color = Color.LIGHT_GRAY; break;
-        }*/
         
         if ( squareExplored || squareVisible )
         {
@@ -86,14 +75,6 @@ public class GridSquarePanel extends javax.swing.JPanel
                     break;
             }
             
-            // Set the colour. 
-            if ( squareVisible && !squareExplored ) 
-            {
-         /*       // When explored the colour is brighter
-                color = new Color(Math.min(255, color.getRed()   + 128), 
-                                  Math.min(255, color.getGreen() + 128), 
-                                  Math.min(255, color.getBlue()  + 128));*/
-            }
             bgLabel.setIcon(terrianImg);
             // set border colour according to 
             // whether the player is in the grid square or not
