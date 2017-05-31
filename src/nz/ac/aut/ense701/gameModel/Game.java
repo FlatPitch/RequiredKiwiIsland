@@ -13,7 +13,6 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 import javax.imageio.ImageIO;
-import nz.ac.aut.ense701.gameModel.SoundsSingleton;
 
 /**
  * This is the class that knows the Kiwi Island game rules and state and
@@ -32,11 +31,11 @@ public class Game {
     public static final int WEIGHT_INDEX = 3;
     public static final int MAXSIZE_INDEX = 4;
     public static final int SIZE_INDEX = 5;
-    private ArrayList<Question> pestQuestions;
-    private ArrayList<Question> kiwiQuestions;
-    private Questions questions;
-    private Random rand = new Random();
-    private SoundsSingleton sound = new SoundsSingleton();
+    private final ArrayList<Question> pestQuestions;
+    private final ArrayList<Question> kiwiQuestions;
+    private final Questions questions;
+    private final Random rand = new Random();
+    private final Sounds sound = new Sounds();
 
     /**
      * A new instance of Kiwi island that reads data from "IslandData.txt".

@@ -23,7 +23,7 @@ import nz.ac.aut.ense701.gameModel.MoveDirection;
 import nz.ac.aut.ense701.gameModel.Music;
 import nz.ac.aut.ense701.gameModel.Occupant;
 import nz.ac.aut.ense701.gameModel.Questions;
-import nz.ac.aut.ense701.gameModel.SoundsSingleton;
+import nz.ac.aut.ense701.gameModel.Sounds;
 import nz.ac.aut.ense701.gameModel.Kiwi;
 import nz.ac.aut.ense701.gui.PopupQuestion;
 import nz.ac.aut.ense701.gameModel.Predator;
@@ -50,7 +50,7 @@ public class KiwiCountUI
     {
         assert game != null : "Make sure game object is created before UI";
         this.game = game;
-        this.sound = SoundsSingleton.getSoundsSingletonReference();
+        this.sound = Sounds.getSoundsSingletonReference();
         this.music = new Music();
         music.startMusic();
         setAsGameListener();
@@ -791,7 +791,7 @@ public class KiwiCountUI
 
     //description set up here
     private Game game;
-    private SoundsSingleton sound;
+    private Sounds sound;
     private Music music;
     private PopupQuestion popup = new PopupQuestion();
 

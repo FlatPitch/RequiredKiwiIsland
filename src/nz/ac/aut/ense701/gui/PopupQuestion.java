@@ -14,17 +14,17 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import nz.ac.aut.ense701.gameModel.Question;
-import nz.ac.aut.ense701.gameModel.SoundsSingleton;
+import nz.ac.aut.ense701.gameModel.Sounds;
 
 /**
  *
  * @author Liandri
  */
 public class PopupQuestion {
-    SoundsSingleton sound;
+    Sounds sound;
 
     public PopupQuestion() {
-        this.sound = SoundsSingleton.getSoundsSingletonReference();
+        this.sound = Sounds.getSoundsSingletonReference();
     }
     public boolean makePopup(Question question){
         boolean selected = false;
