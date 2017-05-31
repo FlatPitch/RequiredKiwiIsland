@@ -22,5 +22,7 @@ public class Moves {
     public int getNumberOfMoves(){
         return this.numberOfMoves;
     }
-    
+    public void resetMoves(){
+        this.numberOfMoves = 0;
+    }
 }

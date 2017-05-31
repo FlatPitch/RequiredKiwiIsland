@@ -84,6 +84,8 @@ public class KiwiCountUI
                     game.getLoseMessage(), "Game over!",
                     JOptionPane.INFORMATION_MESSAGE);
             game.createNewGame();
+            moves.resetMoves();
+            jLabel3.setText(Integer.toString(moves.getNumberOfMoves()));
         }
         else if ( game.getState() == GameState.WON )
         {
@@ -93,6 +95,8 @@ public class KiwiCountUI
                     game.getWinMessage(), "Well Done!",
                     JOptionPane.INFORMATION_MESSAGE);
             game.createNewGame();
+            moves.resetMoves();
+            jLabel3.setText(Integer.toString(moves.getNumberOfMoves()));
         }
         else if (game.messageForPlayer())
         {
@@ -165,6 +169,7 @@ public class KiwiCountUI
         
         //update description field for terrain
         descFeild.setText(game.getTerrain(game.getPlayer().getPosition().getRow(),game.getPlayer().getPosition().getColumn()).getTerrainDescription());
+        //update the number of moves
         jLabel3.setText(Integer.toString(moves.getNumberOfMoves()));
 
         //update the player coordinates text label
