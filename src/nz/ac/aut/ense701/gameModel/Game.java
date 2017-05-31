@@ -556,7 +556,7 @@ public class Game {
             player.moveToPosition(newPosition, terrain);
             island.updatePlayerPosition(player);
             successfulMove = true;
-
+            
             // Is there a hazard?
             checkForHazard();
 
