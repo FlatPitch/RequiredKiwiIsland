@@ -25,6 +25,7 @@ import nz.ac.aut.ense701.gameModel.Occupant;
 import nz.ac.aut.ense701.gameModel.Questions;
 import nz.ac.aut.ense701.gameModel.Sounds;
 import nz.ac.aut.ense701.gameModel.Kiwi;
+import nz.ac.aut.ense701.gameModel.Moves;
 import nz.ac.aut.ense701.gui.PopupQuestion;
 import nz.ac.aut.ense701.gameModel.Predator;
 /*
@@ -53,6 +54,7 @@ public class KiwiCountUI
         this.sound = Sounds.getSoundsSingletonReference();
         this.music = new Music();
         music.startMusic();
+        this.moves = new Moves();
         setAsGameListener();
         initComponents();
         initIslandGrid();
@@ -163,6 +165,7 @@ public class KiwiCountUI
         
         //update description field for terrain
         descFeild.setText(game.getTerrain(game.getPlayer().getPosition().getRow(),game.getPlayer().getPosition().getColumn()).getTerrainDescription());
+        jLabel3.setText(Integer.toString(moves.getNumberOfMoves()));
 
         //update the player coordinates text label
         this.coordinates.setText(game.getPlayer().getPosition().getRow()+", "+game.getPlayer().getPosition().getColumn());
@@ -215,6 +218,8 @@ public class KiwiCountUI
         musicToggleButton = new javax.swing.JToggleButton();
         jLabel1 = new javax.swing.JLabel();
         coordinates = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Kiwi Count");
@@ -588,19 +593,31 @@ public class KiwiCountUI
 
         jLabel1.setText("Coordinates :");
 
+        jLabel2.setText("Moves :");
+        jLabel2.setToolTipText("");
+
+        jLabel3.setToolTipText("");
+        jLabel3.setName(""); // NOI18N
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(gInstructionButton)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(gInstructionButton)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(coordinates)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-                .addComponent(musicToggleButton))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(coordinates)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addComponent(musicToggleButton)))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -610,9 +627,12 @@ public class KiwiCountUI
                     .addComponent(gInstructionButton)
                     .addComponent(musicToggleButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(coordinates))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(coordinates)
+                        .addComponent(jLabel2))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
 
@@ -772,6 +792,8 @@ public class KiwiCountUI
     private javax.swing.JButton gInstructionButton;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
@@ -794,6 +816,7 @@ public class KiwiCountUI
     private Sounds sound;
     private Music music;
     private PopupQuestion popup = new PopupQuestion();
+    private Moves moves;
 
     
     
@@ -804,25 +827,38 @@ public class KiwiCountUI
         @Override
         public boolean dispatchKeyEvent(KeyEvent e) {
             if (e.getID() == KeyEvent.KEY_PRESSED) {
+                boolean hasMoved = false;
                 switch (e.getKeyCode()){
                     case VK_DOWN:
                     case VK_S:
-                        game.playerMove(MoveDirection.SOUTH);
+                        hasMoved = game.playerMove(MoveDirection.SOUTH);
+                        if(hasMoved){
+                            moves.addMove();
+                        }
                         break;
                         
                     case VK_UP:
                     case VK_W:
-                        game.playerMove(MoveDirection.NORTH);
+                        hasMoved = game.playerMove(MoveDirection.NORTH);
+                        if(hasMoved){
+                            moves.addMove();
+                        }
                         break;
                         
                     case VK_RIGHT:
                     case VK_D:
-                        game.playerMove(MoveDirection.EAST);
+                        hasMoved = game.playerMove(MoveDirection.EAST);
+                        if(hasMoved){
+                            moves.addMove();
+                        }
                         break;
                         
                     case VK_LEFT:
                     case VK_A:
-                        game.playerMove(MoveDirection.WEST);
+                        hasMoved = game.playerMove(MoveDirection.WEST);
+                        if(hasMoved){
+                            moves.addMove();
+                        }
                         break;
                         
                 }
