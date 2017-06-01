@@ -5,6 +5,7 @@ import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 /**
  * Kiwi represents a kiwi living on the island
@@ -21,7 +22,7 @@ public class Kiwi  extends Fauna
      * @param name the name of the kiwi object
      * @param description a longer description of the kiwi
      */
-    public Kiwi(Position pos, String name, String description, Image faunaImage, Image iconImage) 
+    public Kiwi(Position pos, String name, String description, Image faunaImage, ImageIcon iconImage) 
     {
         super(pos, name, description, faunaImage, iconImage);
         counted = false;

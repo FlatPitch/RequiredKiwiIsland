@@ -1,6 +1,7 @@
 
 package nz.ac.aut.ense701.gameModel;
 import java.awt.Image;
+import javax.swing.ImageIcon;
 
 /**
  * This class represents a hazard that can be found on the island
@@ -22,7 +23,7 @@ public class Hazard extends Occupant {
      * @param description a more detailed description of hazard
      * @param impact on player
      */
-    public Hazard(Position position, String name, String description, double impact, Image hazardImage, Image iconImage) {
+    public Hazard(Position position, String name, String description, double impact, Image hazardImage, ImageIcon iconImage) {
         
         super(position, name, description, hazardImage, iconImage);
         this.impact = impact;

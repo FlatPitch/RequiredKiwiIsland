@@ -13,6 +13,7 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 /**
  * This is the class that knows the Kiwi Island game rules and state and
@@ -850,11 +851,11 @@ public class Game {
                 }
             } else if (occType.equals("H")) {
                 double impact = input.nextDouble();
-                try {
+        /*        try {
                     occupant = new Hazard(occPos, occName, occDesc, impact, getImageFromLocation(imageName),getIconImageFromLocation(imageName));
-                } catch (IOException ex) {
+                } catch (IOException ex) {*/
                     occupant = new Hazard(occPos, occName, occDesc, impact, null, null);
-                }
+          //      }
             } else if (occType.equals("K")) {
                 try {
                     occupant = new Kiwi(occPos, occName, occDesc, getImageFromLocation(imageName),getIconImageFromLocation(imageName));
@@ -922,11 +923,11 @@ public class Game {
             return (ImageIO.read(new File("Images/"+imgName)));
         }
        
-        private Image getIconImageFromLocation(String imgName) throws IOException {
+        private ImageIcon getIconImageFromLocation(String imgName) throws IOException {
             imgName = imgName.substring(0,imgName.length()-4);
 
-            return (ImageIO.read(new File("Images/Icons/"+imgName+"_icon.png")).getScaledInstance(21, 51,
-                            java.awt.Image.SCALE_SMOOTH));
+            return (new ImageIcon(ImageIO.read(new File("Images/Icons/"+imgName+"_icon.png")).getScaledInstance(21, 51,
+                            java.awt.Image.SCALE_SMOOTH)));
         }
        
 

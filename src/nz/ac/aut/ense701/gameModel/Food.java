@@ -1,6 +1,7 @@
 package nz.ac.aut.ense701.gameModel;
 
 import java.awt.Image;
+import javax.swing.ImageIcon;
 
 /**
  * This class represents food that can be found on the island
@@ -23,7 +24,7 @@ public class Food extends Item
      * @param energy stamina contribution of the food object
      *               when the player uses the object
      */
-    public Food(Position pos, String name, String description, double weight, double size, double energy, Image foodImage, Image iconImage) 
+    public Food(Position pos, String name, String description, double weight, double size, double energy, Image foodImage, ImageIcon iconImage) 
     {
         super(pos, name, description,weight, size, foodImage, iconImage);
         this.energy = energy;

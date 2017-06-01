@@ -56,13 +56,14 @@ public class HazardTest extends junit.framework.TestCase
     public void testGetImpact() {
         assertEquals(1.0, fatal.getImpact());
     }
-    
+
+/* HAZARDS ARE NO LONGER FATAL    
     @Test
     public void testIsFatal()
     {
         assertTrue("Should be fatal", fatal.isFatal());
         assertFalse("Should not be fatal", nonFatal.isFatal());
-    }
+    }*/
     
     @Test
     public void testIsBreakTrap(){

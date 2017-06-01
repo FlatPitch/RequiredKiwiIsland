@@ -1,6 +1,7 @@
 package nz.ac.aut.ense701.gameModel;
 
 import java.awt.Image;
+import javax.swing.ImageIcon;
 
 
 /**
@@ -20,7 +21,7 @@ public  abstract class Item extends Occupant
      * @param name the name of the item
      * @param description a longer description of the item
      */
-    public Item(Position pos, String name, String description, double weight, double size, Image itemImage,Image iconImage) 
+    public Item(Position pos, String name, String description, double weight, double size, Image itemImage,ImageIcon iconImage) 
     {
         super(pos, name, description, itemImage, iconImage);
         this.weight = weight;

@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Set;
 import java.util.HashSet;
+import javax.swing.ImageIcon;
 
 /**
  * Player represents the player in the KiwiIsland game.
@@ -24,7 +25,7 @@ public class Player
     private Set<Item> backpack;
     private final double    maxBackpackWeight;
     private final double    maxBackpackSize;   
-    private Image playerImage;
+    private ImageIcon playerImage;
     /**
      * Constructs a new player object.
      * 
@@ -35,7 +36,7 @@ public class Player
      * @param maxBackpackSize the maximum size items that will fit in the backpack     
      */    
     public Player(Position position, String name, double maxStamina,
-                  double maxBackpackWeight, double maxBackpackSize, Image pImage)
+                  double maxBackpackWeight, double maxBackpackSize, ImageIcon pImage)
     {
        this.position          = position;
        this.name              = name;
@@ -56,7 +57,7 @@ public class Player
      * Gets players image
      * @return players image
      */
-    public Image gPlayerImage(){
+    public ImageIcon gPlayerImage(){
         return playerImage;
     }
     /**

@@ -1,6 +1,7 @@
 package nz.ac.aut.ense701.gameModel;
 
 import java.awt.Image;
+import javax.swing.ImageIcon;
 
 /**
  * Abstract base class for occupants that inhabit Kiwi Island.
@@ -15,7 +16,7 @@ public abstract class Occupant
     private final String   name;
     private final String   description;   
     private Image occImage;
-    private Image occImageIcon;
+    private ImageIcon occImageIcon;
     private boolean questionAsked;
 
     /**
@@ -24,7 +25,7 @@ public abstract class Occupant
      * @param name the name of the occupant
      * @param description a longer description
      */
-    public Occupant(Position position, String name, String description, Image occImage, Image occImageIcon) 
+    public Occupant(Position position, String name, String description, Image occImage, ImageIcon occImageIcon) 
     {
         this.position    = position;
         this.name        = name;
@@ -92,7 +93,7 @@ public abstract class Occupant
      * 
      * @return the image
      */
-    public Image getOccImageIcon(){
+    public ImageIcon getOccImageIcon(){
         return this.occImageIcon;
     }
     

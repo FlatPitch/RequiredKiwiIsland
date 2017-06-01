@@ -1,6 +1,7 @@
 package nz.ac.aut.ense701.gameModel;
 
 import java.awt.Image;
+import javax.swing.ImageIcon;
 
 /**
  * Predator represents a predator on the island.
@@ -18,7 +19,7 @@ public class Predator extends Fauna
      * @param name the name of the predator object
      * @param description a longer description of the predator object
      */
-    public Predator(Position pos, String name, String description, Image predImage, Image iconImage) 
+    public Predator(Position pos, String name, String description, Image predImage, ImageIcon iconImage) 
     {
         super(pos, name, description, predImage, iconImage);
     } 

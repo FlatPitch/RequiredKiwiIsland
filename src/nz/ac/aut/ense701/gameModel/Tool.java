@@ -1,6 +1,7 @@
 package nz.ac.aut.ense701.gameModel;
 
 import java.awt.Image;
+import javax.swing.ImageIcon;
 
 /**
  * This class represents a tool that can be found on the island
@@ -22,7 +23,7 @@ public class Tool extends Item
      * @param weight the weight of the tool
      * @param size the size of the tool
      */
-    public Tool(Position pos, String name, String description, double weight, double size, Image toolImage, Image iconImage) 
+    public Tool(Position pos, String name, String description, double weight, double size, Image toolImage, ImageIcon iconImage) 
     {
         super(pos, name, description, weight, size, toolImage, iconImage);
         this.broken = false;

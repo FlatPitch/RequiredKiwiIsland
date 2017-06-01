@@ -3,6 +3,7 @@ package nz.ac.aut.ense701.gameModel;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -25,7 +26,7 @@ public class FaunaTest {
         Island island = new Island(5,5);
         Position position = new Position(island, 4,4);
         Fauna instance = new Fauna(position, "Oystercatcher", " A nesting oystercatcher", 
-                        ImageIO.read(new File("Images/Oystercatcher.jpg")),ImageIO.read(new File("Images/Icons/Oystercatcher_icon.png")));
+                        ImageIO.read(new File("Images/Oystercatcher.jpg")),new ImageIcon(ImageIO.read(new File("Images/Icons/Oystercatcher_icon.png"))));
         String expResult = "F";
         String result = instance.getStringRepresentation();
         assertEquals(expResult, result);

@@ -53,19 +53,19 @@ public class GridSquarePanel extends javax.swing.JPanel
             switch (occupants.length){
                 case 1:
                     centreLabel.setIcon(null); 
-                    leftLabel.setIcon(new ImageIcon(occupants[0].getOccImageIcon()));
+                    leftLabel.setIcon(occupants[0].getOccImageIcon());
                     rightLabel.setIcon(null);            
                     break;
                 case 2:
                     centreLabel.setIcon(null);  
-                    leftLabel.setIcon(new ImageIcon(occupants[0].getOccImageIcon()));
-                    rightLabel.setIcon(new ImageIcon(occupants[1].getOccImageIcon())); 
+                    leftLabel.setIcon(occupants[0].getOccImageIcon());
+                    rightLabel.setIcon(occupants[1].getOccImageIcon()); 
 
                     break;
                 case 3:
                     centreLabel.setIcon(null); 
-                    leftLabel.setIcon(new ImageIcon(occupants[0].getOccImageIcon()));
-                    rightLabel.setIcon(new ImageIcon(occupants[1].getOccImageIcon())); 
+                    leftLabel.setIcon(occupants[0].getOccImageIcon());
+                    rightLabel.setIcon(occupants[1].getOccImageIcon()); 
 
                     break;
                 default:
@@ -81,8 +81,7 @@ public class GridSquarePanel extends javax.swing.JPanel
             // and do the players icon
             setBorder(game.hasPlayer(row,column) ? activeBorder : normalBorder);
             if(game.hasPlayer(row,column)){
-                centreLabel.setIcon(new ImageIcon(game.getPlayer().gPlayerImage().getScaledInstance(21, 51,
-                            java.awt.Image.SCALE_SMOOTH)));
+                centreLabel.setIcon(game.getPlayer().gPlayerImage());
             }
             
         }

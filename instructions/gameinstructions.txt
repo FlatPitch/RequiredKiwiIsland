@@ -5,7 +5,7 @@ Use the A_D (left-right), W_S (up-down) buttons to move around the map.
 Use the object viewer to interact with certain objects
 Use the inventory viewer to use traps or food
 Keep on eye on your stamina, food items will replenish your energy
-Watch out for hazards, they will reduce your stamina but some can be fatal!
+There are hazards that are hidden, be careful as they will reduce your stamina!
 Broken traps can be repaired with the screwdriver
 Win the game to get a voucher!
 
