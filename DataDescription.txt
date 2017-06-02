@@ -11,7 +11,7 @@ Island 2D terrain description:
 "."=Sand, "*"=Forest, "#"=Wetland, "^"=Scrub, "~"=Water
 
 Player details: 
-name [String], maximum stamina level [double], start position row [int], start position column [int], maximum backpack weight [double], maximum backpack size [double],
+name [String], start position row [int], start position column [int], maximum stamina level [double],  maximum backpack weight [double], maximum backpack size [double],
 
 int Number of occupants that follow
 Occupant type [String]: 

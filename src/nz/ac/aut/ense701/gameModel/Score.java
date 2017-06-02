@@ -3,13 +3,14 @@ package nz.ac.aut.ense701.gameModel;
 /**
  * This class keeps track of a player's score
  * 
- * @author Thrish
+ * @author Thrishen
  */
 public class Score {
      private int score;
      private final int hazardPenalty = -50;
      private final int kiwicountPoints = 100;
      private final int trapPredatorPoints = 100;
+     
      
      public Score(){
          this.score = 0;
