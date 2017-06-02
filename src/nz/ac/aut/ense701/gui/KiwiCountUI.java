@@ -22,7 +22,6 @@ import nz.ac.aut.ense701.gameModel.Question;
 import nz.ac.aut.ense701.gameModel.MoveDirection;
 import nz.ac.aut.ense701.gameModel.Music;
 import nz.ac.aut.ense701.gameModel.Occupant;
-import nz.ac.aut.ense701.gameModel.Questions;
 import nz.ac.aut.ense701.gameModel.Sounds;
 import nz.ac.aut.ense701.gameModel.Kiwi;
 import nz.ac.aut.ense701.gameModel.Moves;
