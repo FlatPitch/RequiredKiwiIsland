@@ -13,9 +13,17 @@ public class Question {
     private String option1 = "";
     private String option2 = "";
     private String option3 = "";
-    private String option4 = "";
-    
+    private String option4 = "";   
     private int answer = 0;
+    
+    public Question(String question, String opt1, String opt2, String opt3, String opt4, int answer){
+        this.question = question;
+        this.option1 = opt1;
+        this.option2 = opt2;
+        this.option3 = opt3;
+        this.option4 = opt4;
+        this.answer = answer;
+    }
 
     public String getQuestion() {
         return question;

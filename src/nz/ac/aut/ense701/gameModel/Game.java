@@ -1,8 +1,10 @@
 package nz.ac.aut.ense701.gameModel;
 
 import java.awt.Image;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.security.SecureRandom;
 import java.util.ArrayList;
@@ -12,6 +14,8 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
@@ -32,21 +36,16 @@ public class Game {
     public static final int WEIGHT_INDEX = 3;
     public static final int MAXSIZE_INDEX = 4;
     public static final int SIZE_INDEX = 5;
-    private final ArrayList<Question> pestQuestions;
-    private final ArrayList<Question> kiwiQuestions;
-    private final Questions questions;
+    private ArrayList<Question> pestQuestions;
+    private ArrayList<Question> kiwiQuestions;
     private final Random rand = new Random();
     private final Sounds sound = new Sounds();
 
     /**
-     * A new instance of Kiwi island that reads data from "IslandData.txt".
+     * A new instance of Kiwi island.
      */
     public Game() {
         eventListeners = new HashSet<GameEventListener>();
-        this.questions = new Questions();
-        this.pestQuestions = questions.getPestsQuestionsArray();
-        this.kiwiQuestions = questions.getKiwiQuestionsArray();
-        
         createNewGame();
     }
 
@@ -59,6 +58,8 @@ public class Game {
         predatorsTrapped = 0;
         kiwiCount = 0;
         initialiseIslandFromFile(selectMapFile());
+        this.kiwiQuestions = buildQuestions("kiwiQuestions.txt");
+        this.pestQuestions = buildQuestions("pestQuestions.txt");
         drawIsland();
         state = GameState.PLAYING;
         winMessage = "";
@@ -74,6 +75,8 @@ public class Game {
         predatorsTrapped = 0;
         kiwiCount = 0;
         initialiseIslandFromFile(map);
+        this.kiwiQuestions = buildQuestions("kiwiQuestions.txt");
+        this.pestQuestions = buildQuestions("pestQuestions.txt");
         drawIsland();
         state = GameState.PLAYING;
         winMessage = "";
@@ -851,11 +854,7 @@ public class Game {
                 }
             } else if (occType.equals("H")) {
                 double impact = input.nextDouble();
-        /*        try {
-                    occupant = new Hazard(occPos, occName, occDesc, impact, getImageFromLocation(imageName),getIconImageFromLocation(imageName));
-                } catch (IOException ex) {*/
                     occupant = new Hazard(occPos, occName, occDesc, impact, null, null);
-          //      }
             } else if (occType.equals("K")) {
                 try {
                     occupant = new Kiwi(occPos, occName, occDesc, getImageFromLocation(imageName),getIconImageFromLocation(imageName));
@@ -913,6 +912,33 @@ public class Game {
     }
     
     /**
+     * Author: Glen Osborne, Brendan Allan
+     * Reads questions from a text file and creates Question objects
+     * @param filename
+     * @return 
+     */
+    private ArrayList<Question> buildQuestions(String filename) {
+        BufferedReader br = null;
+        try {
+            ArrayList<Question> questions = new ArrayList<Question>();
+            br = new BufferedReader(new FileReader("questions/"+filename));
+            int numOfQuestions = Integer.parseInt(br.readLine());
+            for (int i = 0; i < numOfQuestions; ++i){
+                questions.add(new Question(br.readLine(), br.readLine(), br.readLine(), br.readLine(), 
+                        br.readLine(), Integer.parseInt(br.readLine())));
+            }
+            return questions;
+            
+        } catch (FileNotFoundException ex) {
+            System.err.println("Error reading file");
+            return null;
+        } catch (IOException ex) {
+            System.err.println("Error reading line");
+            return null;
+        }
+    }
+
+    /**
      * Returns the description of an Occupant
      */
         public String getOccupantDescription(Occupant occ){
@@ -947,6 +973,12 @@ public class Game {
         private String loseMessage = "";
         private String playerMessage = "";
         private String prevMap = "";
+
+    
+
+ 
+
+    
 
 
 
