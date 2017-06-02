@@ -37,8 +37,11 @@ public class Score {
      }  
      
       public int getSCore(){
-          return this.score;
-      }
-     
+          if(this.score < 0){
+              return 0;              
+          }else{
+              return this.score;
+          }          
+      }     
 }
 
