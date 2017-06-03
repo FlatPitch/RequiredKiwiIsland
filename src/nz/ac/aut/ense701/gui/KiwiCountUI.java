@@ -85,6 +85,7 @@ public class KiwiCountUI
             game.createNewGame();
             moves.resetMoves();
             jLabel3.setText(Integer.toString(moves.getNumberOfMoves()));
+            scoreLabel.setText("0");
         }
         else if ( game.getState() == GameState.WON )
         {
@@ -96,6 +97,7 @@ public class KiwiCountUI
             game.createNewGame();
             moves.resetMoves();
             jLabel3.setText(Integer.toString(moves.getNumberOfMoves()));
+            scoreLabel.setText("0");
         }
         else if (game.messageForPlayer())
         {
