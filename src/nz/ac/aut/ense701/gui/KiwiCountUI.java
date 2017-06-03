@@ -9,8 +9,6 @@ import java.awt.KeyboardFocusManager;
 import java.awt.event.KeyEvent;
 import static java.awt.event.KeyEvent.*;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Random;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -18,13 +16,10 @@ import javax.swing.JProgressBar;
 import nz.ac.aut.ense701.gameModel.Game;
 import nz.ac.aut.ense701.gameModel.GameEventListener;
 import nz.ac.aut.ense701.gameModel.GameState;
-import nz.ac.aut.ense701.gameModel.Question;
 import nz.ac.aut.ense701.gameModel.MoveDirection;
-import nz.ac.aut.ense701.gameModel.Music;
 import nz.ac.aut.ense701.gameModel.Occupant;
 import nz.ac.aut.ense701.gameModel.Sounds;
 import nz.ac.aut.ense701.gameModel.Kiwi;
-import nz.ac.aut.ense701.gui.PopupQuestion;
 import nz.ac.aut.ense701.gameModel.Predator;
 /*
  * User interface form for Kiwi Island.
@@ -50,8 +45,7 @@ public class KiwiCountUI
         assert game != null : "Make sure game object is created before UI";
         this.game = game;
         this.sound = Sounds.getSoundsSingletonReference();
-        this.music = new Music();
-        music.startMusic();
+        sound.startMusic();
         setAsGameListener();
         initComponents();
         initIslandGrid();
@@ -778,10 +772,10 @@ public class KiwiCountUI
     private void musicToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_musicToggleButtonActionPerformed
         if (musicToggleButton.isSelected()){
             musicToggleButton.setText("Turn Music on");
-            music.stopMusic();
+            sound.stopMusic();
         }else{
             musicToggleButton.setText("Turn Music off");
-            music.startMusic();
+            sound.startMusic();
         }
     }//GEN-LAST:event_musicToggleButtonActionPerformed
 
@@ -845,7 +839,6 @@ public class KiwiCountUI
     //description set up here
     private Game game;
     private Sounds sound;
-    private Music music;
     private PopupQuestion popup = new PopupQuestion();
 
     

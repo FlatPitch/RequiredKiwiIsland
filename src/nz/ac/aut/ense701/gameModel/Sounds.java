@@ -6,6 +6,7 @@ package nz.ac.aut.ense701.gameModel;
 
 import javafx.scene.media.AudioClip;
 import java.net.URL;
+import static javafx.scene.media.AudioClip.INDEFINITE;
 
 /**
  *
@@ -29,6 +30,10 @@ public class Sounds {
         }
         return instance;
     }
+        //import wav file for background music
+
+    final URL URL = getClass().getResource("/nz/ac/aut/ense701/effects/music.wav");
+    final AudioClip music = new AudioClip(URL.toString());
     //increase the amount of stamina sound effect
     final URL URL1 = getClass().getResource("/nz/ac/aut/ense701/effects/consume.wav");
     final AudioClip clip1 = new AudioClip(URL1.toString());
@@ -79,5 +84,21 @@ public class Sounds {
     //incorrect question answer
     public void playWrong() {
         clip7.play();
+    }
+        /* 
+     * Starts game music. Plays it indefinitely.
+     *   
+     */
+    public void startMusic() {
+        music.setCycleCount(INDEFINITE);
+        music.play();
+    }
+
+    /* 
+     * Stops game music.
+     *   
+     */
+    public void stopMusic() {
+        music.stop();
     }
 }
