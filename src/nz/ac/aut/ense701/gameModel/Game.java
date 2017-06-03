@@ -39,7 +39,6 @@ public class Game {
     private ArrayList<Question> pestQuestions;
     private ArrayList<Question> kiwiQuestions;
     private final Random rand = new Random();
-    private final Sounds sound = new Sounds();
 
     /**
      * A new instance of Kiwi island.

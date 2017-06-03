@@ -382,4 +382,11 @@ public class Player
     public void resetMoves(){
         this.numberOfMoves = 0;
     }
+        public boolean testIfNewLowestMoves(int current){
+        boolean testScore = false;
+        if(current<this.numberOfMoves){
+            testScore = true;
+        }
+        return testScore;
+    }
 }
