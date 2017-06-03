@@ -396,6 +396,10 @@ public class Game {
     public String getWinMessage() {
         return winMessage;
     }
+    
+    public int getPlayerScore(){
+        return score.getSCore();
+    }
 
     /**
      * Details of why player lost
