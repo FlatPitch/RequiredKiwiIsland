@@ -15,8 +15,8 @@ public abstract class Occupant
     private Position position;
     private final String   name;
     private final String   description;   
-    private Image occImage;
-    private ImageIcon occImageIcon;
+    private final Image occImage;
+    private final ImageIcon occImageIcon;
     private boolean questionAsked;
 
     /**

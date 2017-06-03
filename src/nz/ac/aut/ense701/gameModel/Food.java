@@ -12,7 +12,7 @@ import javax.swing.ImageIcon;
  */
 public class Food extends Item
 {
-    private double energy;
+    private final double energy;
 
     /**
      * Construct a food object with known attributes.

@@ -19,7 +19,7 @@ public class GridSquare
     private boolean visible;
     private boolean explored;
     private Player  player;
-    private Set<Occupant> occupants;
+    private final Set<Occupant> occupants;
   
     /**
      * Creates a new GridSquare instance.

@@ -12,8 +12,8 @@ import javax.swing.ImageIcon;
  */
 public  abstract class Item extends Occupant
 {
-    private double weight;
-    private double size;
+    private final double weight;
+    private final double size;
 
     /**
      * Construct an item with known attributes.

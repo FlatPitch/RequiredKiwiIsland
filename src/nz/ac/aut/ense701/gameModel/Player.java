@@ -21,10 +21,10 @@ public class Player
     private final double    maxStamina;
     private double    stamina;
     private boolean   alive;
-    private Set<Item> backpack;
+    private final Set<Item> backpack;
     private final double    maxBackpackWeight;
     private final double    maxBackpackSize;   
-    private ImageIcon playerImage;
+    private final ImageIcon playerImage;
     private int numberOfMoves;
 
     /**
@@ -34,7 +34,8 @@ public class Player
      * @param name the name of the player
      * @param maxStamina the maximum stamina level of the player
      * @param maxBackpackWeight the most weight that can be in a backpack
-     * @param maxBackpackSize the maximum size items that will fit in the backpack     
+     * @param maxBackpackSize the maximum size items that will fit in the backpack 
+     * @param pImage the image used on the grid square
      */    
     public Player(Position position, String name, double maxStamina,
                   double maxBackpackWeight, double maxBackpackSize, ImageIcon pImage)
@@ -386,6 +387,11 @@ public class Player
     public void resetMoves(){
         this.numberOfMoves = 0;
     }
+    /**
+     * 
+     * @param current
+     * @return boolean test if the moves are lower than best
+     */
         public boolean testIfNewLowestMoves(int current){
         boolean testScore = false;
         if(current<this.numberOfMoves){

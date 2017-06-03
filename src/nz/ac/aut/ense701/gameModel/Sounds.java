@@ -29,6 +29,7 @@ public class Sounds {
 
     /**
      *  method to allow access to single instance of class
+     * @return instance of the sound singleton
      **/
     public static Sounds getSoundsSingletonReference() {
         if (instance == null) {
@@ -110,19 +111,19 @@ public class Sounds {
     public void playWrong() {
         clip7.play();
     }
-        /* 
+        /**
      * Starts game music. Plays it indefinitely.
      *   
-     */
+     **/
     public void startMusic() {
         music.setCycleCount(INDEFINITE);
         music.play();
     }
 
-    /* 
+    /**
      * Stops game music.
      *   
-     */
+     **/
     public void stopMusic() {
         music.stop();
     }

@@ -14,7 +14,7 @@ public class Hazard extends Occupant {
     
     private final double impact;
     private final double FATAL_IMPACT = 1.0;
-    private Sounds sound = Sounds.getSoundsSingletonReference();
+    private final Sounds sound = Sounds.getSoundsSingletonReference();
 
     /**
      * Create a hazard on the island
