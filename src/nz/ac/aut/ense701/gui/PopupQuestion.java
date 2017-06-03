@@ -18,7 +18,7 @@ import nz.ac.aut.ense701.gameModel.Sounds;
 
 /**
  *
- * @author Liandri
+ * @author Glen
  */
 public class PopupQuestion {
     Sounds sound;
