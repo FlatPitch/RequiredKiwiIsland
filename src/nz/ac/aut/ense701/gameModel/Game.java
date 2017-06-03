@@ -955,16 +955,32 @@ public class Game {
             return (occ.getDescription());
         }
         
+        /**
+         * Returns an Image from File Location
+         * @param imgName
+         * @return
+         * @throws IOException 
+         */
         private Image getImageFromLocation(String imgName) throws IOException {
             return (ImageIO.read(new File("Images/"+imgName)));
         }
        
+        /**
+         * Returns an ImageIcon from a file location
+         * @param imgName
+         * @return
+         * @throws IOException 
+         */
         private ImageIcon getIconImageFromLocation(String imgName) throws IOException {
             imgName = imgName.substring(0,imgName.length()-4);
 
             return (new ImageIcon(ImageIO.read(new File("Images/Icons/"+imgName+"_icon.png")).getScaledInstance(21, 51,
                             java.awt.Image.SCALE_SMOOTH)));
         }
+        
+        /**
+         * Returns an array of Kiwi Question objects
+         * @return 
         /**
          * get the list of questions to ask for kiwi
          * @return  array list of question objects
@@ -972,6 +988,10 @@ public class Game {
        public ArrayList<Question> getKiwi(){
            return this.kiwiQuestions;
        }
+       
+       /**
+        * Returns an array of Kiwi Question objects
+        * @return 
        /**
         * get the list of questions to ask for pests
         * @return array list of pest question
