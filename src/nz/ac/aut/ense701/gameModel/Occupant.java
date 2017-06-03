@@ -24,6 +24,8 @@ public abstract class Occupant
      * @param position the position of the occupant
      * @param name the name of the occupant
      * @param description a longer description
+     * @param occImage an image of the Occupant on the tile
+     * @param occImageIcon the image used for the description picture
      */
     public Occupant(Position position, String name, String description, Image occImage, ImageIcon occImageIcon) 
     {

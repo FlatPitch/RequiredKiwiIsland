@@ -14,8 +14,6 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
@@ -99,6 +97,7 @@ public class Game {
     }
     /**
      * get random kiwiQuestion
+     * @return Question class full of question, options and answer
      */
     public Question getKiwiQuestion(){
         return kiwiQuestions.get(rand.nextInt(kiwiQuestions.size()-1));
@@ -943,6 +942,7 @@ public class Game {
 
     /**
      * Returns the description of an Occupant
+     * @return description of occupant
      */
         public String getOccupantDescription(Occupant occ){
             return (occ.getDescription());

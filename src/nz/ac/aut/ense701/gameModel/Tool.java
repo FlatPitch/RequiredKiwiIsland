@@ -22,6 +22,8 @@ public class Tool extends Item
      * @param description a longer description of the tool
      * @param weight the weight of the tool
      * @param size the size of the tool
+     * @param toolImage the image for tile square
+     * @param iconImage the picture for the description box
      */
     public Tool(Position pos, String name, String description, double weight, double size, Image toolImage, ImageIcon iconImage) 
     {

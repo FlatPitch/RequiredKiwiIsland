@@ -1,6 +1,5 @@
 package nz.ac.aut.ense701.gameModel;
 
-import java.awt.Image;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Set;
@@ -353,7 +352,7 @@ public class Player
     /**
      * Moves the player over terrain to a new position.
      * 
-     * @param position the new position of the player
+     * @param newPosition the new position of the player
      * @param terrain the terrain to move over
      */
     public void moveToPosition(Position newPosition, Terrain terrain)

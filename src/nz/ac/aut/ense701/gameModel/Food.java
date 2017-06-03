@@ -23,6 +23,8 @@ public class Food extends Item
      * @param size the size of the food object
      * @param energy stamina contribution of the food object
      *               when the player uses the object
+     * @param foodImage the images for food
+     * @param iconImage the image for the icon
      */
     public Food(Position pos, String name, String description, double weight, double size, double energy, Image foodImage, ImageIcon iconImage) 
     {

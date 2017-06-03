@@ -16,6 +16,7 @@ public class Question {
     private String option4 = "";   
     private int answer = 0;
     
+    //constructor
     public Question(String question, String opt1, String opt2, String opt3, String opt4, int answer){
         this.question = question;
         this.option1 = opt1;
@@ -72,7 +73,11 @@ public class Question {
     public void setAnswer(int answer) {
         this.answer = answer;
     }
-    
+    /**
+     * test if selected answer is correct
+     * @param answer
+     * @return boolean
+     */
     public boolean checkAnswer(int answer){
         if (answer == this.answer){
             return true;

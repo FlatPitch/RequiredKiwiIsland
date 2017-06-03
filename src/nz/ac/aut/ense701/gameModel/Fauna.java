@@ -21,6 +21,8 @@ public class Fauna extends Occupant
      * @param pos the position of the kiwi
      * @param name the name of the kiwi
      * @param description a longer description of the kiwi
+     * @param faunaImage a picture of the fauna
+     * @param iconImage a small picture for the icon
      */
     public Fauna(Position pos, String name, String description, Image faunaImage, ImageIcon iconImage) 
     {

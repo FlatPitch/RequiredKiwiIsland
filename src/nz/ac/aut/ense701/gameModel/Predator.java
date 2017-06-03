@@ -18,6 +18,8 @@ public class Predator extends Fauna
      * @param pos the position of the predator object
      * @param name the name of the predator object
      * @param description a longer description of the predator object
+     * @param predImage the image of the Predator for the description box
+     * @param iconImage the image for the tile square
      */
     public Predator(Position pos, String name, String description, Image predImage, ImageIcon iconImage) 
     {

@@ -22,6 +22,8 @@ public class Hazard extends Occupant {
      * @param name of hazard.
      * @param description a more detailed description of hazard
      * @param impact on player
+     * @param hazardImage image of the hazard warning
+     * @param iconImage the image of the icon used for the hazard
      */
     public Hazard(Position position, String name, String description, double impact, Image hazardImage, ImageIcon iconImage) {
         

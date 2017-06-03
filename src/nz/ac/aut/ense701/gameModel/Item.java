@@ -20,6 +20,10 @@ public  abstract class Item extends Occupant
      * @param pos the position of the item
      * @param name the name of the item
      * @param description a longer description of the item
+     * @param weight the weight of the item
+     * @param size the size of the item
+     * @param itemImage the image of the item
+     * @param iconImage the icon sized image used for the item
      */
     public Item(Position pos, String name, String description, double weight, double size, Image itemImage,ImageIcon iconImage) 
     {

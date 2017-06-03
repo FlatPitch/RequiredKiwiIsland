@@ -2,9 +2,6 @@
 package nz.ac.aut.ense701.gameModel;
 
 import java.awt.Image;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 /**
@@ -21,6 +18,8 @@ public class Kiwi  extends Fauna
      * @param pos the position of the kiwi object
      * @param name the name of the kiwi object
      * @param description a longer description of the kiwi
+     * @param faunaImage the image used in the description to show the fauna
+     * @param iconImage the image used in the tile square
      */
     public Kiwi(Position pos, String name, String description, Image faunaImage, ImageIcon iconImage) 
     {
