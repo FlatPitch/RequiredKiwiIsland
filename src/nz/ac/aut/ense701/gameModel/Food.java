@@ -31,7 +31,15 @@ public class Food extends Item
         super(pos, name, description,weight, size, foodImage, iconImage);
         this.energy = energy;
     }
-
+    /**
+     * 
+     * @param pos the position of the food item
+     * @param name the name of the food item
+     * @param description the description of the food item
+     * @param weight the weight of the food item
+     * @param size the size of the food item
+     * @param energy 
+     */
     public Food(Position pos, String name, String description, double weight, double size, double energy) 
     {
         super(pos, name, description,weight, size, null,null);

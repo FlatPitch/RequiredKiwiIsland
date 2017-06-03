@@ -7,8 +7,14 @@
  */
 
 package nz.ac.aut.ense701.gameModel;
-
+/**
+ * event listener for game state
+ * @author Liandri
+ */
 public interface GameEventListener 
 {
+    /**
+     * call the game state changed method to update the game for view
+     */
     public void gameStateChanged();
 }

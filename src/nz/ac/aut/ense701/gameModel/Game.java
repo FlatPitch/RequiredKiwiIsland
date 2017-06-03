@@ -65,7 +65,10 @@ public class Game {
         notifyGameEventListeners();
         score = new Score();
     }
-    
+    /**
+     * add the ability to use a supplied map
+     * @param map is the map used to build the island
+     */
     public void createNewGame(String map){
         totalPredators = 0;
         totalKiwis = 0;
@@ -394,7 +397,10 @@ public class Game {
     public String getWinMessage() {
         return winMessage;
     }
-    
+    /**
+     * this will get the current score from the game class
+     * @return the int score of the current game
+     */
     public int getPlayerScore(){
         return score.getSCore();
     }
@@ -943,6 +949,7 @@ public class Game {
     /**
      * Returns the description of an Occupant
      * @return description of occupant
+     * @param occ the occupant of the current square
      */
         public String getOccupantDescription(Occupant occ){
             return (occ.getDescription());
@@ -958,9 +965,17 @@ public class Game {
             return (new ImageIcon(ImageIO.read(new File("Images/Icons/"+imgName+"_icon.png")).getScaledInstance(21, 51,
                             java.awt.Image.SCALE_SMOOTH)));
         }
+        /**
+         * get the list of questions to ask for kiwi
+         * @return  array list of question objects
+         */
        public ArrayList<Question> getKiwi(){
            return this.kiwiQuestions;
        }
+       /**
+        * get the list of questions to ask for pests
+        * @return array list of pest question
+        */
        public ArrayList<Question> getPest(){
            return this.pestQuestions;
        }

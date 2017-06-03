@@ -36,9 +36,17 @@ public abstract class Occupant
         this.occImageIcon = occImageIcon;
         this.questionAsked = false;
     }
+    /**
+     * to limit the number of questions allowed for each occupant 
+     * @return boolean
+     */
     public boolean isQuestionAsked(){
         return questionAsked;
     }
+    /**
+     * when the question has been asked this sets asked to true to prevent
+     * more than one question per occupant
+     */
     public void setQuestionIsAsked(){
         this.questionAsked = true;
     }

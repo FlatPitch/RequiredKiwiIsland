@@ -26,7 +26,12 @@ public class Kiwi  extends Fauna
         super(pos, name, description, faunaImage, iconImage);
         counted = false;
     } 
-    
+    /**
+     * create a kiwi when the game is created
+     * @param pos the location of the kiwi
+     * @param name the name of the kiwi
+     * @param description  the description of the kiwi
+     */
     public Kiwi(Position pos, String name, String description) 
     {
         super(pos, name, description, null, null);

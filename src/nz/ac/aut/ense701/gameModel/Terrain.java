@@ -83,7 +83,10 @@ public enum Terrain
     {
         return difficulty;
     }
-    
+    /**
+     * 
+     * @return the image to be dispalyed on the grid square tiles 
+     */
     public Image getTerrainImage(){
         return this.terrainImg;
     }

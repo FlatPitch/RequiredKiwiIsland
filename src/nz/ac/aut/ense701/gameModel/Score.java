@@ -11,7 +11,9 @@ public class Score {
      private final int kiwicountPoints = 100;
      private final int trapPredatorPoints = 100;
      
-     
+     /**
+      * constructor
+      */
      public Score(){
          this.score = 0;
     }

@@ -31,7 +31,14 @@ public  abstract class Item extends Occupant
         this.weight = weight;
         this.size = size;
     }
-    
+    /**
+     * the individual item created
+     * @param pos position of the grid square in the game 
+     * @param name of the item in this square
+     * @param description of the item in the square
+     * @param weight of the item for the backpack calculation
+     * @param size of the item to calculate if you can carry it 
+     */
     public Item(Position pos, String name, String description, double weight, double size){
         super(pos, name, description, null,null);
         this.weight = weight;

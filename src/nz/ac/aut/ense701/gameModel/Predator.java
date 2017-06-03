@@ -25,7 +25,12 @@ public class Predator extends Fauna
     {
         super(pos, name, description, predImage, iconImage);
     } 
- 
+    /**
+     * when the map creates a Predator
+     * @param pos position of the Predator
+     * @param name of the Predator
+     * @param description  of the Predator
+     */
     public Predator(Position pos, String name, String description) 
     {
         super(pos, name, description, null, null);

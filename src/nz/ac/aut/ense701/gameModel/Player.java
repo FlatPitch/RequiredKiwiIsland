@@ -368,16 +368,21 @@ public class Player
             reduceStamina(getStaminaNeededToMove(terrain));
         }
     }
-    
-    
-    
-   
+    /**
+     * add a move to the number of moves so far
+     */
     public void addMove(){
         this.numberOfMoves++;
     }
+    /**
+     * @return the number of moves so far 
+     */
     public int getNumberOfMoves(){
         return this.numberOfMoves;
     }
+    /**
+     * reset the moves to zero for a new game start
+     */
     public void resetMoves(){
         this.numberOfMoves = 0;
     }

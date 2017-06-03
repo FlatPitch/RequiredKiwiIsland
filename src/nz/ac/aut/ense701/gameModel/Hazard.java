@@ -31,7 +31,13 @@ public class Hazard extends Occupant {
         this.impact = impact;
         
     }
-    
+    /**
+     * Construct a hazard for the map
+     * @param position location of hazard on map
+     * @param name of the hazard
+     * @param description of the hazard for description
+     * @param impact to the player of hazard 
+     */
     public Hazard(Position position, String name, String description, double impact){
         super(position, name, description, null,null);
         this.impact = impact;

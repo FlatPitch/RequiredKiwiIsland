@@ -30,7 +30,14 @@ public class Tool extends Item
         super(pos, name, description, weight, size, toolImage, iconImage);
         this.broken = false;
     }
-    
+    /**
+     * 
+     * @param pos the position of the tool
+     * @param name the name of the tool
+     * @param description the description of the tool
+     * @param weight the weight of the tool
+     * @param size the size of the tool
+     */
     public Tool(Position pos, String name, String description, double weight, double size) 
     {
         super(pos, name, description, weight, size, null,null);

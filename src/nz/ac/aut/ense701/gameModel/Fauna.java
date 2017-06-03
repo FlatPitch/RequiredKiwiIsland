@@ -28,7 +28,12 @@ public class Fauna extends Occupant
     {
         super(pos, name, description, faunaImage, iconImage);
     } 
-    
+    /**
+     * 
+     * @param pos position in grid
+     * @param name name of the fauna
+     * @param description description string of the fauna
+     */
     public Fauna(Position pos, String name, String description){
         super(pos, name, description, null, null);
     }
@@ -40,7 +45,10 @@ public class Fauna extends Occupant
     {
           return "F";
     }    
-    
+    /**
+     * 
+     * @return the image in icon size for the fauna
+     */
     public ImageIcon getImageRepresentation(){
         return this.faunaImage;
     }

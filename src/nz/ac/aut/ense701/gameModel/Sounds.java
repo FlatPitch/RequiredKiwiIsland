@@ -15,22 +15,31 @@ import static javafx.scene.media.AudioClip.INDEFINITE;
  */
 public class Sounds {
 
-    //create a singleton to prevent mulitpule instances of sound effects in memory
+    /**
+     * create a singleton to prevent mulitpule instances of sound effects in memory
+     **/ 
     private static Sounds instance = null;
 
-    //protected constructor
+    /**
+     * protected constructor
+     **/ 
     protected Sounds() {
         // Exists only to defeat instantiation.
     }
 
-    //method to allow acces to single instance of class
+    /**
+     *  method to allow access to single instance of class
+     **/
     public static Sounds getSoundsSingletonReference() {
         if (instance == null) {
             instance = new Sounds();
         }
         return instance;
     }
-        //import wav file for background music
+        /**
+         * import wav file for background music
+         * import wav files for sound effects
+         **/ 
 
     final URL URL = getClass().getResource("/nz/ac/aut/ense701/effects/music.wav");
     final AudioClip music = new AudioClip(URL.toString());
@@ -55,33 +64,49 @@ public class Sounds {
     //incorrect question answer
     final URL URL7 = getClass().getResource("/nz/ac/aut/ense701/effects/wrong.wav");
     final AudioClip clip7 = new AudioClip(URL7.toString());
-    //play methods called to make sound effects play
+    /**
+     *  play methods called to make sound effects play
+     **/
     
-    //increase the amount of stamina sound effect
+    /**
+     * increase the amount of stamina sound effect
+     **/
     public void playStaminaIncrease() {
         clip1.play();
     }
-    //stumble on hazard sound effect
+    /**
+     * stumble on hazard sound effect
+     **/
     public void playHazard() {
         clip2.play();
     }
-    //break the trap during harzard
+    /**
+     * break the trap during harzard
+     **/
     public void playBreakTrap() {
         clip3.play();
     }
-    //you have died sound effect
+    /**
+     * you have died sound effect
+     **/
     public void playDeath() {
         clip4.play();
     }
-    //you have won the round sound effect
+    /**
+     * you have won the round sound effect
+     **/
     public void playwin() {
         clip4.play();
     }
-    //correct question answer
+    /**
+     * correct question answer
+     **/
     public void playCorrect() {
         clip6.play();
     }
-    //incorrect question answer
+    /**
+     * incorrect question answer
+     **/
     public void playWrong() {
         clip7.play();
     }
