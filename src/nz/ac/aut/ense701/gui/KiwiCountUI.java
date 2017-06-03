@@ -24,7 +24,6 @@ import nz.ac.aut.ense701.gameModel.Music;
 import nz.ac.aut.ense701.gameModel.Occupant;
 import nz.ac.aut.ense701.gameModel.Sounds;
 import nz.ac.aut.ense701.gameModel.Kiwi;
-import nz.ac.aut.ense701.gameModel.Moves;
 import nz.ac.aut.ense701.gui.PopupQuestion;
 import nz.ac.aut.ense701.gameModel.Predator;
 /*
@@ -53,7 +52,6 @@ public class KiwiCountUI
         this.sound = Sounds.getSoundsSingletonReference();
         this.music = new Music();
         music.startMusic();
-        this.moves = new Moves();
         setAsGameListener();
         initComponents();
         initIslandGrid();
@@ -83,8 +81,8 @@ public class KiwiCountUI
                     game.getLoseMessage(), "Game over!",
                     JOptionPane.INFORMATION_MESSAGE);
             game.createNewGame();
-            moves.resetMoves();
-            jLabel3.setText(Integer.toString(moves.getNumberOfMoves()));
+            game.getPlayer().resetMoves();
+            movesLabel.setText(Integer.toString(game.getPlayer().getNumberOfMoves()));
             scoreLabel.setText("0");
         }
         else if ( game.getState() == GameState.WON )
@@ -95,8 +93,8 @@ public class KiwiCountUI
                     game.getWinMessage(), "Well Done!",
                     JOptionPane.INFORMATION_MESSAGE);
             game.createNewGame();
-            moves.resetMoves();
-            jLabel3.setText(Integer.toString(moves.getNumberOfMoves()));
+            game.getPlayer().resetMoves();
+            movesLabel.setText(Integer.toString(game.getPlayer().getNumberOfMoves()));
             scoreLabel.setText("0");
         }
         else if (game.messageForPlayer())
@@ -171,7 +169,7 @@ public class KiwiCountUI
         //update description field for terrain
         descFeild.setText(game.getTerrain(game.getPlayer().getPosition().getRow(),game.getPlayer().getPosition().getColumn()).getTerrainDescription());
         //update the number of moves
-        jLabel3.setText(Integer.toString(moves.getNumberOfMoves()));
+        movesLabel.setText(Integer.toString(game.getPlayer().getNumberOfMoves()));
 
         //update the player coordinates text label
         this.coordinates.setText(game.getPlayer().getPosition().getRow()+", "+game.getPlayer().getPosition().getColumn());
@@ -227,7 +225,7 @@ public class KiwiCountUI
         jLabel1 = new javax.swing.JLabel();
         coordinates = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        movesLabel = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         scoreLabel = new javax.swing.JLabel();
 
@@ -606,8 +604,8 @@ public class KiwiCountUI
         jLabel2.setText("Moves :");
         jLabel2.setToolTipText("");
 
-        jLabel3.setToolTipText("");
-        jLabel3.setName(""); // NOI18N
+        movesLabel.setToolTipText("");
+        movesLabel.setName(""); // NOI18N
 
         jLabel4.setText("Score:");
 
@@ -632,7 +630,7 @@ public class KiwiCountUI
                         .addGap(64, 64, 64)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(movesLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(musicToggleButton)))
@@ -662,7 +660,7 @@ public class KiwiCountUI
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(9, 9, 9)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(movesLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
@@ -824,7 +822,6 @@ public class KiwiCountUI
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -833,6 +830,7 @@ public class KiwiCountUI
     private javax.swing.JLabel lblPredators;
     private javax.swing.JList listInventory;
     private javax.swing.JList listObjects;
+    private javax.swing.JLabel movesLabel;
     private javax.swing.JToggleButton musicToggleButton;
     private javax.swing.JPanel pnlIsland;
     private javax.swing.JProgressBar progBackpackSize;
@@ -849,7 +847,6 @@ public class KiwiCountUI
     private Sounds sound;
     private Music music;
     private PopupQuestion popup = new PopupQuestion();
-    private Moves moves;
 
     
     
@@ -866,7 +863,7 @@ public class KiwiCountUI
                     case VK_S:
                         hasMoved = game.playerMove(MoveDirection.SOUTH);
                         if(hasMoved){
-                            moves.addMove();
+                            game.getPlayer().addMove();
                         }
                         break;
                         
@@ -874,7 +871,7 @@ public class KiwiCountUI
                     case VK_W:
                         hasMoved = game.playerMove(MoveDirection.NORTH);
                         if(hasMoved){
-                            moves.addMove();
+                            game.getPlayer().addMove();
                         }
                         break;
                         
@@ -882,7 +879,7 @@ public class KiwiCountUI
                     case VK_D:
                         hasMoved = game.playerMove(MoveDirection.EAST);
                         if(hasMoved){
-                            moves.addMove();
+                            game.getPlayer().addMove();
                         }
                         break;
                         
@@ -890,7 +887,7 @@ public class KiwiCountUI
                     case VK_A:
                         hasMoved = game.playerMove(MoveDirection.WEST);
                         if(hasMoved){
-                            moves.addMove();
+                            game.getPlayer().addMove();
                         }
                         break;
                         

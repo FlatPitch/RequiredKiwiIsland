@@ -26,6 +26,8 @@ public class Player
     private final double    maxBackpackWeight;
     private final double    maxBackpackSize;   
     private ImageIcon playerImage;
+    private int numberOfMoves;
+
     /**
      * Constructs a new player object.
      * 
@@ -366,5 +368,18 @@ public class Player
             this.position = newPosition;
             reduceStamina(getStaminaNeededToMove(terrain));
         }
+    }
+    
+    
+    
+   
+    public void addMove(){
+        this.numberOfMoves++;
+    }
+    public int getNumberOfMoves(){
+        return this.numberOfMoves;
+    }
+    public void resetMoves(){
+        this.numberOfMoves = 0;
     }
 }
