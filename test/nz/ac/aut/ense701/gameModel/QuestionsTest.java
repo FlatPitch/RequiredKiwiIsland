@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
  * for the player around conservation facts
  */
 public class QuestionsTest {
-    private Questions quest;
+    private Game game;
     private ArrayList<Question> kiwi;
     private ArrayList<Question> pests;
     
@@ -25,14 +25,14 @@ public class QuestionsTest {
     //set up for tests
     @Before
     public void setUp() {
-        quest = new Questions();
-        kiwi = quest.getKiwiQuestionsArray();
-        pests = quest.getPestsQuestionsArray();
+        this.game = new Game();
+        kiwi = game.getKiwi();
+        pests = game.getPest();
     }
     //tear down tests
     @After
     public void tearDown(){
-        quest = null;
+        game = null;
         kiwi = null;
         pests = null;
     }

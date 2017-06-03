@@ -959,7 +959,12 @@ public class Game {
             return (new ImageIcon(ImageIO.read(new File("Images/Icons/"+imgName+"_icon.png")).getScaledInstance(21, 51,
                             java.awt.Image.SCALE_SMOOTH)));
         }
-       
+       public ArrayList<Question> getKiwi(){
+           return this.kiwiQuestions;
+       }
+       public ArrayList<Question> getPest(){
+           return this.pestQuestions;
+       }
 
         private Island island;
         private Player player;
