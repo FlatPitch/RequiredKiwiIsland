@@ -5,11 +5,18 @@
  */
 package nz.ac.aut.ense701.gui;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import nz.ac.aut.ense701.gameModel.Game;
 
 /**
  *
- * @author Liandri
+ * @author glen osborne
  */
 public class Menu extends javax.swing.JFrame {
 
@@ -82,15 +89,12 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+
         
           // create the game object
         final Game game = new Game();
         // create the GUI for the game
         final KiwiCountUI  gui  = new KiwiCountUI(game);
-
-        this.setVisible(false);
-
         // make the GUI visible
         java.awt.EventQueue.invokeLater(new Runnable() 
         {
@@ -98,7 +102,6 @@ public class Menu extends javax.swing.JFrame {
             public void run() 
             {
                 gui.setVisible(true);
-
             }
         });
     }//GEN-LAST:event_jButton2ActionPerformed
