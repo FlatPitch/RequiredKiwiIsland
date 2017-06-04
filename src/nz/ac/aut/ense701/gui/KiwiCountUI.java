@@ -683,12 +683,12 @@ public class KiwiCountUI
         Occupant occ = (Occupant) listObjects.getSelectedValue();
         if ( occ != null && occ.isQuestionAsked() == false){
             if(occ instanceof Kiwi){
-                if(popup.makePopup(this.game.getKiwiQuestion())){
+                if(popup.makePopup(this.game.getKiwiQuestion(),occ.getOccImageIcon(), "Kiwi Question")){
                     game.getPlayer().increaseStamina(10);
                     update();
                 }
             }else if(occ instanceof Predator){
-                if(popup.makePopup(this.game.getPestQuestion())){
+                if(popup.makePopup(this.game.getPestQuestion(),occ.getOccImageIcon(), "Pest Question")){
                     game.getPlayer().increaseStamina(10);
                     update();
                 }
