@@ -8,7 +8,10 @@ import java.awt.KeyEventDispatcher;
 import java.awt.KeyboardFocusManager;
 import java.awt.event.KeyEvent;
 import static java.awt.event.KeyEvent.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.net.URL;
+import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -34,8 +37,8 @@ import nz.ac.aut.ense701.gameModel.Predator;
 public class KiwiCountUI 
     extends javax.swing.JFrame 
     implements GameEventListener
-{
-
+    {
+        
     /**
      * Creates a GUI for the KiwiIsland game.
      * @param game the game object to represent with this GUI.
@@ -850,36 +853,31 @@ public class KiwiCountUI
         @Override
         public boolean dispatchKeyEvent(KeyEvent e) {
             if (e.getID() == KeyEvent.KEY_PRESSED) {
-                boolean hasMoved = false;
                 switch (e.getKeyCode()){
                     case VK_DOWN:
                     case VK_S:
-                        hasMoved = game.playerMove(MoveDirection.SOUTH);
-                        if(hasMoved){
+                        if(game.playerMove(MoveDirection.SOUTH)){
                             game.getPlayer().addMove();
                         }
                         break;
                         
                     case VK_UP:
                     case VK_W:
-                        hasMoved = game.playerMove(MoveDirection.NORTH);
-                        if(hasMoved){
+                        if(game.playerMove(MoveDirection.NORTH)){
                             game.getPlayer().addMove();
                         }
                         break;
                         
                     case VK_RIGHT:
                     case VK_D:
-                        hasMoved = game.playerMove(MoveDirection.EAST);
-                        if(hasMoved){
+                        if(game.playerMove(MoveDirection.EAST)){
                             game.getPlayer().addMove();
                         }
                         break;
                         
                     case VK_LEFT:
                     case VK_A:
-                        hasMoved = game.playerMove(MoveDirection.WEST);
-                        if(hasMoved){
+                        if(game.playerMove(MoveDirection.WEST)){
                             game.getPlayer().addMove();
                         }
                         break;
